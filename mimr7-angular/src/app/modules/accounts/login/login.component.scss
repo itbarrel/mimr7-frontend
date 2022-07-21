@@ -1,0 +1,38 @@
+:host {
+    // display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .login-container{
+    width: 100%; display: flex;justify-content: center;
+  }
+  .login-card{
+    width: 400px; margin-top: 50px
+  }
+  :host .mat-toolbar{
+    color: chartreuse;
+  }
