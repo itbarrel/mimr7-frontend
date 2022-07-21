@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoaderInterceptor } from './core/services/loader.interceptor';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { LoaderService } from './core/services/loader.service';
-import { AuthenticationGuard } from './core/guards/authentication.guard';
+import { AuthguardService } from './core/services/authguard.service';
 
 @NgModule({
   imports: [
@@ -36,7 +36,7 @@ import { AuthenticationGuard } from './core/guards/authentication.guard';
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' },
     },
-    AuthenticationGuard,
+    AuthguardService,
   ],
 })
 export class AppModule {}
