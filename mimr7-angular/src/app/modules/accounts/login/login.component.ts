@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
@@ -13,13 +14,17 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService,
+    private cookieService: CookieService) {}
   submit() {
+    const exp = new Date(new Date().getTime() + 1000*60*60).toUTCString();
+    console.log('sss',exp)
     this.auth
       .login({ email: 'broek@crisisplan.nl', password: '12345678' })
       .subscribe(
         (res:any) => {
           localStorage.setItem('token',res.token)
+          this.cookieService.set('Auth_token',res.token,{expires: 4})
           this.auth.getUser().subscribe((res:any)=>{
             console.log('get user',res)
           },(err:any)=>{
