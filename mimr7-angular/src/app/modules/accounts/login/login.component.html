@@ -7,15 +7,17 @@
     </div>
     <!-- <mat-card-title>Login</mat-card-title> -->
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="submit()">
+      <form [formGroup]="loginFrom" (ngSubmit)="submit()">
         <p>
           <mat-form-field>
             <input
-              type="text"
+              type="email"
               matInput
-              placeholder="Username"
-              formControlName="username"
+              placeholder="Email"
+              formControlName="email"
             />
+            <mat-error *ngIf="!loginFrom.get('email')?.valid && loginFrom.get('email')?.touched
+          ">Invalid Email</mat-error>
           </mat-form-field>
         </p>
 
@@ -27,13 +29,10 @@
               placeholder="Password"
               formControlName="password"
             />
+            <mat-error *ngIf="!loginFrom.get('password')?.valid && loginFrom.get('password')?.touched
+            ">Invalid Password</mat-error>
           </mat-form-field>
         </p>
-
-        <!-- <p *ngIf="error" class="error">
-          {{ error }}
-        </p> -->
-
         <div class="button">
           <button type="submit" mat-button>Login</button>
         </div>
