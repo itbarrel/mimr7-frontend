@@ -14,6 +14,7 @@ import { LoaderInterceptor } from './core/services/loader.interceptor';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { LoaderService } from './core/services/loader.service';
 import { AuthguardService } from './core/services/authguard.service';
+import { TokenInterceptor } from './core/interceptor/token.interceptor';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { AuthguardService } from './core/services/authguard.service';
   providers: [
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' },

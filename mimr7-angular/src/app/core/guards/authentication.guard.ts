@@ -6,13 +6,14 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
+import { AuthguardService } from '../services/authguard.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationGuard implements CanActivate {
   constructor(
-    // private Authguardservice: AuthguardServiceService,
+    private Authguardservice: AuthguardService,
     private router: Router
   ) {}
   canActivate(
@@ -20,12 +21,11 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     console.log('Guard called')
-    // if (!this.Authguardservice.gettoken()) {
-    //   this.router.navigate(['login'], {
-    //     queryParams: { returnUrl: state.url },
-    //   });
-    // }
-    // return this.Authguardservice.gettoken();
-    return true
+    if (!this.Authguardservice.gettoken()) {
+      this.router.navigate(['auth/login'], {
+        queryParams: { returnUrl: state.url },
+      });
+    }
+    return this.Authguardservice.gettoken();
   }
 }

@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({
@@ -12,17 +13,34 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
+  constructor(private auth: AuthenticationService) {}
   submit() {
+    this.auth
+      .login({ email: 'broek@crisisplan.nl', password: '12345678' })
+      .subscribe(
+        (res:any) => {
+          localStorage.setItem('token',res.token)
+          this.auth.getUser().subscribe((res:any)=>{
+            console.log('get user',res)
+          },(err:any)=>{
+            console.log('error',err)
+          })
+        },
+        (err) => {
+          // console.log(err);
+        }
+      );
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      // this.submitEM.emit(this.form.value);
     }
   }
-  @Input() error: string | null | undefined;
+  // @Input() error: string | null | undefined;
 
-  @Output() submitEM = new EventEmitter();
-  constructor() { }
+  // @Output() submitEM = new EventEmitter();
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  login() {
+    // http://localhost:8081/auth/login
   }
-
 }
