@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
   private userState = new BehaviorSubject<User>(
-    localStorage.getItem('user') || null
+    JSON.parse(localStorage.getItem('user')||'') || null
   );
   userState$ = this.userState.asObservable();
 

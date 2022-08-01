@@ -28,10 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log('login',this.loginFrom.valid,this.loginFrom.value)
     if (this.loginFrom.valid) {
       const exp = new Date(new Date().getTime() + 1000 * 60 * 60).toUTCString();
-      console.log('sss', exp);
       this.auth
         .login({ email: 'broek@crisisplan.nl', password: '12345678' })
         .subscribe(
@@ -41,6 +39,7 @@ export class LoginComponent implements OnInit {
             this.auth.getUser().subscribe(
               (res: any) => {
                 localStorage.setItem('user', JSON.stringify(res));
+                this.auth.setUserState(res)
                 this.router.navigateByUrl(this.returnUrl);
               },
               (err: any) => {

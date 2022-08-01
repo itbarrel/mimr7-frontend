@@ -31,3 +31,23 @@
   .submenu.expanded {
     transform: scaleY(1);
   }
+  .container-one{
+    display: flex;
+    width: 25%;
+    align-items: center;
+  }
+  .top-nav-dropdown{
+    display: flex;
+    width: 25%;
+    justify-content: end;
+    padding: 20px;
+  }
+  .logo-container{
+    display: flex;
+    width: 50%;
+  }
+  .name-tag{
+    cursor: pointer;
+    font-size: smaller;
+    margin-left: 10px;
+  }
