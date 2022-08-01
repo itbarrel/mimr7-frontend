@@ -45,9 +45,16 @@
   .logo-container{
     display: flex;
     width: 50%;
+    justify-content: center;
   }
   .name-tag{
     cursor: pointer;
     font-size: smaller;
     margin-left: 10px;
+  }
+  .img-container{
+    display: flex;
+  }
+  .img{
+    transform: scale(0.8);
   }
