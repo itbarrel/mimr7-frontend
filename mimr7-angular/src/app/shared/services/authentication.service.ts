@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private userState = new BehaviorSubject<User>(
-    JSON.parse(localStorage.getItem('user')||'') || null
-  );
+  // private userState = new BehaviorSubject<User>(
+  //   JSON.parse(localStorage.getItem('user')||'') || null
+  // );
+  private userState = new BehaviorSubject<User>(this.getInitialUser())
   userState$ = this.userState.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -36,6 +37,15 @@ export class AuthenticationService {
     localStorage.removeItem('user');
     this.setUserState(null);
     this.router.navigateByUrl('/login');
+  }
+
+  getInitialUser(){
+    debugger;
+    const user = localStorage.getItem('user');
+    if(user){
+      return JSON.parse(user)
+    }
+    return null
   }
 }
 
