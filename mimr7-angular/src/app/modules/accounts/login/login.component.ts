@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthenticationService,
     private route: ActivatedRoute,
-    private cookieService: CookieService,
     private router: Router
   ) {}
 
@@ -29,28 +27,18 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.loginFrom.valid) {
-      const exp = new Date(new Date().getTime() + 1000 * 60 * 60).toUTCString();
-      this.auth
-        .login({ email: 'broek@crisisplan.nl', password: '12345678' })
-        .subscribe(
-          (res: any) => {
-            localStorage.setItem('token', res.token);
-            this.cookieService.set('Auth_token', res.token, { expires: 4 });
-            this.auth.getUser().subscribe(
-              (res: any) => {
-                localStorage.setItem('user', JSON.stringify(res));
-                this.auth.setUserState(res)
-                this.router.navigateByUrl(this.returnUrl);
-              },
-              (err: any) => {
-                console.log('error', err);
-              }
-            );
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+      const credentials = this.loginFrom.value;
+      this.auth.login({ credentials: credentials }).subscribe(
+        (res: any) => {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('role', res.Role);
+          localStorage.setItem('user', JSON.stringify(res.user));
+          this.router.navigateByUrl(this.returnUrl);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
   }
   // @Input() error: string | null | undefined;

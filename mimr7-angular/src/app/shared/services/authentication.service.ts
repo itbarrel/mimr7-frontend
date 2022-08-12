@@ -24,10 +24,7 @@ export class AuthenticationService {
   }
 
   login(user: User) {
-    return this.http.post(`${environment.apiUrl}auth/login`, {
-      email: user.email,
-      password: user.password,
-    });
+    return this.http.post(`${environment.apiUrl}auth/login`, {...user});
   }
   getUser() {
     return this.http.get(`${environment.apiUrl}users/me`);
@@ -40,7 +37,6 @@ export class AuthenticationService {
   }
 
   getInitialUser(){
-    debugger;
     const user = localStorage.getItem('user');
     if(user){
       return JSON.parse(user)
