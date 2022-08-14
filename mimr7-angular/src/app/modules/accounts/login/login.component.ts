@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -40,12 +40,5 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-  }
-  // @Input() error: string | null | undefined;
-
-  // @Output() submitEM = new EventEmitter();
-
-  login() {
-    // http://localhost:8081/auth/login
   }
 }
