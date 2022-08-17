@@ -7,13 +7,11 @@
   </div>
   <div class="logo-container">
     <div class="img-container">
-      <img class="img" src="assets/images/new_logo.png"/>
+      <img class="img" src="assets/images/new_logo.png" />
     </div>
   </div>
-  <div class="top-nav-dropdown" >
-    <mat-icon class="icon-display"
-    >account_circle</mat-icon
-    >
+  <div class="top-nav-dropdown">
+    <mat-icon class="icon-display">account_circle</mat-icon>
     <span class="name-tag" [matMenuTriggerFor]="menu">
       {{ firstName }} {{ lastName }}
     </span>
@@ -35,7 +33,25 @@
     (mouseleave)="mouseleave()"
   >
     <mat-nav-list>
-      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+      <mat-list-item
+        *ngFor="let nav of navLinks"
+        (click)="showSubmenu = !showSubmenu"
+        class="parent"
+      >
+        <a [routerLink]="[nav.url]">
+          <mat-icon mat-list-icon >home</mat-icon>
+        </a>
+        <a [routerLink]="[nav.url]">
+          <span
+            class="full-width"
+            *ngIf="isExpanded || isShowing"
+            [routerLink]="[nav.url]"
+          >
+            {{ nav.name }}
+          </span>
+        </a>
+      </mat-list-item>
+      <!-- <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
         <span class="full-width" *ngIf="isExpanded || isShowing"
           >Parent Menu</span
         >
@@ -76,11 +92,11 @@
           <mat-list-item>SubSubmenu Item 1</mat-list-item>
           <mat-list-item>SubSubmenu Item 2</mat-list-item>
         </div>
-      </div>
+      </div> -->
     </mat-nav-list>
     <mat-nav-list> </mat-nav-list>
   </mat-sidenav>
-  
+
   <div class="example-sidenav-content">
     <router-outlet></router-outlet>
   </div>
