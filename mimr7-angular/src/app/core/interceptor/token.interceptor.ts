@@ -35,7 +35,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const customReq = request.clone({
         withCredentials:true,
       headers: new HttpHeaders({
-        authorization: localStorage.getItem('token') || '',
+        token: localStorage.getItem('token') || '',
         // token: environment.companyToken,
       }),
     });

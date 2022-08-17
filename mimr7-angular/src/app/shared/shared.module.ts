@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 
 
 @NgModule({
   declarations: [
-    SpinnerComponent
+    SpinnerComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
     NgxSpinnerModule
   ],
   exports:[
-    SpinnerComponent
+    SpinnerComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule { }

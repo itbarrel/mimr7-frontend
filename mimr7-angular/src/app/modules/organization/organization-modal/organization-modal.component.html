@@ -1,0 +1,194 @@
+<div>
+  <mat-card class="organization-container-card">
+    <div name="header-div">
+      <mat-card-header class="mat-card-header">
+        <mat-toolbar color="primary" class="card-header">
+          <mat-card-title color="primary"> Organization Form</mat-card-title>
+        </mat-toolbar>
+      </mat-card-header>
+    </div>
+    <div name="fields-container" class="fields-container">
+      <mat-card-content>
+        <form [formGroup]="organizationForm" (ngSubmit)="submit()">
+          <p class="form-field-item">
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Organization Name"
+                formControlName="name"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('name')?.valid &&
+                  organizationForm.get('name')?.touched
+                "
+                >Invalid Organization Name</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>User Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="User Name"
+                formControlName="userName"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('userName')?.valid &&
+                  organizationForm.get('userName')?.touched
+                "
+                >Invalid User Name
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p class="form-field-item">
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>First Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('firstName')?.valid &&
+                  organizationForm.get('firstName')?.touched
+                "
+                >Invalid First Name</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>Last Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('lastName')?.valid &&
+                  organizationForm.get('lastName')?.touched
+                "
+                >Invalid Last Name</mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p class="form-field-item">
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                placeholder="Email"
+                formControlName="email"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('email')?.valid &&
+                  organizationForm.get('email')?.touched
+                "
+                >Invalid Email</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>Password</mat-label>
+              <input
+                type="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('password')?.valid &&
+                  organizationForm.get('password')?.touched
+                "
+                >Invalid Password</mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p class="form-field-item">
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>City</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="City"
+                formControlName="city"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('city')?.valid &&
+                  organizationForm.get('city')?.touched
+                "
+                >Invalid User Name</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill" floatLabel="auto">
+              <mat-label>Phone</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Phone Number"
+                formControlName="mobilePhone"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('mobilePhone')?.valid &&
+                  organizationForm.get('mobilePhone')?.touched
+                "
+                >Invalid Phone Number</mat-error
+              >
+            </mat-form-field>
+          </p>
+          <p class="form-field-item">
+            <mat-form-field
+              class="desc-field"
+              appearance="fill"
+              floatLabel="auto"
+            >
+              <mat-label>Description</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Description"
+                formControlName="description"
+              />
+              <mat-error
+                *ngIf="
+                  !organizationForm.get('description')?.valid &&
+                  organizationForm.get('description')?.touched
+                "
+                >Invalid Description</mat-error
+              >
+            </mat-form-field>
+          </p>
+          <div mat-dialog-actions align="end">
+            <span>
+              <button
+                type="button"
+                mat-flat-button
+                color="primary"
+                [mat-dialog-close]="true"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                mat-stroked-button
+                color="primary"
+              >
+                Add
+              </button>
+            </span>
+          </div>
+        </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

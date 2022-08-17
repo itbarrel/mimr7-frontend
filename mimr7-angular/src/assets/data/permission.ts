@@ -1,6 +1,8 @@
 export const PERMISSION = [
   {
-    role: "SuperAdmin",
-    sites: ["user-list"],
+    role: 'SuperAdmin',
+    sites: ['organizations'],
+    default: ['organizations'],
+    navigation: [{ name: 'Organization', url: 'organizations' }],
   },
 ];

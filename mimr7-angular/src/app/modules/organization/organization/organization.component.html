@@ -1,0 +1,16 @@
+<div>
+  <mat-card class="breadcrumb-container">
+    <app-breadcrumb
+      class="breadcrumb-content"
+      [path]="path"
+      [active]="active"
+    ></app-breadcrumb>
+    <div name="controls" class="controls">
+      <button mat-icon-button (click)="openOrganizationModal()"
+      class="control-button" color="primary">
+        Add Organization <mat-icon>add_box</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+  <mat-card>Simple card</mat-card>
+</div>

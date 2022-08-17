@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { LoaderInterceptor } from './core/services/loader.interceptor';
-import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderService } from './core/services/loader.service';
 import { AuthguardService } from './core/services/authguard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
@@ -27,7 +27,7 @@ import { CookieService } from 'ngx-cookie-service';
     MaterialModule,
     ToastrModule.forRoot(),
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
@@ -37,10 +37,10 @@ import { CookieService } from 'ngx-cookie-service';
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'fill' },
+      useValue: { appearance: 'fill', floatLabel: 'always' },
     },
     AuthguardService,
-    CookieService
+    CookieService,
   ],
 })
 export class AppModule {}
