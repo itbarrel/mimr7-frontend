@@ -21,12 +21,27 @@ export class AuthenticationGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    console.log('Guard called',PERMISSION)
     if (!this.Authguardservice.gettoken()) {
       this.router.navigate(['auth/login'], {
         queryParams: { returnUrl: state.url },
       });
     }
+    const role = localStorage.getItem('role');
+    const path = state.url.split('/');
+    const url = path[path.length - 1];
+    PERMISSION.forEach((permission) => {
+      if (role == permission.role) {
+        if (permission.sites.includes(url)) {
+          return this.Authguardservice.gettoken();
+        } else {
+          this.router.navigateByUrl(`dashboard/${permission.default}`);
+          return true
+        }
+      }
+      else{
+        return false
+      }
+    });
     return this.Authguardservice.gettoken();
   }
 }
