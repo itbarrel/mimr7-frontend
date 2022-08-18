@@ -30,11 +30,11 @@ export class AuthenticationService {
     return this.http.get(`${environment.apiUrl}users/me`);
   }
 
-  logout(): void {
-    localStorage.removeItem('user');
-    this.setUserState(null);
-    this.router.navigateByUrl('/login');
-  }
+  // logout(): void {
+  //   localStorage.removeItem('user');
+  //   this.setUserState(null);
+  //   this.router.navigateByUrl('/login');
+  // }
 
   getInitialUser(){
     const user = localStorage.getItem('user');
@@ -46,7 +46,3 @@ export class AuthenticationService {
 }
 
 type User = any;
-email: 'broek@crisisplan.nl';
-login_detail: '';
-password: '12345678';
-('broek@crisisplan.nl');
