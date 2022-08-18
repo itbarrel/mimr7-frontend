@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationModalComponent } from '../organization-modal/organization-modal.component';
+import { OrganizationService } from '../services/organization.service';
 
 @Component({
   selector: 'app-organization',
@@ -13,9 +14,14 @@ import { OrganizationModalComponent } from '../organization-modal/organization-m
 export class OrganizationComponent implements OnInit {
   path: string = 'Dashboard';
   active: string = 'Organizations';
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private organizationService: OrganizationService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllOrganizations();
+  }
 
   openOrganizationModal(): void {
     const dialogRef = this.dialog.open(OrganizationModalComponent, {
@@ -29,7 +35,12 @@ export class OrganizationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
-      // this.animal = result;
+    });
+  }
+
+  getAllOrganizations() {
+    this.organizationService.getAll().subscribe((res) => {
+      console.log(res);
     });
   }
 }
