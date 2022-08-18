@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 // import { SpinnerService } from 'src/app/core/services/spinner.service';
 import { ToasterService } from 'src/app/core/services/toaster.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -20,7 +21,8 @@ export class DashboardComponent implements OnInit {
     // private spinner:SpinnerService,
     private http: HttpClient,
     private auth: AuthenticationService,
-    private toaster: ToasterService
+    private toaster: ToasterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +43,6 @@ export class DashboardComponent implements OnInit {
     const role = localStorage.getItem('role');
     const selected = PERMISSION.find((permission) => permission.role === role);
     this.navLinks = selected?.navigation;
-    console.log('shapper', this.navLinks);
   }
   mouseenter() {
     if (!this.isExpanded) {
@@ -53,5 +54,9 @@ export class DashboardComponent implements OnInit {
     if (!this.isExpanded) {
       this.isShowing = false;
     }
+  }
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl('auth/login')
   }
 }

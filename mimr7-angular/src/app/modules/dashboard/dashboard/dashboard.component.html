@@ -19,7 +19,7 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item><mat-icon>help_outline</mat-icon>Help</button>
       <button mat-menu-item><mat-icon>person_outline</mat-icon>Account</button>
-      <button mat-menu-item><mat-icon>exit_to_app</mat-icon>Logout</button>
+      <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</button>
     </mat-menu>
   </div>
 </mat-toolbar>
@@ -39,7 +39,7 @@
         class="parent"
       >
         <a [routerLink]="[nav.url]">
-          <mat-icon mat-list-icon >home</mat-icon>
+          <mat-icon mat-list-icon >{{nav.icon}}</mat-icon>
         </a>
         <a [routerLink]="[nav.url]">
           <span
