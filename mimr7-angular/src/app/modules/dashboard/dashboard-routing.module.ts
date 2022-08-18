@@ -11,6 +11,7 @@ const routes: Routes = [
         (m) => m.OrganizationModule
       ),
   },
+  { path: '',   redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
