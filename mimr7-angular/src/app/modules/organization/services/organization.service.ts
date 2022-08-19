@@ -14,10 +14,10 @@ export class OrganizationService {
   organizationState$ = this.organizationState.asObservable();
   constructor(private http: HttpClient) {}
 
-  getUserState() {
+  getOrganizationState() {
     return this.organizationState$;
   }
-  setUserState(organization: Organization[]) {
+  setOrganizationState(organization: Organization[]) {
     this.organizationState.next(organization);
   }
 
@@ -25,6 +25,7 @@ export class OrganizationService {
     return this.http.post(`${environment.apiUrl}accounts`, data);
   }
 
+  // {{host}}v1/accounts?offset=1&limit=2
   getAll() {
     return this.http.get(`${environment.apiUrl}accounts`);
   }

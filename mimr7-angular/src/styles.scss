@@ -35,10 +35,19 @@ body {
   color: #ccc;
 }
 
-.control-button{
-width: 150px !important;
+.control-button {
+  width: 150px !important;
 }
 
 .custom-dialog-container .mat-dialog-container {
   padding: 0px !important;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.table-action-item{
+margin: 0px 10px;
 }

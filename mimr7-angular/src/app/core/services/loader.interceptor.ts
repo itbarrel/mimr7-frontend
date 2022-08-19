@@ -10,6 +10,7 @@ import {
 import { Observable } from 'rxjs';
 import { LoaderService } from './loader.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
@@ -17,7 +18,8 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(
     private loaderService: LoaderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   removeRequest(req: HttpRequest<any>) {
@@ -45,6 +47,11 @@ export class LoaderInterceptor implements HttpInterceptor {
         },
         (err) => {
           // alert('ERROR : ' + err.statusText);
+          console.log('error in request', err);
+          if (err.status === 401) {
+            localStorage.clear();
+            this.router.navigateByUrl('auth/login');
+          }
           this.showError(err.statusText, 'Failed');
           this.removeRequest(req);
           observer.error(err);
