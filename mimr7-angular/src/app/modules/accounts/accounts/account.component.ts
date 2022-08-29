@@ -1,6 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
-import { OrganizationModalComponent } from '../organization-modal/organization-modal.component';
-import { OrganizationService } from '../services/organization.service';
+import { AccountModalComponent } from '../account-modal/account-modal.component';
+import { AccountService } from '../services/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -13,21 +13,22 @@ import {
   combineLatest,
 } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { AccountEditModalComponent } from '../account-edit-modal/account-edit-modal.component';
 
 @Component({
-  selector: 'app-organization',
-  templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.scss'],
+  selector: 'app-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss'],
   host: {
     class: 'organization-container',
   },
 })
-export class OrganizationComponent implements OnInit {
+export class AccountsComponent implements OnInit {
   path: string = 'Dashboard';
-  active: string = 'Organizations';
+  active: string = 'Accounts';
   isLoadingResults = true;
   resultsLength = 0;
-  pageSize = 100;
+  // pageSize = 1;
 
   displayedColumns: string[] = [
     'name',
@@ -38,6 +39,7 @@ export class OrganizationComponent implements OnInit {
   ];
   data!: Observable<any[]>;
   currentPage = new BehaviorSubject<number>(1);
+  pageSize = new BehaviorSubject<number>(1);
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
@@ -45,15 +47,15 @@ export class OrganizationComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private organizationService: OrganizationService
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
-    this.getAllOrganizations();
+    this.getAllAccounts();
   }
 
-  openOrganizationModal(): void {
-    const dialogRef = this.dialog.open(OrganizationModalComponent, {
+  openAccountModal(): void {
+    const dialogRef = this.dialog.open(AccountModalComponent, {
       width: '50%',
       minHeight: 'calc(100vh - 90px)',
       height: 'auto',
@@ -64,20 +66,20 @@ export class OrganizationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
-      this.getAllOrganizations();
+      this.getAllAccounts();
     });
   }
 
-  getAllOrganizations() {
-    this.organizationService.getAll().subscribe((res) => {
-      console.log(res);
-    });
+  getAllAccounts() {
+    // this.accountService.getAll().subscribe((res) => {
+    //   console.log(res);
+    // });
     this.data = combineLatest(this.currentSort, this.currentPage).pipe(
       // startWith([undefined, ]),
       switchMap(([sortChange, currentPage]) => {
         console.log('PAge Change', sortChange, currentPage);
         this.isLoadingResults = true;
-        return this.organizationService.getAll();
+        return this.accountService.getAll(1, 10);
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
       }),
@@ -104,6 +106,23 @@ export class OrganizationComponent implements OnInit {
     this.currentSort.next(sort);
   }
   pageChanged(pageChanged: any) {
+    this.pageSize.next(pageChanged);
     console.log('called', pageChanged);
+  }
+
+  openEditDialogue(data: any) {
+    const dialogRef = this.dialog.open(AccountEditModalComponent, {
+      width: '50%',
+      minHeight: 'calc(100vh - 90px)',
+      height: 'auto',
+      data,
+      panelClass: 'custom-dialog-container',
+      // disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
+      this.getAllAccounts();
+    });
   }
 }

@@ -9,24 +9,26 @@ import { AddOrganization, Organization } from 'src/app/shared/interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class OrganizationService {
-  private organizationState = new BehaviorSubject<Organization[]>([]);
-  organizationState$ = this.organizationState.asObservable();
+export class AccountService {
+  private accountState = new BehaviorSubject<Organization[]>([]);
+  accountState$ = this.accountState.asObservable();
   constructor(private http: HttpClient) {}
 
-  getOrganizationState() {
-    return this.organizationState$;
+  getAccountState() {
+    return this.accountState$;
   }
-  setOrganizationState(organization: Organization[]) {
-    this.organizationState.next(organization);
+  setAccountState(organization: Organization[]) {
+    this.accountState.next(organization);
   }
 
-  addOrganization(data: AddOrganization): Observable<any> {
+  addAccount(data: AddOrganization): Observable<any> {
     return this.http.post(`${environment.apiUrl}accounts`, data);
   }
 
   // {{host}}v1/accounts?offset=1&limit=2
-  getAll() {
-    return this.http.get(`${environment.apiUrl}accounts`);
+  getAll(pageNumber: number, pageSize: number) {
+    return this.http.get(
+      `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`
+    );
   }
 }

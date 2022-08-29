@@ -8,8 +8,8 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./modules/accounts/accounts.module').then(
-        (m) => m.AccountsModule
+      import('./modules/auth/auth.module').then(
+        (m) => m.AuthModule
       ),
   },
   {

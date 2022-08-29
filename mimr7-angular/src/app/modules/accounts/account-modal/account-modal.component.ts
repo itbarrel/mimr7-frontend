@@ -2,15 +2,15 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddOrganization } from 'src/app/shared/interfaces';
-import { OrganizationService } from '../services/organization.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
-  selector: 'app-organization-modal',
-  templateUrl: './organization-modal.component.html',
-  styleUrls: ['./organization-modal.component.scss'],
+  selector: 'app-account-modal',
+  templateUrl: './account-modal.component.html',
+  styleUrls: ['./account-modal.component.scss'],
 })
-export class OrganizationModalComponent implements OnInit {
-  organizationForm: FormGroup = new FormGroup({
+export class AccountModalComponent implements OnInit {
+  accountForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     firstName: new FormControl('', [
       Validators.required,
@@ -32,18 +32,18 @@ export class OrganizationModalComponent implements OnInit {
   });
 
   constructor(
-    public dialogRef: MatDialogRef<OrganizationModalComponent>,
+    public dialogRef: MatDialogRef<AccountModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private organizationService: OrganizationService
+    private accountService: AccountService
   ) {}
   // organizationData:AddOrganization
 
   ngOnInit(): void {}
 
   submit() {
-    console.log(this.organizationForm.valid, this.organizationForm.value);
+    console.log(this.accountForm.valid, this.accountForm.value);
 
-    if (this.organizationForm.valid) {
+    if (this.accountForm.valid) {
       const {
         name,
         city,
@@ -54,7 +54,7 @@ export class OrganizationModalComponent implements OnInit {
         mobilePhone,
         password,
         userName,
-      } = this.organizationForm.value;
+      } = this.accountForm.value;
       const organizationData: AddOrganization = {
         name: name,
         description: description,
@@ -71,7 +71,7 @@ export class OrganizationModalComponent implements OnInit {
           mobilePhone: mobilePhone,
         },
       };
-      this.organizationService.addOrganization(organizationData).subscribe(
+      this.accountService.addAccount(organizationData).subscribe(
         (res) => {
           this.dialogRef.close();
         },

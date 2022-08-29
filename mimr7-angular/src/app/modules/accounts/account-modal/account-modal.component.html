@@ -9,7 +9,7 @@
     </div>
     <div name="fields-container" class="fields-container">
       <mat-card-content>
-        <form [formGroup]="organizationForm" (ngSubmit)="submit()">
+        <form [formGroup]="accountForm" (ngSubmit)="submit()">
           <p class="form-field-item">
             <mat-form-field class="field" appearance="fill" floatLabel="auto">
               <mat-label>Name</mat-label>
@@ -21,8 +21,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('name')?.valid &&
-                  organizationForm.get('name')?.touched
+                  !accountForm.get('name')?.valid &&
+                  accountForm.get('name')?.touched
                 "
                 >Invalid Organization Name</mat-error
               >
@@ -37,8 +37,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('userName')?.valid &&
-                  organizationForm.get('userName')?.touched
+                  !accountForm.get('userName')?.valid &&
+                  accountForm.get('userName')?.touched
                 "
                 >Invalid User Name
               </mat-error>
@@ -55,8 +55,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('firstName')?.valid &&
-                  organizationForm.get('firstName')?.touched
+                  !accountForm.get('firstName')?.valid &&
+                  accountForm.get('firstName')?.touched
                 "
                 >Invalid First Name</mat-error
               >
@@ -71,8 +71,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('lastName')?.valid &&
-                  organizationForm.get('lastName')?.touched
+                  !accountForm.get('lastName')?.valid &&
+                  accountForm.get('lastName')?.touched
                 "
                 >Invalid Last Name</mat-error
               >
@@ -89,8 +89,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('email')?.valid &&
-                  organizationForm.get('email')?.touched
+                  !accountForm.get('email')?.valid &&
+                  accountForm.get('email')?.touched
                 "
                 >Invalid Email</mat-error
               >
@@ -105,8 +105,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('password')?.valid &&
-                  organizationForm.get('password')?.touched
+                  !accountForm.get('password')?.valid &&
+                  accountForm.get('password')?.touched
                 "
                 >Invalid Password</mat-error
               >
@@ -123,8 +123,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('city')?.valid &&
-                  organizationForm.get('city')?.touched
+                  !accountForm.get('city')?.valid &&
+                  accountForm.get('city')?.touched
                 "
                 >Invalid User Name</mat-error
               >
@@ -139,8 +139,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('mobilePhone')?.valid &&
-                  organizationForm.get('mobilePhone')?.touched
+                  !accountForm.get('mobilePhone')?.valid &&
+                  accountForm.get('mobilePhone')?.touched
                 "
                 >Invalid Phone Number</mat-error
               >
@@ -161,8 +161,8 @@
               />
               <mat-error
                 *ngIf="
-                  !organizationForm.get('description')?.valid &&
-                  organizationForm.get('description')?.touched
+                  !accountForm.get('description')?.valid &&
+                  accountForm.get('description')?.touched
                 "
                 >Invalid Description</mat-error
               >
