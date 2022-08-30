@@ -1,17 +1,8 @@
 <div>
   <mat-card class="breadcrumb-container">
-    <app-breadcrumb
-      class="breadcrumb-content"
-      [path]="path"
-      [active]="active"
-    ></app-breadcrumb>
+    <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb>
     <div name="controls" class="controls">
-      <button
-        mat-icon-button
-        (click)="openAccountModal()"
-        class="control-button"
-        color="primary"
-      >
+      <button mat-icon-button (click)="openAccountModal()" class="control-button" color="primary">
         Add Account <mat-icon>add_box</mat-icon>
       </button>
     </div>
@@ -23,17 +14,8 @@
       </div>
 
       <div class="example-table-container" *ngIf="data | async as dataLoaded">
-        <table
-          mat-table
-          [dataSource]="dataLoaded"
-          class="example-table"
-          class="mat-elevation-z8"
-          matSort
-          matSortActive="created"
-          matSortDisableClear
-          matSortDirection="desc"
-          (matSortChange)="applySort($event)"
-        >
+        <table mat-table [dataSource]="dataLoaded" class="example-table" class="mat-elevation-z8" matSort
+          matSortActive="created" matSortDisableClear matSortDirection="desc" (matSortChange)="applySort($event)">
           <!-- Number Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
@@ -86,11 +68,8 @@
         </table>
       </div>
 
-      <mat-paginator
-        [length]="resultsLength"
-        [pageSizeOptions]="[1, 2, 5, 10]"
-        (page)="pageChanged($event)"
-      ></mat-paginator>
+      <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pageChanged($event)"></mat-paginator>
       <!-- <div>
         <ul>
           <li (click)="changePage(1)">First</li>

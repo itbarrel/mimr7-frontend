@@ -37,10 +37,15 @@ export class AccountsComponent implements OnInit {
     'createdAt',
     'action',
   ];
+  pageSize = 10;
   data!: Observable<any[]>;
   currentPage = new BehaviorSubject<number>(1);
-  pageSize = new BehaviorSubject<number>(1);
+  page = new BehaviorSubject<any>({
+    pageSize: this.pageSize,
+    pageIndex: 0,
+  });
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
+  pageSizeOptions: number[] = [1, 2, 5, 10, 25, 100];
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort = {} as MatSort;
@@ -74,12 +79,12 @@ export class AccountsComponent implements OnInit {
     // this.accountService.getAll().subscribe((res) => {
     //   console.log(res);
     // });
-    this.data = combineLatest(this.currentSort, this.currentPage).pipe(
+    this.data = combineLatest(this.currentSort, this.page).pipe(
       // startWith([undefined, ]),
-      switchMap(([sortChange, currentPage]) => {
-        console.log('PAge Change', sortChange, currentPage);
+      switchMap(([sortChange, page]) => {
+        console.log('PAge Change', sortChange, page);
         this.isLoadingResults = true;
-        return this.accountService.getAll(1, 10);
+        return this.accountService.getAll(page.pageIndex + 1, page.pageSize);
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
       }),
@@ -98,15 +103,11 @@ export class AccountsComponent implements OnInit {
     );
   }
 
-  changePage(pageNumber: number): void {
-    this.currentPage.next(pageNumber);
-  }
-
   applySort(sort: any) {
     this.currentSort.next(sort);
   }
   pageChanged(pageChanged: any) {
-    this.pageSize.next(pageChanged);
+    this.page.next(pageChanged);
     console.log('called', pageChanged);
   }
 
