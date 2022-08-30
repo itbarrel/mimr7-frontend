@@ -9,6 +9,27 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./account-edit-modal.component.scss'],
 })
 export class AccountEditModalComponent implements OnInit {
+  organizationForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
+  });
+  UserForm: FormGroup = new FormGroup({
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    lastName: new FormControl('', []),
+    userName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    mobilePhone: new FormControl('', []),
+    email: new FormControl('', [Validators.email, Validators.required]),
+  });
+
   constructor(
     public dialogRef: MatDialogRef<AccountEditModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -16,5 +37,17 @@ export class AccountEditModalComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     console.log(';;;', this.data);
+    this.patchValues()
+  }
+
+  patchValues(){
+    this.UserForm.patchValue({'userName':'Ali'})
+  }
+
+  onSubmitOrganization() {
+    console.log(this.organizationForm.value);
+  }
+  onSubmitUserForm() {
+    console.log(this.UserForm.value);
   }
 }

@@ -112,8 +112,8 @@ export class AccountsComponent implements OnInit {
 
   openEditDialogue(data: any) {
     const dialogRef = this.dialog.open(AccountEditModalComponent, {
-      width: '50%',
-      minHeight: 'calc(100vh - 90px)',
+      width: '30%',
+      // minHeight:'600px' ,
       height: 'auto',
       data,
       panelClass: 'custom-dialog-container',
