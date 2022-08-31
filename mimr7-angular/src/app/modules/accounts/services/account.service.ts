@@ -31,4 +31,10 @@ export class AccountService {
       `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`
     );
   }
+  getAccountById(id: string) {
+    return this.http.get(`${environment.apiUrl}accounts/${id}`);
+  }
+  updateAccount(id: string, data: any) {
+    return this.http.put(`${environment.apiUrl}accounts/${id}`, data);
+  }
 }

@@ -33,9 +33,10 @@ export class TokenInterceptor implements HttpInterceptor {
 
     //set headers
     const customReq = request.clone({
-        withCredentials:true,
+        // withCredentials:true,
       headers: new HttpHeaders({
         token: localStorage.getItem('token') || '',
+        'Content-Type':'application/json'
         // token: environment.companyToken,
       }),
     });

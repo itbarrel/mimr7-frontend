@@ -37,17 +37,47 @@ export class AccountEditModalComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     console.log(';;;', this.data);
-    this.patchValues()
+    this.patchValues();
   }
 
-  patchValues(){
-    this.UserForm.patchValue({'userName':'Ali'})
+  patchValues() {
+    this.accountService.getAccountById(this.data.id).subscribe((res: any) => {
+      console.log('resss', res);
+      const { name, description } = res.account;
+      this.organizationForm.patchValue({
+        name,
+        description,
+      });
+      if (res.admin.lenght > 0) {
+        const { userName, firstName, lastName, mobilePhone, email } =
+          res.admin[0];
+        this.UserForm.patchValue({
+          userName,
+          firstName,
+          lastName,
+          mobilePhone,
+          email,
+        });
+      }
+    });
   }
 
   onSubmitOrganization() {
     console.log(this.organizationForm.value);
+    if (this.organizationForm.valid) {
+      this.accountService.updateAccount(
+        this.data.id,
+        this.organizationForm.value
+      ).subscribe(res=>{
+        console.log(res)
+        this.dialogRef.close()
+      });
+    }
   }
   onSubmitUserForm() {
     console.log(this.UserForm.value);
+    if(this.UserForm.valid){
+      
+    }
   }
 }

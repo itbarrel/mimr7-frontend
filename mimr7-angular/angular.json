@@ -73,8 +73,12 @@
               "browserTarget": "mimr7-angular:build:production"
             },
             "development": {
-              "browserTarget": "mimr7-angular:build:development"
+              "browserTarget": "mimr7-angular:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
+          },
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
           },
           "defaultConfiguration": "development"
         },
