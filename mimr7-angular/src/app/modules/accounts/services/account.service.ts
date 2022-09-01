@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AddOrganization, Organization } from 'src/app/shared/interfaces';
+// import { WithQueryOptions } from 'with-query/dist';
+import { withQuery } from 'with-query';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +28,18 @@ export class AccountService {
   }
 
   // {{host}}v1/accounts?offset=1&limit=2
-  getAll(pageNumber: number, pageSize: number) {
-    return this.http.get(
-      `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`
+  getAll(pageNumber: number, pageSize: number, sortChange?: any) {
+    const sort: any = {};
+    sort[sortChange.active] = sortChange.direction;
+    console.log(sort);
+    const query = {
+      sort,
+    };
+    const url = withQuery(
+      `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`,
+      query
     );
+    return this.http.get(url);
   }
   getAccountById(id: string) {
     return this.http.get(`${environment.apiUrl}accounts/${id}`);

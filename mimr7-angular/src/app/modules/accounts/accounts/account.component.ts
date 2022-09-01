@@ -84,7 +84,7 @@ export class AccountsComponent implements OnInit {
       switchMap(([sortChange, page]) => {
         console.log('PAge Change', sortChange, page);
         this.isLoadingResults = true;
-        return this.accountService.getAll(page.pageIndex + 1, page.pageSize);
+        return this.accountService.getAll(page.pageIndex + 1, page.pageSize,sortChange);
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
       }),
