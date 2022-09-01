@@ -1,3 +1,4 @@
+import { APP_BASE_HREF, Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -6,6 +7,9 @@ import { Router } from '@angular/router';
 import { ToasterService } from 'src/app/core/services/toaster.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { PERMISSION } from 'src/assets/data/permission';
+import { environment } from 'src/environments/environment';
+import {PlatformLocation } from '@angular/common';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -22,10 +26,12 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient,
     private auth: AuthenticationService,
     private toaster: ToasterService,
-    private router: Router
+    private router: Router,
+    private platform: PlatformLocation
   ) {}
 
   ngOnInit(): void {
+    console.log((this.platform as any).location)
     // this.displayNavbar = '1';
     this.auth.getUserState().subscribe((res) => {
       console.log('user state', res);
