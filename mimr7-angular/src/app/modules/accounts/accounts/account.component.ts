@@ -14,6 +14,7 @@ import {
 } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { AccountEditModalComponent } from '../account-edit-modal/account-edit-modal.component';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-account',
@@ -28,6 +29,10 @@ export class AccountsComponent implements OnInit {
   active: string = 'Accounts';
   isLoadingResults = true;
   resultsLength = 0;
+  name = '';
+  fromData!: MatDatepicker<any>;
+  toDate!: MatDatepicker<any>;
+  today = new Date(); 
   // pageSize = 1;
 
   displayedColumns: string[] = [
@@ -84,7 +89,11 @@ export class AccountsComponent implements OnInit {
       switchMap(([sortChange, page]) => {
         console.log('PAge Change', sortChange, page);
         this.isLoadingResults = true;
-        return this.accountService.getAll(page.pageIndex + 1, page.pageSize,sortChange);
+        return this.accountService.getAll(
+          page.pageIndex + 1,
+          page.pageSize,
+          sortChange
+        );
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
       }),
