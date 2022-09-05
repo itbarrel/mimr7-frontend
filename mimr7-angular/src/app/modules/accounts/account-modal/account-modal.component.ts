@@ -25,7 +25,10 @@ export class AccountModalComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
     ]),
-    mobilePhone: new FormControl('', []),
+    mobilePhone: new FormControl('', [
+      Validators.required,
+      Validators.minLength(11),
+    ]),
     email: new FormControl('', [Validators.email, Validators.required]),
     city: new FormControl('', [Validators.required]),
     password: new FormControl('', Validators.required),
