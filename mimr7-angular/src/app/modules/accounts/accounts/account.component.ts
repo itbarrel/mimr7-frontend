@@ -30,10 +30,14 @@ export class AccountsComponent implements OnInit {
   isLoadingResults = true;
   resultsLength = 0;
   name = '';
-  fromData!: MatDatepicker<any>;
-  toDate!: MatDatepicker<any>;
-  today = new Date(); 
+  // fromDate!: MatDatepicker<any>;
+  // toDate!: MatDatepicker<any>;
+  today = new Date();
   // pageSize = 1;
+  date: any = {
+    from: null,
+    to: null,
+  };
 
   displayedColumns: string[] = [
     'name',
@@ -51,6 +55,7 @@ export class AccountsComponent implements OnInit {
   });
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
   pageSizeOptions: number[] = [1, 2, 5, 10, 25, 100];
+
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort = {} as MatSort;
@@ -84,6 +89,7 @@ export class AccountsComponent implements OnInit {
     // this.accountService.getAll().subscribe((res) => {
     //   console.log(res);
     // });
+    const filter = { date: this.date, name: this.name };
     this.data = combineLatest(this.currentSort, this.page).pipe(
       // startWith([undefined, ]),
       switchMap(([sortChange, page]) => {
@@ -92,7 +98,8 @@ export class AccountsComponent implements OnInit {
         return this.accountService.getAll(
           page.pageIndex + 1,
           page.pageSize,
-          sortChange
+          sortChange,
+          // filter
         );
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
@@ -134,5 +141,16 @@ export class AccountsComponent implements OnInit {
       console.log('The dialog was closed', result);
       this.getAllAccounts();
     });
+  }
+
+  searchByFilters() {
+    console.log('filter', this.date, this.name);
+    this.getAllAccounts()
+  }
+  clearFilters() {
+    this.date.to=null
+    this.date.from=null
+    this.name=''
+    this.getAllAccounts()
   }
 }

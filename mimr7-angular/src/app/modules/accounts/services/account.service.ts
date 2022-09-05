@@ -28,13 +28,14 @@ export class AccountService {
   }
 
   // {{host}}v1/accounts?offset=1&limit=2
-  getAll(pageNumber: number, pageSize: number, sortChange?: any) {
+  getAll(pageNumber: number, pageSize: number, sortChange?: any, filter?: any) {
     const sort: any = {};
     sort[sortChange.active] = sortChange.direction;
-    console.log(sort);
     const query = {
       sort,
+      // filter
     };
+    console.log('query',query);
     const url = withQuery(
       `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`,
       query

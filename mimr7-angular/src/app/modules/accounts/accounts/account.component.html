@@ -10,24 +10,24 @@
   <mat-card class="breadcrumb-container">
     <mat-card-content style="width: 100%;">
       <div name="filter-div" class="filter-container">
-          <div name="from-date">
-            <mat-form-field appearance="fill">
-              <mat-label>From</mat-label>
-              <input matInput [matDatepicker]="fromData">
-              <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-              <mat-datepicker-toggle matSuffix [for]="fromData"></mat-datepicker-toggle>
-              <mat-datepicker #fromData></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div name="to-date">
-            <mat-form-field appearance="fill">
-              <mat-label>To</mat-label>
-              <input matInput [max]="today" [matDatepicker]="toDate">
-              <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-              <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
-              <mat-datepicker #toDate></mat-datepicker>
-            </mat-form-field>
-          </div>
+        <div name="from-date">
+          <mat-form-field appearance="fill">
+            <mat-label>From</mat-label>
+            <input matInput [max]="today" [(ngModel)]="date.from" [matDatepicker]="fromDate">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+            <mat-datepicker #fromDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div name="to-date">
+          <mat-form-field appearance="fill">
+            <mat-label>To</mat-label>
+            <input matInput [max]="today" [(ngModel)]="date.to" [matDatepicker]="toDate">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+            <mat-datepicker #toDate></mat-datepicker>
+          </mat-form-field>
+        </div>
         <div name="name-filter">
           <mat-form-field class="example-form-field" appearance="fill">
             <mat-label>Search by name</mat-label>
@@ -36,10 +36,10 @@
         </div>
         <div mat-dialog-actions align="end">
           <span>
-            <button type="button" mat-flat-button color="primary" [mat-dialog-close]="true">
+            <button type="button" mat-flat-button color="primary" (click)="clearFilters()">
               Clear
             </button>
-            <button type="submit" mat-stroked-button color="primary">
+            <button type="button" mat-stroked-button color="primary" (click)="searchByFilters()">
               Search
             </button>
           </span>
