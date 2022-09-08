@@ -9,6 +9,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../accounts/account.module').then((m) => m.AccountsModule),
   },
+  {
+    path: 'organizations',
+    loadChildren: () =>
+      import('../organizations/organizations.module').then((m) => m.OrganizationsModule),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

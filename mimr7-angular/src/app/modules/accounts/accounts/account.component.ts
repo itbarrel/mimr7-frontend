@@ -32,12 +32,9 @@ export class AccountsComponent implements OnInit {
   name = '';
   // fromDate!: MatDatepicker<any>;
   // toDate!: MatDatepicker<any>;
-  today = new Date();
+  // today = new Date();
   // pageSize = 1;
-  date: any = {
-    from: null,
-    to: null,
-  };
+ 
 
   displayedColumns: string[] = [
     'name',
@@ -89,17 +86,16 @@ export class AccountsComponent implements OnInit {
     // this.accountService.getAll().subscribe((res) => {
     //   console.log(res);
     // });
-    const filter = { date: this.date, name: this.name };
     this.data = combineLatest(this.currentSort, this.page).pipe(
       // startWith([undefined, ]),
       switchMap(([sortChange, page]) => {
-        console.log('PAge Change', sortChange, page);
+        console.log('PAge Change', sortChange, page,this.name);
         this.isLoadingResults = true;
         return this.accountService.getAll(
           page.pageIndex + 1,
           page.pageSize,
           sortChange,
-          // filter
+          this.name
         );
         // return this.exampleDatabase.getRepoIssues(
         //   this.sort.active, this.sort.direction, currentPage);
@@ -144,12 +140,10 @@ export class AccountsComponent implements OnInit {
   }
 
   searchByFilters() {
-    console.log('filter', this.date, this.name);
+    console.log('filter', this.name);
     this.getAllAccounts()
   }
   clearFilters() {
-    this.date.to=null
-    this.date.from=null
     this.name=''
     this.getAllAccounts()
   }

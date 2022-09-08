@@ -28,16 +28,17 @@ export class AccountService {
   }
 
   // {{host}}v1/accounts?offset=1&limit=2
-  getAll(pageNumber: number, pageSize: number, sortChange?: any, filter?: any) {
+  getAll(pageNumber: number, pageSize: number, sortChange?: any, name?: string) {
     const sort: any = {};
     sort[sortChange.active] = sortChange.direction;
     const query = {
       sort,
       // filter
     };
+    
     console.log('query',query);
     const url = withQuery(
-      `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}`,
+      `${environment.apiUrl}accounts?offset=${pageNumber}&limit=${pageSize}&name=${name}`,
       query
     );
     return this.http.get(url);
