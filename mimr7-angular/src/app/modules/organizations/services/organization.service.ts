@@ -35,7 +35,7 @@ export class OrganizationService {
       // filter
     };
     
-    console.log('query',query);
+    // return this.http.get(`${environment.apiUrl}organizations?offset=${pageNumber}&limit=${pageSize}`)
     const url = withQuery(
       `${environment.apiUrl}organizations?offset=${pageNumber}&limit=${pageSize}&name=${name}`,
       query
