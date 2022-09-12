@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AddOrganization } from 'src/app/shared/interfaces';
+import { AddAccount } from 'src/app/shared/interfaces';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class AccountModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private accountService: AccountService
   ) {}
-  // organizationData:AddOrganization
+  // organizationData:AddAccount
 
   ngOnInit(): void {}
 
@@ -58,7 +58,7 @@ export class AccountModalComponent implements OnInit {
         password,
         userName,
       } = this.accountForm.value;
-      const organizationData: AddOrganization = {
+      const organizationData: AddAccount = {
         name: name,
         description: description,
         organization: {

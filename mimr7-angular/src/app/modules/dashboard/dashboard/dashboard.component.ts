@@ -32,9 +32,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log((this.platform as any).location)
-    // this.displayNavbar = '1';
     this.auth.getUserState().subscribe((res) => {
-      console.log('user state', res);
       this.firstName = res.firstName;
       this.lastName = res.lastName;
     });

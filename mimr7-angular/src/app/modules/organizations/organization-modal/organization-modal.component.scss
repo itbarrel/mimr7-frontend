@@ -1,0 +1,31 @@
+.mat-form-field {
+    min-width: 300px
+  }
+  .fields-container {
+    margin: 5px 16px;
+  }
+  .organization-container-card {
+    padding: 0px;
+  }
+  ::ng-deep{
+      .mat-card-header-text{
+          margin: 0px !important;
+      }
+  }
+  
+  .card-header{
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+  
+  .form-field-item {
+      display: flex;
+      justify-content: center;
+  }
+  .field{
+      margin: 0px 10px;
+  }
+  .desc-field{
+      width: 620px;
+  }

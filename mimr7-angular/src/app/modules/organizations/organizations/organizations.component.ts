@@ -1,15 +1,17 @@
-import { Component, ViewChild ,OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { OrganizationService } from '../services/organization.service';
+import { MatDialog } from '@angular/material/dialog';
 import {
-  merge,
   Observable,
   of as observableOf,
   BehaviorSubject,
   combineLatest,
 } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { OrganizationModalComponent } from '../organization-modal/organization-modal.component';
+import { Organization } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-organizations',
@@ -21,15 +23,10 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class OrganizationsComponent implements OnInit {
   path: string = 'Dashboard';
-  active: string = 'Accounts';
+  active: string = 'Organizations';
   isLoadingResults = true;
   resultsLength = 0;
   name = '';
-  // fromDate!: MatDatepicker<any>;
-  // toDate!: MatDatepicker<any>;
-  // today = new Date();
-  // pageSize = 1;
- 
 
   displayedColumns: string[] = [
     'name',
@@ -46,24 +43,27 @@ export class OrganizationsComponent implements OnInit {
     pageIndex: 0,
   });
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
-  pageSizeOptions: number[] = [1, 2, 5, 10, 25, 100];
-
+  pageSizeOptions: number[] = [5, 10, 25, 50, 100];
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort = {} as MatSort;
 
-  constructor(private organizationService: OrganizationService) {}
+  constructor(
+    private organizationService: OrganizationService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    console.log('on init called')
-    this.getAllOrganizations()
+    console.log('on init called');
+    this.getAllOrganizations();
   }
 
-
   getAllOrganizations() {
-    this.organizationService.getAll(1,10,this.currentSort).subscribe((res) => {
-      console.log(res);
-    });
+    this.organizationService
+      .getAll(1, 10, this.currentSort)
+      .subscribe((res) => {
+        console.log(res);
+      });
     this.data = combineLatest(this.currentSort, this.page).pipe(
       // startWith([undefined, ]),
       switchMap(([sortChange, page]) => {
@@ -103,10 +103,29 @@ export class OrganizationsComponent implements OnInit {
 
   searchByFilters() {
     console.log('filter', this.name);
-    this.getAllOrganizations()
+    this.getAllOrganizations();
   }
   clearFilters() {
-    this.name=''
-    this.getAllOrganizations()
+    this.name = '';
+    this.getAllOrganizations();
+  }
+
+  openOrganizationModal(data?: Organization): void {
+    const dialogRef = this.dialog.open(OrganizationModalComponent, {
+      width: '50%',
+      // minHeight: 'calc(100vh - 90px)',
+      data,
+      autoFocus: false,
+      height: 'auto',
+      panelClass: 'custom-dialog-container',
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('The dialog was closed', result);
+      if (result.success) {
+        this.getAllOrganizations();
+      }
+    });
   }
 }

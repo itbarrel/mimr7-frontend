@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { AddOrganization, Organization } from 'src/app/shared/interfaces';
+import { AddAccount, Account } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
 
@@ -12,18 +12,18 @@ import { withQuery } from 'with-query';
   providedIn: 'root',
 })
 export class AccountService {
-  private accountState = new BehaviorSubject<Organization[]>([]);
+  private accountState = new BehaviorSubject<Account[]>([]);
   accountState$ = this.accountState.asObservable();
   constructor(private http: HttpClient) {}
 
   getAccountState() {
     return this.accountState$;
   }
-  setAccountState(organization: Organization[]) {
-    this.accountState.next(organization);
+  setAccountState(account: Account[]) {
+    this.accountState.next(account);
   }
 
-  addAccount(data: AddOrganization): Observable<any> {
+  addAccount(data: AddAccount): Observable<any> {
     return this.http.post(`${environment.apiUrl}accounts`, data);
   }
 

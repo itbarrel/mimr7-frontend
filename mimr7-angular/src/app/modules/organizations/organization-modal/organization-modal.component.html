@@ -1,0 +1,73 @@
+<div>
+    <mat-card class="organization-container-card">
+      <div name="header-div">
+        <mat-card-header class="mat-card-header">
+          <mat-toolbar color="primary" class="card-header">
+            <mat-card-title color="primary"> Organization Form</mat-card-title>
+          </mat-toolbar>
+        </mat-card-header>
+      </div>
+      <div name="fields-container" class="fields-container">
+        <mat-card-content>
+          <form [formGroup]="organizationForm" (ngSubmit)="submit()">
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Organization Name"
+                  formControlName="name"
+                />
+                <mat-error
+                  *ngIf="
+                    !organizationForm.get('name')?.valid &&
+                    organizationForm.get('name')?.touched
+                  "
+                  >Invalid Organization Name</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>City</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="City"
+                  formControlName="city"
+                />
+                <mat-error
+                  *ngIf="
+                    !organizationForm.get('city')?.valid &&
+                    organizationForm.get('city')?.touched
+                  "
+                  >Invalid User Name</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <div mat-dialog-actions align="end">
+              <span>
+                <button
+                  type="button"
+                  mat-flat-button
+                  color="primary"
+                  [mat-dialog-close]="true"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  mat-stroked-button
+                  color="primary"
+                >
+                  {{buttonText}}
+                </button>
+              </span>
+            </div>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+  

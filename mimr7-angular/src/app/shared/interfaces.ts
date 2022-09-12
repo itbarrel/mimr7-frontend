@@ -1,4 +1,4 @@
-export interface AddOrganization {
+export interface AddAccount {
   name: String;
   description: String;
   organization: {
@@ -14,7 +14,7 @@ export interface AddOrganization {
     mobilePhone?: String;
   };
 }
-export interface Organization {
+export interface Account {
   id: String;
   name: String;
   description: String;
@@ -31,4 +31,19 @@ export interface Organization {
   createdAt: String;
   updatedAt: String;
   deletedAt?: String;
+}
+
+export interface Organization {
+  id?: String;
+  name: String;
+  city: String;
+  active?:boolean;
+  AccountId?:String;
+  createdAt?: String;
+  updatedAt?: String;
+  deletedAt?: String;
+  region?:String;
+  state?:String;
+  status?:boolean;
+
 }

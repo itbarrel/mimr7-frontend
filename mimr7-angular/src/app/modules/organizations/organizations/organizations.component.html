@@ -2,8 +2,8 @@
     <mat-card class="breadcrumb-container">
         <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb>
         <div name="controls" class="controls">
-            <button mat-icon-button class="control-button" color="primary">
-                Add Account <mat-icon>add_box</mat-icon>
+            <button mat-icon-button class="control-button" (click)="openOrganizationModal()" color="primary">
+                Add Organization <mat-icon>add_box</mat-icon>
             </button>
         </div>
     </mat-card>
@@ -78,7 +78,7 @@
                                     <mat-icon>preview</mat-icon>
                                 </span>
                                 <span class="table-action-item"> | </span>
-                                <span class="click-icon">
+                                <span class="click-icon" (click)="openOrganizationModal(row)">
                                     <mat-icon>edit</mat-icon>
                                 </span>
                             </div>

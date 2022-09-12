@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { AddOrganization, Organization } from 'src/app/shared/interfaces';
+import { Organization } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,12 @@ import { withQuery } from 'with-query';
 export class OrganizationService {
   private organizationState = new BehaviorSubject<Organization[]>([]);
   organizationState$ = this.organizationState.asObservable();
-  constructor(private http: HttpClient) {}
+  user: any;
+  constructor(private http: HttpClient,private auth:AuthenticationService) {
+    this.auth.getUserState().subscribe((res) => {
+      this.user = res
+    });
+  }
 
   getOrganizationState() {
     return this.organizationState$;
@@ -22,20 +28,23 @@ export class OrganizationService {
     this.organizationState.next(organization);
   }
 
-  addOrganization(data: AddOrganization): Observable<any> {
+  addOrganization(data: Organization): Observable<any> {
+    data.AccountId=this.user.AccountId
     return this.http.post(`${environment.apiUrl}organizations`, data);
   }
 
-  // {{host}}v1/organizations?offset=1&limit=2
-  getAll(pageNumber: number, pageSize: number, sortChange?: any, name?: string) {
+  getAll(
+    pageNumber: number,
+    pageSize: number,
+    sortChange?: any,
+    name?: string
+  ) {
     const sort: any = {};
     sort[sortChange.active] = sortChange.direction;
     const query = {
       sort,
-      // filter
     };
-    
-    // return this.http.get(`${environment.apiUrl}organizations?offset=${pageNumber}&limit=${pageSize}`)
+
     const url = withQuery(
       `${environment.apiUrl}organizations?offset=${pageNumber}&limit=${pageSize}&name=${name}`,
       query
@@ -45,7 +54,7 @@ export class OrganizationService {
   getOrganizationById(id: string) {
     return this.http.get(`${environment.apiUrl}organizations/${id}`);
   }
-  updateOrganization(id: string, data: any) {
+  updateOrganization(id: string, data: Organization) {
     return this.http.put(`${environment.apiUrl}organizations/${id}`, data);
   }
 }

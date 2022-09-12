@@ -7,9 +7,10 @@ import { OrganizationsComponent } from './organizations/organizations.component'
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OrganizationModalComponent } from './organization-modal/organization-modal.component';
 
 @NgModule({
-  declarations: [OrganizationsComponent],
+  declarations: [OrganizationsComponent, OrganizationModalComponent],
   imports: [
     CommonModule,
     OrganizationsRoutingModule,

@@ -51,7 +51,7 @@ export class AccountsComponent implements OnInit {
     pageIndex: 0,
   });
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
-  pageSizeOptions: number[] = [1, 2, 5, 10, 25, 100];
+  pageSizeOptions: number[] = [5, 10, 25, 50 ,100];
 
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
