@@ -1,0 +1,140 @@
+<div>
+    <mat-card class="organization-container-card">
+      <div name="header-div">
+        <mat-card-header class="mat-card-header">
+          <mat-toolbar color="primary" class="card-header">
+            <mat-card-title color="primary"> Collection Form</mat-card-title>
+          </mat-toolbar>
+        </mat-card-header>
+      </div>
+      <div name="fields-container" class="fields-container">
+        <mat-card-content>
+          <form [formGroup]="collectionForm" (ngSubmit)="submit()">
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Title</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Collection Title"
+                  formControlName="title"
+                />
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('title')?.valid &&
+                    collectionForm.get('title')?.touched
+                  "
+                  >Invalid Collection Title</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Type</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Type"
+                  formControlName="type"
+                />
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('type')?.valid"
+                  >Invalid Type</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Text</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Text"
+                  formControlName="text"
+                />
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('text')?.valid"
+                  >Invalid Text</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Kind</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Kind"
+                  formControlName="kind"
+                />
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('kind')?.valid"
+                  >Invalid Kind</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <p class="form-field-item">
+              <!-- <mat-form-field class="field" appearance="fill" floatLabel="auto"> -->
+                <mat-slide-toggle matInput formControlName="private">Private</mat-slide-toggle>
+                <mat-slide-toggle matInput formControlName="saleable">Saleable</mat-slide-toggle>
+              <!-- </mat-form-field> -->
+            </p>
+            <!-- <p class="form-field-item">
+              <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                <mat-label>Saleable</mat-label>
+                <mat-slide-toggle formControlName="saleable">Saleable</mat-slide-toggle>
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('saleable')?.valid"
+                  >Invalid SaleAble</mat-error
+                >
+              </mat-form-field>
+            </p> -->
+            <p class="form-field-item">
+              <mat-form-field
+                class="desc-field"
+                appearance="fill"
+                floatLabel="auto"
+              >
+                <mat-label>Description</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Description"
+                  formControlName="description"
+                />
+                <mat-error
+                  *ngIf="
+                    !collectionForm.get('description')?.valid"
+                  >Invalid Description</mat-error
+                >
+              </mat-form-field>
+            </p>
+            <div mat-dialog-actions align="end">
+              <span>
+                <button
+                  type="button"
+                  mat-flat-button
+                  color="primary"
+                  [mat-dialog-close]="true"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  mat-stroked-button
+                  color="primary"
+                >
+                  {{buttonText}}
+                </button>
+              </span>
+            </div>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+  

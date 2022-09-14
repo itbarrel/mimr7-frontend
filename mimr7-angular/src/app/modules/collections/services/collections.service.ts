@@ -15,9 +15,9 @@ export class CollectionService {
   private collectionState = new BehaviorSubject<Collection[]>([]);
   collectionState$ = this.collectionState.asObservable();
   user: any;
-  constructor(private http: HttpClient,private auth:AuthenticationService) {
+  constructor(private http: HttpClient, private auth: AuthenticationService) {
     this.auth.getUserState().subscribe((res) => {
-      this.user = res
+      this.user = res;
     });
   }
 
@@ -29,7 +29,8 @@ export class CollectionService {
   }
 
   addCollection(data: Collection): Observable<any> {
-    data.AccountId=this.user.AccountId
+    data.AccountId = this.user.AccountId;
+    data.UserId = this.user.id;
     return this.http.post(`${environment.apiUrl}Collections`, data);
   }
 

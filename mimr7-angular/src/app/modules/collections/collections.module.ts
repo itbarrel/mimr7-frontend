@@ -7,11 +7,13 @@ import { CollectionsComponent } from './collections/collections.component';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CollectionModalComponent } from './collection-modal/collection-modal.component';
 
 
 @NgModule({
   declarations: [
-    CollectionsComponent
+    CollectionsComponent,
+    CollectionModalComponent
   ],
   imports: [
     CommonModule,
