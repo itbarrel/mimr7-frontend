@@ -37,13 +37,28 @@ export interface Organization {
   id?: String;
   name: String;
   city: String;
-  active?:boolean;
-  AccountId?:String;
+  active?: boolean;
+  AccountId?: String;
   createdAt?: String;
   updatedAt?: String;
   deletedAt?: String;
-  region?:String;
-  state?:String;
-  status?:boolean;
+  region?: String;
+  state?: String;
+  status?: boolean;
+}
+
+export interface Collection {
+  id?: String;
+  AccountId?: String;
+  UserId?: String;
+  title: String;
+  text?:String;
+  type?:String;
+  kind?:String;
+  private?:boolean;
+  saleable?:boolean;
+  createdAt?: String;
+  updatedAt?: String;
+  deletedAt?: String;
 
 }

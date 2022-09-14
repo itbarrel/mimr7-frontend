@@ -72,3 +72,18 @@ margin: 0px 10px;
   white-space: nowrap;
   position: relative;
 }
+
+table {
+  width: 100%;
+}
+
+.filter-container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.filter-container > *{
+  margin: 0px 20px;
+}

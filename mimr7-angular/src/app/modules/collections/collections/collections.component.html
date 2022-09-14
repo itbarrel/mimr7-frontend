@@ -1,0 +1,97 @@
+<div>
+    <mat-card class="breadcrumb-container">
+        <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb>
+        <div name="controls" class="controls">
+            <button mat-icon-button class="control-button" (click)="openCollectionModal()" color="primary">
+                Add Collection <mat-icon>add_box</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <mat-card class="breadcrumb-container">
+        <mat-card-content style="width: 100%;">
+            <div name="filter-div" class="filter-container">
+                <div name="name-filter">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Search by title</mat-label>
+                        <input matInput type="text" [(ngModel)]="title" (keyup.enter)="searchByFilters()">
+                    </mat-form-field>
+                </div>
+                <div mat-dialog-actions align="end">
+                    <span>
+                        <button type="button" mat-flat-button color="primary" (click)="clearFilters()">
+                            Clear
+                        </button>
+                        <button type="button" mat-stroked-button color="primary" (click)="searchByFilters()">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <div class="example-container mat-elevation-z8">
+            <div class="example-loading-shade" *ngIf="isLoadingResults">
+                <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            </div>
+            <div class="example-table-container" *ngIf="data | async as dataLoaded">
+                <table mat-table [dataSource]="dataLoaded" class="example-table" class="mat-elevation-z8" matSort
+                    matSortActive="created" matSortDisableClear matSortDirection="desc"
+                    (matSortChange)="applySort($event)">
+                    <!-- Number Column -->
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+                            Title
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+                    </ng-container>
+
+                    <!-- Title Column -->
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+                            Type
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.type }}</td>
+                    </ng-container>
+
+                    <!-- Created Column -->
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Created
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.createdAt | date }}</td>
+                    </ng-container>
+
+                    <!-- Created Column -->
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Description
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row">
+                            <div class="table-actions">
+                                <span class="click-icon">
+                                    <mat-icon>preview</mat-icon>
+                                </span>
+                                <span class="table-action-item"> | </span>
+                                <span class="click-icon" (click)="openCollectionModal(row)">
+                                    <mat-icon>edit</mat-icon>
+                                </span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+
+            <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                (page)="pageChanged($event)"></mat-paginator>
+        </div>
+    </mat-card>
+</div>

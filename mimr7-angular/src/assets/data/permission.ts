@@ -7,10 +7,11 @@ export const PERMISSION = [
   },
   {
     role: 'Admin',
-    sites: ['organizations'],
+    sites: ['organizations','collections'],
     default: 'organizations',
     navigation: [
       { name: 'Organizations', url: 'organizations', icon: 'corporate_fare' },
+      { name: 'Collections', url: 'collections', icon: 'corporate_fare' },
     ],
   },
 ];

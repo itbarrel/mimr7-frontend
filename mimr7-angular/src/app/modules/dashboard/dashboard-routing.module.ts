@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../organizations/organizations.module').then((m) => m.OrganizationsModule),
   },
+  {
+    path: 'collections',
+    loadChildren: () =>
+      import('../collections/collections.module').then((m) => m.CollectionsModule),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
