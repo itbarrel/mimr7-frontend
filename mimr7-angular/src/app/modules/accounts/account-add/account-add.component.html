@@ -1,0 +1,263 @@
+<!-- <div>
+    <mat-card class="organization-container-card">
+        <div name="fields-container" class="fields-container">
+            <mat-card-content>
+                <form [formGroup]="accountForm" (ngSubmit)="submit()">
+                    <p class="form-field-item">
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>Name</mat-label>
+                            <input type="text" matInput placeholder="Organization Name" formControlName="name" />
+                            <mat-error *ngIf="
+                    !accountForm.get('name')?.valid &&
+                    accountForm.get('name')?.touched
+                  ">Invalid Organization Name</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>User Name</mat-label>
+                            <input type="text" matInput placeholder="User Name" formControlName="userName" />
+                            <mat-error *ngIf="
+                    !accountForm.get('userName')?.valid &&
+                    accountForm.get('userName')?.touched
+                  ">Invalid User Name
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="form-field-item">
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" matInput placeholder="First Name" formControlName="firstName" />
+                            <mat-error *ngIf="
+                    !accountForm.get('firstName')?.valid &&
+                    accountForm.get('firstName')?.touched
+                  ">Invalid First Name</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>Last Name</mat-label>
+                            <input type="text" matInput placeholder="Last Name" formControlName="lastName" />
+                            <mat-error *ngIf="
+                    !accountForm.get('lastName')?.valid &&
+                    accountForm.get('lastName')?.touched
+                  ">Invalid Last Name</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="form-field-item">
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput placeholder="Email" formControlName="email" />
+                            <mat-error *ngIf="
+                    !accountForm.get('email')?.valid &&
+                    accountForm.get('email')?.touched
+                  ">Invalid Email</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput placeholder="Password" formControlName="password" />
+                            <mat-error *ngIf="
+                    !accountForm.get('password')?.valid &&
+                    accountForm.get('password')?.touched
+                  ">Invalid Password</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="form-field-item">
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>City</mat-label>
+                            <input type="text" matInput placeholder="City" formControlName="city" />
+                            <mat-error *ngIf="
+                    !accountForm.get('city')?.valid &&
+                    accountForm.get('city')?.touched
+                  ">Invalid User Name</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                            <mat-label>Phone</mat-label>
+                            <input type="text" matInput placeholder="Phone Number" formControlName="mobilePhone" />
+                            <mat-error *ngIf="
+                    !accountForm.get('mobilePhone')?.valid &&
+                    accountForm.get('mobilePhone')?.touched
+                  ">Invalid Phone Number</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="form-field-item">
+                        <mat-form-field class="desc-field" appearance="fill" floatLabel="auto">
+                            <mat-label>Description</mat-label>
+                            <input type="text" matInput placeholder="Description" formControlName="description" />
+                            <mat-error *ngIf="
+                    !accountForm.get('description')?.valid &&
+                    accountForm.get('description')?.touched
+                  ">Invalid Description</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <div mat-dialog-actions align="end">
+                        <span>
+                            <button type="button" mat-flat-button color="primary" [mat-dialog-close]="true">
+                                Close
+                            </button>
+                            <button type="submit" mat-stroked-button color="primary">
+                                Add
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </mat-card-content>
+        </div>
+    </mat-card>
+</div> -->
+
+<div>
+    <mat-card>
+
+
+
+        <form [formGroup]="accountForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01">Name</label>
+                    <input type="text" formControlName="name" 
+                    [ngClass]="[(!accountForm.get('name')?.valid && accountForm.get('name')?.touched) ? 'is-invalid':'', (accountForm.get('name')?.valid && accountForm.get('name')?.touched) ? 'is-valid':'' ]"
+                    class="form-control" id="validationServer01"
+                        placeholder="Name" required>
+                    <div class="valid-feedback" *ngIf="accountForm.get('name')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !accountForm.get('name')?.valid &&
+                    accountForm.get('name')?.touched
+                  ">
+                        Please enter valid Organization Name
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">User Name</label>
+                    <input type="text" formControlName="userName"
+                    class="form-control" id="validationServer02"
+                    placeholder="User name" required
+                    [ngClass]="[(!accountForm.get('userName')?.valid && accountForm.get('userName')?.touched) ? 'is-invalid':'', (accountForm.get('userName')?.valid && accountForm.get('userName')?.touched) ? 'is-valid':'' ]"
+                        >
+                        <div class="valid-feedback" *ngIf="accountForm.get('userName')?.valid">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="
+                        !accountForm.get('userName')?.valid &&
+                        accountForm.get('userName')?.touched
+                      ">
+                            Please enter valid User Name
+                        </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" id="validationServer02"
+                        placeholder="First name" required
+                    [ngClass]="[(!accountForm.get('firstName')?.valid && accountForm.get('firstName')?.touched) ? 'is-invalid':'', (accountForm.get('firstName')?.valid && accountForm.get('firstName')?.touched) ? 'is-valid':'' ]"
+                    >
+                    <div class="valid-feedback" *ngIf="accountForm.get('firstName')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !accountForm.get('firstName')?.valid &&
+                    accountForm.get('firstName')?.touched
+                  ">
+                        Please enter valid First Name
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control " id="validationServer02"
+                        placeholder="Last name" required
+                    [ngClass]="[(!accountForm.get('lastName')?.valid && accountForm.get('lastName')?.touched) ? 'is-invalid':'', (accountForm.get('lastName')?.valid && accountForm.get('lastName')?.touched) ? 'is-valid':'' ]"
+                    >
+                        <div class="valid-feedback" *ngIf="accountForm.get('lastName')?.valid">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="
+                        !accountForm.get('lastName')?.valid &&
+                        accountForm.get('lastName')?.touched
+                      ">
+                            Please enter valid Last Name
+                        </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Email</label>
+                    <input type="email" formControlName="email" class="form-control " id="validationServer02"
+                        placeholder="Email" required
+                        [ngClass]="[(!accountForm.get('email')?.valid && accountForm.get('email')?.touched) ? 'is-invalid':'', (accountForm.get('email')?.valid && accountForm.get('email')?.touched) ? 'is-valid':'' ]"
+                        >
+                            <div class="valid-feedback" *ngIf="accountForm.get('email')?.valid">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback" *ngIf="
+                            !accountForm.get('email')?.valid &&
+                            accountForm.get('email')?.touched
+                          ">
+                                Please enter valid Email
+                            </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Password</label>
+                    <input type="password" formControlName="password" class="form-control "
+                        id="validationServer02" placeholder="Password" required
+                        [ngClass]="[(!accountForm.get('password')?.valid && accountForm.get('password')?.touched) ? 'is-invalid':'', (accountForm.get('password')?.valid && accountForm.get('password')?.touched) ? 'is-valid':'' ]"
+                        >
+                            <div class="valid-feedback" *ngIf="accountForm.get('password')?.valid">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback" *ngIf="
+                            !accountForm.get('password')?.valid &&
+                            accountForm.get('password')?.touched
+                          ">
+                                Please enter valid Password
+                            </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">City</label>
+                    <input type="text" formControlName="city" class="form-control " id="validationServer02"
+                        placeholder="City" required
+                        [ngClass]="[(!accountForm.get('city')?.valid && accountForm.get('city')?.touched) ? 'is-invalid':'', (accountForm.get('city')?.valid && accountForm.get('city')?.touched) ? 'is-valid':'' ]"
+                        >
+                            <div class="valid-feedback" *ngIf="accountForm.get('city')?.valid">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback" *ngIf="
+                            !accountForm.get('city')?.valid &&
+                            accountForm.get('city')?.touched
+                          ">
+                                Please enter valid City
+                            </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Phone</label>
+                    <input type="text" formControlName="mobilePhone" class="form-control "
+                        id="validationServer02" placeholder="Phone" required
+                        [ngClass]="[(!accountForm.get('mobilePhone')?.valid && accountForm.get('mobilePhone')?.touched) ? 'is-invalid':'', (accountForm.get('mobilePhone')?.valid && accountForm.get('mobilePhone')?.touched) ? 'is-valid':'' ]"
+                        >
+                            <div class="valid-feedback" *ngIf="accountForm.get('mobilePhone')?.valid">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback" *ngIf="
+                            !accountForm.get('mobilePhone')?.valid &&
+                            accountForm.get('mobilePhone')?.touched
+                          ">
+                                Please enter valid phone Number
+                            </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationTextarea">Textarea</label>
+                    <textarea formControlName="description" class="form-control " id="validationTextarea"
+                        placeholder="Required example textarea" required
+                        [ngClass]="[(!accountForm.get('description')?.valid && accountForm.get('description')?.touched) ? 'is-invalid':'', (accountForm.get('description')?.valid && accountForm.get('description')?.touched) ? 'is-valid':'' ]"
+                        ></textarea>
+                        <div class="valid-feedback" *ngIf="accountForm.get('description')?.valid">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback" *ngIf="
+                        !accountForm.get('description')?.valid &&
+                        accountForm.get('description')?.touched
+                      ">
+                            Please enter valid Description
+                        </div>
+                </div>
+            </div>
+            <button mat-flat-button color="primary" type="submit">Submit form</button>
+            <button mat-stroked-button color="primary" type="button" routerLink="/dashboard/accounts">Cancel</button>
+        </form>
+
+    </mat-card>
+</div>

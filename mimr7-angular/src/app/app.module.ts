@@ -15,7 +15,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderService } from './core/services/loader.service';
 import { AuthguardService } from './core/services/authguard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -40,7 +39,6 @@ import { CookieService } from 'ngx-cookie-service';
       useValue: { appearance: 'fill', floatLabel: 'always' },
     },
     AuthguardService,
-    CookieService,
   ],
 })
 export class AppModule {}

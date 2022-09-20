@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="example-toolbar">
+<!-- <mat-toolbar color="primary" class="example-toolbar">
   <div class="container-one">
     <button mat-icon-button (click)="isExpanded = !isExpanded">
       <mat-icon>menu</mat-icon>
@@ -14,9 +14,9 @@
     <mat-icon class="icon-display">account_circle</mat-icon>
     <span class="name-tag" [matMenuTriggerFor]="menu">
       {{ firstName }} {{ lastName }}
-    </span>
+    </span> -->
     <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
-    <mat-menu #menu="matMenu">
+    <!-- <mat-menu #menu="matMenu">
       <button mat-menu-item><mat-icon>help_outline</mat-icon>Help</button>
       <button mat-menu-item><mat-icon>person_outline</mat-icon>Account</button>
       <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</button>
@@ -50,7 +50,7 @@
             {{ nav.name }}
           </span>
         </a>
-      </mat-list-item>
+      </mat-list-item> -->
       <!-- <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
         <span class="full-width" *ngIf="isExpanded || isShowing"
           >Parent Menu</span
@@ -93,11 +93,26 @@
           <mat-list-item>SubSubmenu Item 2</mat-list-item>
         </div>
       </div> -->
-    </mat-nav-list>
+    <!-- </mat-nav-list>
     <mat-nav-list> </mat-nav-list>
   </mat-sidenav>
 
   <div class="example-sidenav-content">
     <router-outlet></router-outlet>
   </div>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<div class="wrapper">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+      <app-sidebar></app-sidebar>
+  </div>
+  <div class="main-panel">
+      <navbar-cmp></navbar-cmp>
+      <div class="content">
+          <router-outlet></router-outlet>
+      </div>
+      <footer-cmp></footer-cmp>
+  </div>
+</div>
+<fixedplugin-cmp></fixedplugin-cmp>
+

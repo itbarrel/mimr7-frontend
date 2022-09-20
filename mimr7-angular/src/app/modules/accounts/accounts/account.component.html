@@ -1,10 +1,10 @@
 <div>
   <mat-card class="breadcrumb-container">
-    <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb>
+    <!-- <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb> -->
     <div name="controls" class="controls">
-      <button mat-icon-button (click)="openAccountModal()" class="control-button" color="primary">
+      <a mat-icon-button routerLink="add" class="control-button" color="primary">
         Add Account <mat-icon>add_box</mat-icon>
-      </button>
+      </a>
     </div>
   </mat-card>
   <mat-card class="breadcrumb-container">

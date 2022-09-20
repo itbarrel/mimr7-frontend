@@ -1,20 +1,18 @@
 import { MatDialog } from '@angular/material/dialog';
 import { AccountModalComponent } from '../account-modal/account-modal.component';
 import { AccountService } from '../services/account.service';
-import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {
-  merge,
   Observable,
   of as observableOf,
   BehaviorSubject,
   combineLatest,
 } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { AccountEditModalComponent } from '../account-edit-modal/account-edit-modal.component';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 @Component({
   selector: 'app-account',
@@ -30,10 +28,6 @@ export class AccountsComponent implements OnInit {
   isLoadingResults = true;
   resultsLength = 0;
   name = '';
-  // fromDate!: MatDatepicker<any>;
-  // toDate!: MatDatepicker<any>;
-  // today = new Date();
-  // pageSize = 1;
  
 
   displayedColumns: string[] = [
@@ -59,10 +53,12 @@ export class AccountsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private breadCrumbService: BreadCrumbService
   ) {}
 
   ngOnInit(): void {
+    this.breadCrumbService.setrouteState('Accounts');
     this.getAllAccounts();
   }
 
