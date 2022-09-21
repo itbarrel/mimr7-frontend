@@ -1,5 +1,4 @@
 import { MatDialog } from '@angular/material/dialog';
-import { AccountModalComponent } from '../account-modal/account-modal.component';
 import { AccountService } from '../services/account.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -62,21 +61,6 @@ export class AccountsComponent implements OnInit {
     this.getAllAccounts();
   }
 
-  openAccountModal(): void {
-    const dialogRef = this.dialog.open(AccountModalComponent, {
-      width: '50%',
-      minHeight: 'calc(100vh - 90px)',
-      height: 'auto',
-      data: { name: 'open', animal: 'dialoge' },
-      panelClass: 'custom-dialog-container',
-      disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed', result);
-      this.getAllAccounts();
-    });
-  }
 
   getAllAccounts() {
     // this.accountService.getAll().subscribe((res) => {
