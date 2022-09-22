@@ -13,6 +13,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Collection } from 'src/app/shared/interfaces';
 import { CollectionService } from '../services/collections.service';
 import { CollectionModalComponent } from '../collection-modal/collection-modal.component';
+import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 @Component({
   selector: 'app-collections',
@@ -51,20 +52,20 @@ export class CollectionsComponent implements OnInit {
 
   constructor(
     private collectionService: CollectionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private breadCrumbService: BreadCrumbService
   ) {}
 
   ngOnInit(): void {
-    console.log('on init called');
+    this.breadCrumbService.setrouteState('Collections');
+
     this.getAllCollections();
   }
 
   getAllCollections() {
-    this.collectionService
-      .getAll(1, 10, this.currentSort)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    this.collectionService.getAll(1, 10, this.currentSort).subscribe((res) => {
+      console.log(res);
+    });
     this.data = combineLatest(this.currentSort, this.page).pipe(
       switchMap(([sortChange, page]) => {
         console.log('PAge Change', sortChange, page);
@@ -125,4 +126,3 @@ export class CollectionsComponent implements OnInit {
     });
   }
 }
-

@@ -52,13 +52,13 @@ export interface Collection {
   AccountId?: String;
   UserId?: String;
   title: String;
-  text?:String;
-  type?:String;
-  kind?:String;
-  private?:boolean;
-  saleable?:boolean;
+  text?: String;
+  type?: String;
+  kind?: String;
+  private?: boolean;
+  saleable?: boolean;
   createdAt?: String;
   updatedAt?: String;
   deletedAt?: String;
-
+  description?: String;
 }

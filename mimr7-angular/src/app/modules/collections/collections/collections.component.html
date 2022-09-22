@@ -1,8 +1,7 @@
 <div>
     <mat-card class="breadcrumb-container">
-        <app-breadcrumb class="breadcrumb-content" [path]="path" [active]="active"></app-breadcrumb>
         <div name="controls" class="controls">
-            <button mat-icon-button class="control-button" (click)="openCollectionModal()" color="primary">
+            <button mat-icon-button class="control-button" routerLink="add" color="primary">
                 Add Collection <mat-icon>add_box</mat-icon>
             </button>
         </div>

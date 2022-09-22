@@ -12,6 +12,7 @@ import {
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { OrganizationModalComponent } from '../organization-modal/organization-modal.component';
 import { Organization } from 'src/app/shared/interfaces';
+import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 @Component({
   selector: 'app-organizations',
@@ -50,11 +51,12 @@ export class OrganizationsComponent implements OnInit {
 
   constructor(
     private organizationService: OrganizationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private breadCrumbService: BreadCrumbService
   ) {}
 
   ngOnInit(): void {
-    console.log('on init called');
+    this.breadCrumbService.setrouteState('Organizations');
     this.getAllOrganizations();
   }
 

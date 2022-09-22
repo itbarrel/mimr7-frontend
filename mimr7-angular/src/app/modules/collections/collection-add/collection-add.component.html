@@ -1,0 +1,104 @@
+<div>
+    <mat-card>
+
+
+
+        <form [formGroup]="collectionForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01">Title</label>
+                    <input type="text" formControlName="title"
+                        [ngClass]="[(!collectionForm.get('title')?.valid && collectionForm.get('title')?.touched) ? 'is-invalid':'', (collectionForm.get('title')?.valid && collectionForm.get('title')?.touched) ? 'is-valid':'' ]"
+                        class="form-control" id="validationServer01" placeholder="Title" required>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('title')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('title')?.valid &&
+                    collectionForm.get('title')?.touched
+                  ">
+                        Please enter valid Organization Title
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Text</label>
+                    <input type="text" formControlName="text" class="form-control" id="validationServer02"
+                        placeholder="User name" required
+                        [ngClass]="[(!collectionForm.get('text')?.valid && collectionForm.get('text')?.touched) ? 'is-invalid':'', (collectionForm.get('text')?.valid && collectionForm.get('text')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('text')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('text')?.valid &&
+                        collectionForm.get('text')?.touched
+                      ">
+                        Please enter valid Text
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Type</label>
+                    <input type="text" formControlName="type" class="form-control" id="validationServer02"
+                        placeholder="First name" required
+                        [ngClass]="[(!collectionForm.get('type')?.valid && collectionForm.get('type')?.touched) ? 'is-invalid':'', (collectionForm.get('type')?.valid && collectionForm.get('type')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('type')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('type')?.valid &&
+                    collectionForm.get('type')?.touched
+                  ">
+                        Please enter valid Type
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Kind</label>
+                    <input type="text" formControlName="kind" class="form-control " id="validationServer02"
+                        placeholder="Last name" required
+                        [ngClass]="[(!collectionForm.get('kind')?.valid && collectionForm.get('kind')?.touched) ? 'is-invalid':'', (collectionForm.get('kind')?.valid && collectionForm.get('kind')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('kind')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('kind')?.valid &&
+                        collectionForm.get('kind')?.touched
+                      ">
+                        Please enter valid Kind
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationTextarea">Textarea</label>
+                    <textarea formControlName="description" class="form-control " id="validationTextarea"
+                        placeholder="Required example textarea" required
+                        [ngClass]="[(!collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-invalid':'', (collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-valid':'' ]"></textarea>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('description')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('description')?.valid &&
+                        collectionForm.get('description')?.touched
+                      ">
+                        Please enter valid Description
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 check-container">
+                    <div class="check">
+                        <input class="form-check-input" formControlName="private" type="checkbox"  id="flexCheckChecked" >
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Private
+                        </label>
+                    </div>
+                    <div class="check">
+                        <input class="form-check-input" type="checkbox" formControlName="saleable" id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Saleable
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <button mat-flat-button color="primary" type="submit">Submit form</button>
+            <button mat-stroked-button color="primary" type="button" routerLink="/dashboard/collections">Cancel</button>
+        </form>
+
+    </mat-card>
+</div>
