@@ -7,11 +7,12 @@ export const PERMISSION = [
   },
   {
     role: 'Admin',
-    sites: ['organizations','collections'],
+    sites: ['organizations','collections','highlights'],
     default: 'organizations',
     navigation: [
       { title: 'Organizations', path: 'organizations', icon: 'nc-bank', class:'' },
       { title: 'Collections', path: 'collections', icon: 'nc-single-copy-04', class:'' },
+      { title: 'Highlights', path: 'highlights', icon: 'nc-bulb-63', class:'' },
     ],
   },
 ];
