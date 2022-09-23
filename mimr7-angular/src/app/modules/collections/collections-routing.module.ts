@@ -5,6 +5,7 @@ import { CollectionsComponent } from './collections/collections.component';
 
 const routes: Routes = [
   { path: '', component: CollectionsComponent },
+  { path:':id', component:CollectionAddComponent},
   { path: 'add', component: CollectionAddComponent },
 ];
 

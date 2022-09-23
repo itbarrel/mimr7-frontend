@@ -14,6 +14,7 @@ import { Collection } from 'src/app/shared/interfaces';
 import { CollectionService } from '../services/collections.service';
 import { CollectionModalComponent } from '../collection-modal/collection-modal.component';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collections',
@@ -53,7 +54,8 @@ export class CollectionsComponent implements OnInit {
   constructor(
     private collectionService: CollectionService,
     private dialog: MatDialog,
-    private breadCrumbService: BreadCrumbService
+    private breadCrumbService: BreadCrumbService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -108,21 +110,23 @@ export class CollectionsComponent implements OnInit {
   }
 
   openCollectionModal(data?: Collection): void {
-    const dialogRef = this.dialog.open(CollectionModalComponent, {
-      width: '50%',
-      // minHeight: 'calc(100vh - 90px)',
-      data,
-      autoFocus: false,
-      height: 'auto',
-      panelClass: 'custom-dialog-container',
-      disableClose: true,
-    });
+    console.log(data)
+    // this.router.navigate([`/${data?.id}`,data])
+    // const dialogRef = this.dialog.open(CollectionModalComponent, {
+    //   width: '50%',
+    //   // minHeight: 'calc(100vh - 90px)',
+    //   data,
+    //   autoFocus: false,
+    //   height: 'auto',
+    //   panelClass: 'custom-dialog-container',
+    //   disableClose: true,
+    // });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed', result);
-      if (result.success) {
-        this.getAllCollections();
-      }
-    });
+    // dialogRef.afterClosed().subscribe((result: any) => {
+    //   console.log('The dialog was closed', result);
+    //   if (result.success) {
+    //     this.getAllCollections();
+    //   }
+    // });
   }
 }

@@ -78,7 +78,9 @@
                                 </span>
                                 <span class="table-action-item"> | </span>
                                 <span class="click-icon" (click)="openCollectionModal(row)">
-                                    <mat-icon>edit</mat-icon>
+                                    <a [routerLink]="[row.id,{edit:true}]">
+                                        <mat-icon>edit</mat-icon>
+                                    </a>
                                 </span>
                             </div>
                         </td>

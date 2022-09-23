@@ -28,7 +28,6 @@ export class AuthenticationGuard implements CanActivate {
     }
     const role = localStorage.getItem('role');
     const path = state.url.split('/');
-    console.log("🚀 ~ file: authentication.guard.ts ~ line 31 ~ AuthenticationGuard ~ path", path.length)
     let url = '';
     if(path.length==4){
       url = path[path.length - 2]
@@ -37,7 +36,6 @@ export class AuthenticationGuard implements CanActivate {
       url = path[path.length - 1]
 
     }
-    console.log("🚀 ~ file: authentication.guard.ts ~ line 33 ~ AuthenticationGuard ~ url", url)
     PERMISSION.forEach((permission) => {
       if (role == permission.role) {
         if (permission.sites.includes(url)) {
