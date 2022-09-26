@@ -12,7 +12,7 @@ export class AuthenticationService {
   // private userState = new BehaviorSubject<User>(
   //   JSON.parse(localStorage.getItem('user')||'') || null
   // );
-  private userState = new BehaviorSubject<User>(this.getInitialUser())
+  private userState = new BehaviorSubject<User>(this.getInitialUser());
   userState$ = this.userState.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -24,10 +24,16 @@ export class AuthenticationService {
   }
 
   login(user: User) {
-    return this.http.post(`${environment.apiUrl}auth/login`, {...user});
+    return this.http.post(`${environment.apiUrl}auth/login`, { ...user });
   }
   getUser() {
     return this.http.get(`${environment.apiUrl}users/me`);
+  }
+  forgetPassword(data: User) {
+    return this.http.post(`${environment.apiUrl}auth/forgetpassword`, data);
+  }
+  resetPassword(data: User) {
+    return this.http.post(`${environment.apiUrl}auth/resetpassword`, data);
   }
 
   // logout(): void {
@@ -36,12 +42,12 @@ export class AuthenticationService {
   //   this.router.navigateByUrl('/login');
   // }
 
-  getInitialUser(){
+  getInitialUser() {
     const user = localStorage.getItem('user');
-    if(user){
-      return JSON.parse(user)
+    if (user) {
+      return JSON.parse(user);
     }
-    return null
+    return null;
   }
 }
 

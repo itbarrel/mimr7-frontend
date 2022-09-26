@@ -62,3 +62,4 @@ export interface Collection {
   deletedAt?: String;
   description?: String;
 }
+

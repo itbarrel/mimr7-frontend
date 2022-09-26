@@ -8,20 +8,7 @@
     <!-- <mat-card-title>Login</mat-card-title> -->
     <mat-card-content>
       <form [formGroup]="loginFrom" (ngSubmit)="submit()">
-        <p>
-          <mat-form-field>
-            <input
-              type="email"
-              matInput
-              placeholder="Email"
-              formControlName="email"
-            />
-            <mat-error *ngIf="!loginFrom.get('email')?.valid && loginFrom.get('email')?.touched
-          ">Invalid Email</mat-error>
-          </mat-form-field>
-        </p>
-
-        <p>
+       <p>
           <mat-form-field>
             <input
               type="password"
@@ -33,9 +20,21 @@
             ">Invalid Password</mat-error>
           </mat-form-field>
         </p>
+        <p>
+            <mat-form-field>
+              <input
+                type="password"
+                matInput
+                placeholder="Confirm Password"
+                formControlName="confirmPassword"
+              />
+              <mat-error *ngIf="!loginFrom.get('confirmPassword')?.valid && loginFrom.get('confirmPassword')?.touched && !loginFrom.getError('mismatch')
+              ">Invalid Password</mat-error>
+            </mat-form-field>
+        </p>
+        <span class="mismatch" *ngIf="passwordMatchError">Password and Confirm Password Doesn't match</span>
         <div class="button">
-          <button class="login-btn" type="submit" color="primary" mat-stroked-button>Login</button>
-          <button type="button" mat-stroked-button routerLink="/auth/forget-password">Forget Password</button>
+          <button class="login-btn"  type="submit" color="primary" mat-stroked-button>Change</button>
         </div>
       </form>
     </mat-card-content>

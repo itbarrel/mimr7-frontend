@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="example-toolbar"> </mat-toolbar>
+
+<div class="login-container">
+    <mat-card class="login-card">
+        <div class="login-container">
+            <img src="assets/images/new_logo.png" />
+        </div>
+        <!-- <mat-card-title>Login</mat-card-title> -->
+        <mat-card-content *ngIf="!reset">
+            <form [formGroup]="loginFrom" (ngSubmit)="submit()">
+                <p>
+                    <mat-form-field>
+                        <input type="email" matInput placeholder="Email" formControlName="email" />
+                        <mat-error *ngIf="!loginFrom.get('email')?.valid && loginFrom.get('email')?.touched
+          ">Invalid Email</mat-error>
+                    </mat-form-field>
+                </p>
+                <div class="button">
+                    <button class="login-btn" type="submit" color="primary" mat-stroked-button>Forget</button>
+                    <button type="button" mat-stroked-button routerLink="/auth/login">Cancel</button>
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-card-content *ngIf="reset">
+            <div>
+                <p>Your reset password email is heading your way.</p>
+
+                <p>The email you will receive will include these instructions:</p>
+
+                <p>Click the link provided in the email. It will take you to reset password password page</p>
+                <p>
+                    Fill in your new password twice in your user account edit form, then click the "Save" button to the
+                    right or at the bottom of the page.</p>
+                <p>
+                    When you see same form with the message "The changes have been saved." at the top, you're done. Go
+                    ahead and click on "Home" in the top left of the page to get to the rest of the site.
+                </p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
