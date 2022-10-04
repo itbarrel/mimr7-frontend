@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../collections/collections.module').then((m) => m.CollectionsModule),
   },
+  {
+    path: 'highlights',
+    loadChildren: () =>
+      import('../highlights/highlights.module').then((m) => m.HighlightsModule),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

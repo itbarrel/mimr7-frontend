@@ -1,0 +1,81 @@
+<div>
+    <mat-card>
+
+
+
+        <form [formGroup]="collectionForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    <label for="validationServer01">Content</label>
+                    <input type="text" formControlName="content"
+                        [ngClass]="[(!collectionForm.get('content')?.valid && collectionForm.get('content')?.touched) ? 'is-invalid':'', (collectionForm.get('content')?.valid && collectionForm.get('content')?.touched) ? 'is-valid':'' ]"
+                        class="form-control" id="validationServer01" placeholder="Content" required>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('content')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('content')?.valid &&
+                    collectionForm.get('content')?.touched
+                  ">
+                        Please enter valid Organization Content
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="validationServer02">Order</label>
+                    <input type="number" formControlName="order" class="form-control" id="validationServer02"
+                        placeholder="Order" required
+                        [ngClass]="[(!collectionForm.get('order')?.valid && collectionForm.get('order')?.touched) ? 'is-invalid':'', (collectionForm.get('order')?.valid && collectionForm.get('order')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('order')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('order')?.valid &&
+                        collectionForm.get('order')?.touched
+                      ">
+                        Please enter valid Order
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="validationServer02">Collection</label>
+                    <ng-select  formControlName="collection">
+                        <ng-option *ngFor="let collection of collections" [value]="collection.id">{{collection.title}}
+                        </ng-option>
+                    </ng-select>
+                    <!-- <select class="form-select" formControlName="collection" aria-label="Select Collection">
+                        <option selected></option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select> -->
+                    <div class="valid-feedback" *ngIf="collectionForm.get('collection')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('collection')?.valid &&
+                    collectionForm.get('collection')?.touched
+                  ">
+                        Please enter valid collection
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="validationTextarea">Description</label>
+                    <textarea formControlName="description" class="form-control description-input" id="validationTextarea"
+                        placeholder="Description" required
+                        [ngClass]="[(!collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-invalid':'', (collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-valid':'' ]"></textarea>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('description')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('description')?.valid &&
+                        collectionForm.get('description')?.touched
+                      ">
+                        Please enter valid Description
+                    </div>
+                </div>
+            </div>
+            <button mat-flat-button color="primary" type="submit">{{btnText}}</button>
+            <button mat-stroked-button color="primary" type="button" routerLink="/dashboard/highlights">Cancel</button>
+        </form>
+
+    </mat-card>
+</div>

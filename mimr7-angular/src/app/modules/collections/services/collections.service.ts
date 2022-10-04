@@ -41,7 +41,7 @@ export class CollectionService {
     title?: string
   ) {
     const sort: any = {};
-    sort[sortChange.active] = sortChange.direction;
+    sort[sortChange?.active] = sortChange?.direction;
     const query = {
       sort,
     };

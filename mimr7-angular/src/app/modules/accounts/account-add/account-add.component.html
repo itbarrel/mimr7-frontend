@@ -239,8 +239,8 @@
                             </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="validationTextarea">Textarea</label>
-                    <textarea formControlName="description" class="form-control " id="validationTextarea"
+                    <label for="validationTextarea">Description</label>
+                    <textarea formControlName="description" class="form-control description-input" id="validationTextarea"
                         placeholder="Required example textarea" required
                         [ngClass]="[(!accountForm.get('description')?.valid && accountForm.get('description')?.touched) ? 'is-invalid':'', (accountForm.get('description')?.valid && accountForm.get('description')?.touched) ? 'is-valid':'' ]"
                         ></textarea>
