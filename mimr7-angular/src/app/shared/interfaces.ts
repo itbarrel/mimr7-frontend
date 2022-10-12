@@ -63,13 +63,44 @@ export interface Collection {
   description?: String;
 }
 
-export interface Highlight{
+export interface Highlight {
   id?: String;
-  order?:number;
+  order?: number;
   content: String;
   AccountId?: String;
   CollectionId?: String;
   description?: String;
+  createdAt?: String;
+  updatedAt?: String;
+  deletedAt?: String;
+}
+
+export interface Location {
+  id?:String;
+  address1: String;
+  address2: String;
+  address3: String;
+  mobilePhone: String;
+  officePhone: String;
+  country: String;
+  state: String;
+  city: String;
+  AccountId?: String;
+  type: String;
+  location: String;
+  createdAt?: String;
+  updatedAt?: String;
+  deletedAt?: String;
+}
+export interface Message {
+  name: String;
+  hint: String;
+  solution: String;
+  AccountId?: String;
+  CollectionId?: String;
+  HighlightId?: String;
+  number: number;
+  offset: number;
   createdAt?: String;
   updatedAt?: String;
   deletedAt?: String;

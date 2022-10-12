@@ -18,9 +18,24 @@ const routes: Routes = [
       import('../collections/collections.module').then((m) => m.CollectionsModule),
   },
   {
+    path: 'collectionslibrary',
+    loadChildren: () =>
+      import('../collectionslibrary/collectionslibrary.module').then((m) => m.CollectionslibraryModule),
+  },
+  {
     path: 'highlights',
     loadChildren: () =>
       import('../highlights/highlights.module').then((m) => m.HighlightsModule),
+  },
+  {
+    path: 'highlightslibrary',
+    loadChildren: () =>
+      import('../highlightslibrary/highlightslibrary.module').then((m) => m.HighlightslibraryModule),
+  },
+  {
+    path: 'locations',
+    loadChildren: () =>
+      import('../locations/locations.module').then((m) => m.LocationsModule),
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
