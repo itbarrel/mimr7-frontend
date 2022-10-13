@@ -106,6 +106,43 @@ export interface Message {
   deletedAt?: String;
 }
 
+export interface HighlightLibrary{
+  id?: String;
+  parentType?: String;
+  active?: boolean;
+  title: String;
+  AccountId?:String;
+  parentId:String;
+  updatedAt?:String;
+  createdAt?:String;
+  description:String;
+  link?:String;
+  filename?:String;
+  url?: String;
+  type?: String;
+  mimetype?: String;
+  tags?: String;
+  deletedAt?: String;
+}
+
+export interface CollectionLibrary{
+  id?: String;
+  parentType?: String;
+  active?: boolean;
+  title: String;
+  AccountId?:String;
+  parentId:String;
+  updatedAt?:String;
+  createdAt?:String;
+  description:String;
+  link?:String;
+  filename?:String;
+  url?: String;
+  type?: String;
+  mimetype?: String;
+  tags?: String;
+  deletedAt?: String;
+}
 // "highlight": {
 //   "id": "d1005ae2-07a4-4d28-8508-45ee6ed8e757",
 //   "order": 0,
