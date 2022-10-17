@@ -1,1 +1,57 @@
-<p>highlightslibrary-add works!</p>
+<div>
+    <mat-card>
+        <form [formGroup]="collectionForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="col-md-5 mb-3">
+                    <label for="validationServer01">Title</label>
+                    <input type="text" formControlName="title"
+                        [ngClass]="[(!collectionForm.get('title')?.valid && collectionForm.get('title')?.touched) ? 'is-invalid':'', (collectionForm.get('title')?.valid && collectionForm.get('title')?.touched) ? 'is-valid':'' ]"
+                        class="form-control" id="validationServer01" placeholder="Title" required>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('title')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('title')?.valid &&
+                    collectionForm.get('title')?.touched
+                  ">
+                        Please enter valid Organization Content
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="validationServer02">Highlight</label>
+                    <ng-select  formControlName="parentId">
+                        <ng-option *ngFor="let highlight of highlights" [value]="highlight.id">{{highlight.content}}
+                        </ng-option>
+                    </ng-select>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('parentId')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('parentId')?.valid &&
+                    collectionForm.get('parentId')?.touched
+                  ">
+                        Please enter valid HighLight
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="validationTextarea">Description</label>
+                    <textarea formControlName="description" class="form-control description-input" id="validationTextarea"
+                        placeholder="Description" required
+                        [ngClass]="[(!collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-invalid':'', (collectionForm.get('description')?.valid && collectionForm.get('description')?.touched) ? 'is-valid':'' ]"></textarea>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('description')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('description')?.valid &&
+                        collectionForm.get('description')?.touched
+                      ">
+                        Please enter valid Description
+                    </div>
+                </div>
+            </div>
+            <button mat-flat-button color="primary" type="submit">{{btnText}}</button>
+            <button mat-stroked-button color="primary" type="button" routerLink="/dashboard/highlightslibrary">Cancel</button>
+        </form>
+
+    </mat-card>
+</div>

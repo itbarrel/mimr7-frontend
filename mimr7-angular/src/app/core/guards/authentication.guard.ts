@@ -36,6 +36,7 @@ export class AuthenticationGuard implements CanActivate {
       url = path[path.length - 1]
 
     }
+    console.log('url----',url)
     PERMISSION.forEach((permission) => {
       if (role == permission.role) {
         if (permission.sites.includes(url)) {
