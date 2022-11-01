@@ -1,10 +1,52 @@
 <div name="main-container">
 
     <div name="card-container" class="card-container">
-        <div class="col-md-4 shadow-lg p-3 mb-3 bg-white rounded card">Larger shadow</div>
-        <div class="col-md-4 shadow-lg p-3 mb-3 bg-white rounded card">Larger shadow</div>
-        <div class="col-md-4 shadow-lg p-3 mb-3 bg-white rounded card">Larger shadow</div>
-    </div>
+        <div class="col-md-3 shadow-lg p-3 mb-3 bg-white rounded card">
+            <!-- <mat-icon class="icon-display">class</mat-icon>  -->
+            <div>
+                <img src="assets/images/class.png" />
+            </div>
+            <p class="card-p">
+                Class
+            </p>
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" (click)="changeTab('class')"></ng-icon>
+            <!-- <span class="material-icons icon-display">
+                class
+                </span> -->
 
+        </div>
+        <div class="col-md-3 shadow-lg p-3 mb-3 bg-white rounded card">
+            <div>
+                <img src="assets/images/student.png" />
+            </div>
+            <p class="card-p">
+                Student
+            </p>
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" (click)="changeTab('student')"></ng-icon>
+
+        </div>
+        <div class="col-md-3 shadow-lg p-3 mb-3 bg-white rounded card">
+
+            <div>
+                <img src="assets/images/content.png" />
+            </div>
+            <p class="card-p">
+                Content
+            </p>
+
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" (click)="changeTab('content')"></ng-icon>
+
+        </div>
+    </div>
+    <div name="action-container" class="action-container shadow-lg p-3 mb-3 bg-white rounded card">
+        <p *ngIf="class">Class Actions</p>
+        <p *ngIf="student">Student Actions</p>
+        <p *ngIf="content">Content Actions</p>
+    </div>
+    <div name="result-container" class="result-container shadow-lg p-3 mb-3 bg-white rounded card">
+        <p *ngIf="class">Class results</p>
+        <p *ngIf="student">Student results</p>
+        <p *ngIf="content">Content results</p>
+    </div>
 
 </div>
