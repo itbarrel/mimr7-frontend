@@ -1,0 +1,34 @@
+.card-container {
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  min-height: 200px;
+  align-items: center;
+}
+
+.icon-display {
+  transform: scale(2);
+}
+
+.icon-display:hover {
+  color: #07988b;
+  cursor: pointer;
+}
+.card-p {
+  font-size: large;
+  font-weight: 400;
+  font-family: cursive;
+  margin: 5px;
+}
+
+.action-container {
+  min-height: 50px;
+  width: 100%;
+}
+
+.result-container {
+    min-height: 200px;
+    width: 100%;
+  }
+  
