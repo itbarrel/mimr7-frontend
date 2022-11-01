@@ -64,7 +64,7 @@ export class LocationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.breadCrumbService.setrouteState('Collections');
+    this.breadCrumbService.setrouteState('Locations');
 
     this.getAllLocations();
   }
