@@ -1,147 +1,161 @@
 export interface AddAccount {
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   organization: {
-    name: String;
-    city: String;
+    name: string;
+    city: string;
   };
   admin: {
-    userName: String;
-    firstName: String;
-    lastName?: String;
-    email: String;
-    password: String;
-    mobilePhone?: String;
+    userName: string;
+    firstName: string;
+    lastName?: string;
+    email: string;
+    password: string;
+    mobilePhone?: string;
   };
 }
 export interface Account {
-  id: String;
-  name: String;
-  description: String;
-  apikey: String;
-  organizationName?: String;
-  avatar?: String;
-  type?: String;
-  category_header?: String;
-  messages_font_size?: String;
-  messages_font_family?: String;
+  id: string;
+  name: string;
+  description: string;
+  apikey: string;
+  organizationName?: string;
+  avatar?: string;
+  type?: string;
+  category_header?: string;
+  messages_font_size?: string;
+  messages_font_family?: string;
   status: boolean;
   public: boolean;
   active: boolean;
-  createdAt: String;
-  updatedAt: String;
-  deletedAt?: String;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string;
 }
 
 export interface Organization {
-  id?: String;
-  name: String;
-  city: String;
+  id?: string;
+  name: string;
+  city: string;
   active?: boolean;
-  AccountId?: String;
-  createdAt?: String;
-  updatedAt?: String;
-  deletedAt?: String;
-  region?: String;
-  state?: String;
+  AccountId?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
+  region?: string;
+  state?: string;
   status?: boolean;
 }
 
 export interface Collection {
-  id?: String;
-  AccountId?: String;
-  UserId?: String;
-  title: String;
-  text?: String;
-  type?: String;
-  kind?: String;
+  id?: string;
+  AccountId?: string;
+  UserId?: string;
+  title: string;
+  text?: string;
+  type?: string;
+  kind?: string;
   private?: boolean;
   saleable?: boolean;
-  createdAt?: String;
-  updatedAt?: String;
-  deletedAt?: String;
-  description?: String;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
+  description?: string;
 }
-
+export interface Content {
+  id?: string;
+  AccountId?: string;
+  UserId?: string;
+  title: string;
+  text?: string;
+  type?: string;
+  kind?: string;
+  private?: boolean;
+  saleable?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
+  description?: string;
+}
 export interface Highlight {
-  id?: String;
+  id?: string;
   order?: number;
-  content: String;
-  AccountId?: String;
-  CollectionId?: String;
-  description?: String;
-  createdAt?: String;
-  updatedAt?: String;
-  deletedAt?: String;
+  content: string;
+  AccountId?: string;
+  CollectionId?: string;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
 }
 
 export interface Location {
-  id?:String;
-  address1: String;
-  address2: String;
-  address3: String;
-  mobilePhone: String;
-  officePhone: String;
-  country: String;
-  state: String;
-  city: String;
-  AccountId?: String;
-  type: String;
-  location: String;
-  createdAt?: String;
-  updatedAt?: String;
-  deletedAt?: String;
+  id?:string;
+  address1: string;
+  address2: string;
+  address3: string;
+  mobilePhone: string;
+  officePhone: string;
+  country: string;
+  state: string;
+  city: string;
+  AccountId?: string;
+  type: string;
+  location: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
 }
 export interface Message {
-  name: String;
-  hint: String;
-  solution: String;
-  AccountId?: String;
-  CollectionId?: String;
-  HighlightId?: String;
+  name: string;
+  hint: string;
+  solution: string;
+  AccountId?: string;
+  CollectionId?: string;
+  HighlightId?: string;
   number: number;
   offset: number;
-  createdAt?: String;
-  updatedAt?: String;
-  deletedAt?: String;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
 }
 
 export interface HighlightLibrary{
-  id?: String;
-  parentType?: String;
+  id?: string;
+  parentType?: string;
   active?: boolean;
-  title: String;
-  AccountId?:String;
-  parentId:String;
-  updatedAt?:String;
-  createdAt?:String;
-  description:String;
-  link?:String;
-  filename?:String;
-  url?: String;
-  type?: String;
-  mimetype?: String;
-  tags?: String;
-  deletedAt?: String;
+  title: string;
+  AccountId?:string;
+  parentId:string;
+  updatedAt?:string;
+  createdAt?:string;
+  description:string;
+  link?:string;
+  filename?:string;
+  url?: string;
+  type?: string;
+  mimetype?: string;
+  tags?: string;
+  deletedAt?: string;
 }
 
 export interface CollectionLibrary{
-  id?: String;
-  parentType?: String;
+  id?: string;
+  parentType?: string;
   active?: boolean;
-  title: String;
-  AccountId?:String;
-  parentId:String;
-  updatedAt?:String;
-  createdAt?:String;
-  description:String;
-  link?:String;
-  filename?:String;
-  url?: String;
-  type?: String;
-  mimetype?: String;
-  tags?: String;
-  deletedAt?: String;
+  title: string;
+  AccountId?:string;
+  parentId:string;
+  updatedAt?:string;
+  createdAt?:string;
+  description:string;
+  link?:string;
+  filename?:string;
+  url?: string;
+  type?: string;
+  mimetype?: string;
+  tags?: string;
+  deletedAt?: string;
 }
 // "highlight": {
 //   "id": "d1005ae2-07a4-4d28-8508-45ee6ed8e757",

@@ -8,8 +8,9 @@ import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 })
 export class HomeComponent implements OnInit {
   student: boolean = false;
-  class: boolean = true;
-  content: boolean = false;
+  class: boolean = false;
+  content: boolean = true;
+  addContent:boolean=false;
 
   constructor(private breadCrumbService: BreadCrumbService) {}
 

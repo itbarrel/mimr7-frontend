@@ -41,15 +41,32 @@
 
         </div>
     </div>
-    <div name="action-container" class="action-container shadow-lg p-3 mb-3 bg-white rounded card">
-        <p *ngIf="class">Class Actions</p>
-        <p *ngIf="student">Student Actions</p>
-        <p *ngIf="content">Content Actions</p>
+    <router-outlet></router-outlet>
+    <!-- <div name="action-container" class="action-container shadow-lg p-3 mb-3 bg-white rounded card">
+        <div *ngIf="class" class="actions-div">
+            <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        </div>
+        <div *ngIf="student" class="actions-div">
+            <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        </div>
+        <div *ngIf="content" class="actions-div">
+            <button type="button" class="btn btn-primary btn-sm action-btn" (click)="addContent=false">Content</button>
+            <button class="btn btn-primary btn-sm action-btn" (click)="addContent=true">
+                <ng-icon name="bootstrapPlusCircle"></ng-icon>
+            </button>
+        </div>
     </div>
     <div name="result-container" class="result-container shadow-lg p-3 mb-3 bg-white rounded card">
         <p *ngIf="class">Class results</p>
         <p *ngIf="student">Student results</p>
-        <p *ngIf="content">Content results</p>
-    </div>
+        <div *ngIf="content" name="content-container" style="width: 100%;">
+            <div *ngIf="!addContent">
+                <app-content></app-content>
+            </div>
+            <div *ngIf="addContent" style="width: 100%;">
+                <app-content-add style="width: 100%;" [update]="false"></app-content-add>
+            </div>
+        </div>
+    </div> -->
 
 </div>

@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-.active{
+.active {
   color: #07988b;
 }
 .card-p {
@@ -32,18 +32,17 @@
 }
 
 .result-container {
-    min-height: 200px;
-    width: 100%;
-  }
+  min-height: 200px;
+  width: 100%;
+}
 
-  .actions-div{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+.actions-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-  .action-btn{
-    margin-left: 7px;
-    margin-right: 7px;
-  }
-  
+.action-btn {
+  margin-left: 7px;
+  margin-right: 7px;
+}

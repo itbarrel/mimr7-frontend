@@ -1,0 +1,22 @@
+<app-actions></app-actions>
+
+<div name="result-container" class="result-container shadow-lg p-3 mb-3 bg-white rounded card">
+  <br />
+  <div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Title</label>
+      <input type="text" [(ngModel)]="subject" class="form-control" id="exampleFormControlInput1" placeholder="title">
+    </div>
+    <div class="form-group">
+    </div>
+  </div>
+  <br />
+  <quill-editor [(ngModel)]="htmlText" placeholder="Enter Text" [modules]="quillConfig"
+    (onSelectionChanged)="onSelectionChanged($event)" (onContentChanged)="onContentChanged($event)"></quill-editor>
+
+    <div class="center">
+      <button type="button" (click)="submit()" class="btn btn-primary btn-sm col-md-1 ml-2">{{update?'Update':'Add'}}</button>
+      <button *ngIf="update" type="button" routerLink="../" class="btn col-md-1 btn-sm ml-2">cancel</button>
+    </div>
+
+</div>

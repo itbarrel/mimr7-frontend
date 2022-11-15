@@ -50,11 +50,11 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
-.table-action-item{
-margin: 0px 10px;
+.table-action-item {
+  margin: 0px 10px;
 }
 
-.click-icon{
+.click-icon {
   cursor: pointer;
 }
 
@@ -63,7 +63,7 @@ margin: 0px 10px;
   padding: 0 24px;
   cursor: pointer;
   box-sizing: border-box;
-  opacity: .6;
+  opacity: 0.6;
   min-width: 160px;
   width: 50%;
   text-align: center;
@@ -78,17 +78,22 @@ table {
   width: 100%;
 }
 
-.filter-container{
+.filter-container {
   width: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
 }
 
-.filter-container > *{
+.filter-container > * {
   margin: 0px 20px;
 }
 
-.description-input{
+.description-input {
   padding: 10px !important;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
