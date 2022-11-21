@@ -53,7 +53,7 @@ export class ContentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.breadCrumbService.setrouteState('Collections');
+    this.breadCrumbService.setrouteState('Contents');
 
     this.getAllContents();
   }

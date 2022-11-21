@@ -7,7 +7,7 @@ export const PERMISSION = [
   },
   {
     role: 'Admin',
-    sites: ['organizations','collections','highlights','locations','collectionslibrary','highlightslibrary','home'],
+    sites: ['organizations','collections','contents','highlights','locations','collectionslibrary','highlightslibrary','home'],
     default: 'home',
     navigation: [
       { title: 'Organizations', path: 'organizations', icon: 'nc-bank', class:'' },

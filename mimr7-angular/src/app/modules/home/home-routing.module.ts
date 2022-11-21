@@ -4,14 +4,14 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: 'content',
+    path: 'contents',
     component: HomeComponent,
     loadChildren: () =>
       import('../content/content.module').then((m) => m.ContentModule),
   },
   {
     path: '',
-    redirectTo: 'content',
+    redirectTo: 'contents',
     pathMatch: 'full',
   },
 ];

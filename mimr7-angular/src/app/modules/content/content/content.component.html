@@ -1,5 +1,5 @@
 <app-actions></app-actions>
-<div name="listing-container" *ngIf="!updateContent">
+<div name="listing-container">
     <mat-card class="breadcrumb-container">
         <mat-card-content style="width: 100%;">
             <div name="filter-div" class="filter-container">
@@ -46,7 +46,7 @@
                         </th>
                         <td mat-cell *matCellDef="let row">
                             <div name="highlight" class="highlight-numbers">
-                                {{ row.Highlights.length }}
+                                <a routerLink="{{row.id}}/highlights"> {{ row.Highlights.length }} </a>
                             </div>
                         </td>
                     </ng-container>
@@ -72,7 +72,7 @@
                         <td mat-cell *matCellDef="let row">
                             <div class="table-actions">
                                 <span class="click-icon">
-                                    <button type="button" class="btn btn-primary btn-sm">Add Highlights</button>
+                                    <button type="button" routerLink="{{row.id}}/highlights/add" class="btn btn-primary btn-sm">Add Highlights</button>
                                 </span>
                                 <span class="table-action-item"> | </span>
                                 <span class="click-icon">

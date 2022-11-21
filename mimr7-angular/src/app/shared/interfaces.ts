@@ -82,6 +82,7 @@ export interface Highlight {
   order?: number;
   content: string;
   AccountId?: string;
+  ContentId?:string;
   CollectionId?: string;
   description?: string;
   createdAt?: string;
