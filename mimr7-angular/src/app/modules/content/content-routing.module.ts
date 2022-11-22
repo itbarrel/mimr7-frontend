@@ -4,6 +4,8 @@ import { ContentAddComponent } from './content-add/content-add.component';
 import { ContentComponent } from './content/content.component';
 import { HighlightAddComponent } from './highlight-add/highlight-add.component';
 import { HighlightsComponent } from './highlights/highlights.component';
+import { MessagesAddComponent } from './messages-add/messages-add.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -38,7 +40,12 @@ const routes: Routes = [
   },
   {
     path: ':id/highlights/:hid/messages',
-    component: HighlightAddComponent,
+    component: MessagesComponent,
+    pathMatch:'full'
+  },
+  {
+    path: ':id/highlights/:hid/messages/add',
+    component: MessagesAddComponent,
     pathMatch:'full'
   },
 ];

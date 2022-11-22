@@ -114,8 +114,8 @@ export interface Message {
   AccountId?: string;
   CollectionId?: string;
   HighlightId?: string;
-  number: number;
-  offset: number;
+  number?: number;
+  offset?: number;
   createdAt?: string;
   updatedAt?: string;
   deletedAt?: string;

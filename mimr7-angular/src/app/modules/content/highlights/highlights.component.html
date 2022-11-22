@@ -46,7 +46,7 @@
                         </th>
                         <td mat-cell *matCellDef="let row">
                             <div name="highlight" class="highlight-numbers">
-                                {{ row.Messages.length }}
+                              <a routerLink="{{row.id}}/messages">  {{ row.Messages.length }}</a>
                             </div>
                         </td>
                     </ng-container>
@@ -72,7 +72,7 @@
                         <td mat-cell *matCellDef="let row">
                             <div class="table-actions">
                                 <span class="click-icon">
-                                    <button type="button" class="btn btn-primary btn-sm">Add Messages</button>
+                                    <button type="button" routerLink="{{row.id}}/messages/add" class="btn btn-primary btn-sm">Add Messages</button>
                                 </span>
                                 <span class="table-action-item"> | </span>
                                 <span class="click-icon">

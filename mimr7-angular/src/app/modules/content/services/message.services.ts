@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { Highlight } from 'src/app/shared/interfaces';
+import { Message } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -11,9 +11,9 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 @Injectable({
   providedIn: 'root',
 })
-export class HighlightService {
-  private highlightState = new BehaviorSubject<any[]>([]);
-  highlightState$ = this.highlightState.asObservable();
+export class MessageService {
+  private messageState = new BehaviorSubject<any[]>([]);
+  messageState$ = this.messageState.asObservable();
   user: any;
   constructor(private http: HttpClient, private auth: AuthenticationService) {
     this.auth.getUserState().subscribe((res) => {
@@ -22,35 +22,28 @@ export class HighlightService {
   }
 
   get() {
-    return this.highlightState$;
+    return this.messageState$;
   }
-  set(highlight: Highlight[]) {
-    this.highlightState.next(highlight);
+  set(highlight: Message[]) {
+    this.messageState.next(highlight);
   }
 
-  add(data: Highlight): Observable<any> {
+  add(data: Message): Observable<any> {
     data.AccountId = this.user.AccountId;
     // data.UserId = this.user.id;
-    return this.http.post(`${environment.apiUrl}highlights`, data);
+    return this.http.post(`${environment.apiUrl}messages`, data);
   }
   // ?ContentId={{ContentId}}
 
-  getByContentId(
-    pageNumber: number,
-    pageSize: number,
-    contentId:string,
-    sortChange?: any,
-    title?: string,
-  ) {
-    const sort: any = {};
-    sort[sortChange?.active] = sortChange?.direction;
-    const query = {
-      sort,
-    };
+  getByHighlightId(highlightId: string, title?: string) {
+    // const sort: any = {};
+    // sort[sortChange?.active] = sortChange?.direction;
+    // const query = {
+    //   sort,
+    // };
 
     const url = withQuery(
-      `${environment.apiUrl}highlights?offset=${pageNumber}&limit=${pageSize}&ContentId=${contentId}&content=${title}`,
-      query
+      `${environment.apiUrl}messages?HighlightId=${highlightId}&name=${title}`
     );
     return this.http.get(url);
   }
@@ -68,15 +61,15 @@ export class HighlightService {
     };
 
     const url = withQuery(
-      `${environment.apiUrl}highlights?offset=${pageNumber}&limit=${pageSize}&content=${title}`,
+      `${environment.apiUrl}messages?offset=${pageNumber}&limit=${pageSize}&content=${title}`,
       query
     );
     return this.http.get(url);
   }
   getById(id: string) {
-    return this.http.get(`${environment.apiUrl}highlights/${id}`);
+    return this.http.get(`${environment.apiUrl}messages/${id}`);
   }
-  update(id: string, data: Highlight) {
-    return this.http.put(`${environment.apiUrl}highlights/${id}`, data);
+  update(id: string, data: Message) {
+    return this.http.put(`${environment.apiUrl}messages/${id}`, data);
   }
 }

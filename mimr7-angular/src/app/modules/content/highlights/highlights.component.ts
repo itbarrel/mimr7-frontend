@@ -12,16 +12,15 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 // import { OrganizationModalComponent } from '../organization-modal/organization-modal.component';
 import { Content } from 'src/app/shared/interfaces';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HighlightService } from '../services/highlight.services';
 
 @Component({
   selector: 'app-highlights',
   templateUrl: './highlights.component.html',
-  styleUrls: ['./highlights.component.scss']
+  styleUrls: ['./highlights.component.scss'],
 })
 export class HighlightsComponent implements OnInit {
-
   path: string = 'Dashboard';
   active: string = 'Contents';
   isLoadingResults = true;
@@ -43,6 +42,8 @@ export class HighlightsComponent implements OnInit {
   currentSort = new BehaviorSubject<MatSort>({} as MatSort);
   pageSizeOptions: number[] = [5, 10, 25, 50, 100];
 
+  contentId: string = '';
+
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort = {} as MatSort;
 
@@ -50,26 +51,30 @@ export class HighlightsComponent implements OnInit {
     private highlightService: HighlightService,
     private dialog: MatDialog,
     private breadCrumbService: BreadCrumbService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     // this.breadCrumbService.setrouteState('Collections');
-
+    this.contentId = this.route.snapshot.paramMap.get('id') || '';
     this.getAllContents();
   }
 
   getAllContents() {
-    this.highlightService.getAll(1, 10, this.currentSort).subscribe((res) => {
-      console.log(res);
-    });
+    this.highlightService
+      .getByContentId(1, 10, this.contentId, this.currentSort)
+      .subscribe((res) => {
+        console.log(res);
+      });
     this.data = combineLatest(this.currentSort, this.page).pipe(
       switchMap(([sortChange, page]) => {
         console.log('PAge Change', sortChange, page);
         this.isLoadingResults = true;
-        return this.highlightService.getAll(
+        return this.highlightService.getByContentId(
           page.pageIndex + 1,
           page.pageSize,
+          this.contentId,
           sortChange,
           this.title
         );
