@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
-import { bootstrapCaretDownFill,bootstrapPlusCircle } from '@ng-icons/bootstrap-icons';
+import { bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare } from '@ng-icons/bootstrap-icons';
 
 // import { ContentComponent } from './content/content.component';
 // import { ContentAddComponent } from './content-add/content-add.component'
@@ -39,7 +39,7 @@ import { MessagesAddComponent } from './messages-add/messages-add.component';
     CommonModule,
     ContentRoutingModule,
     MaterialModule,
-    NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle }),
+    NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare }),
     QuillModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,

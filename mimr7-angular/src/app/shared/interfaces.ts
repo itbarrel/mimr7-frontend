@@ -108,11 +108,12 @@ export interface Location {
   deletedAt?: string;
 }
 export interface Message {
+  id?:string;
   name: string;
   hint: string;
   solution: string;
   AccountId?: string;
-  CollectionId?: string;
+  ContentId?: string;
   HighlightId?: string;
   number?: number;
   offset?: number;

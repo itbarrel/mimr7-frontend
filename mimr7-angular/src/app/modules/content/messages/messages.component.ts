@@ -12,6 +12,7 @@ import { MessageService } from '../services/message.services';
 export class MessagesComponent implements OnInit {
   highlightId: string = '';
   name: string = '';
+  messages:Message[]=[]
 
   constructor(
     private messageService: MessageService,
@@ -27,8 +28,9 @@ export class MessagesComponent implements OnInit {
   getAllMessages() {
     this.messageService
       .getByHighlightId(this.highlightId, this.name)
-      .subscribe((res) => {
+      .subscribe((res:any) => {
         console.log(res);
+        this.messages= res.data
       });
   }
 }

@@ -44,6 +44,11 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
+    path: ':id/highlights/:hid/messages/:mid',
+    component: MessagesAddComponent,
+    pathMatch:'full'
+  },
+  {
     path: ':id/highlights/:hid/messages/add',
     component: MessagesAddComponent,
     pathMatch:'full'

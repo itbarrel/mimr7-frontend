@@ -1,1 +1,61 @@
 <app-actions></app-actions>
+
+<div>
+    <mat-card>
+
+
+
+        <form [formGroup]="collectionForm" (ngSubmit)="submit()">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer01">Name</label>
+                    <input type="text" formControlName="name"
+                        [ngClass]="[(!collectionForm.get('name')?.valid && collectionForm.get('name')?.touched) ? 'is-invalid':'', (collectionForm.get('name')?.valid && collectionForm.get('name')?.touched) ? 'is-valid':'' ]"
+                        class="form-control" id="validationServer01" placeholder="Name" required>
+                    <div class="valid-feedback" *ngIf="collectionForm.get('name')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('name')?.valid &&
+                    collectionForm.get('name')?.touched
+                  ">
+                        Please enter valid Organization Name
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer02">Hint</label>
+                    <input type="text" formControlName="hint" class="form-control" id="validationServer02"
+                        placeholder="User name" required
+                        [ngClass]="[(!collectionForm.get('hint')?.valid && collectionForm.get('hint')?.touched) ? 'is-invalid':'', (collectionForm.get('hint')?.valid && collectionForm.get('hint')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('hint')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                        !collectionForm.get('hint')?.valid &&
+                        collectionForm.get('hint')?.touched
+                      ">
+                        Please enter valid Hint
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer02">Solution</label>
+                    <input type="text" formControlName="solution" class="form-control" id="validationServer02"
+                        placeholder="First name" required
+                        [ngClass]="[(!collectionForm.get('solution')?.valid && collectionForm.get('solution')?.touched) ? 'is-invalid':'', (collectionForm.get('solution')?.valid && collectionForm.get('solution')?.touched) ? 'is-valid':'' ]">
+                    <div class="valid-feedback" *ngIf="collectionForm.get('solution')?.valid">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback" *ngIf="
+                    !collectionForm.get('solution')?.valid &&
+                    collectionForm.get('solution')?.touched
+                  ">
+                        Please enter valid Solution
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-primary" type="submit">{{btnText}}</button>
+            <button class="btn btn-sm"  type="button" routerLink="../">Cancel</button>
+        </form>
+
+    </mat-card>
+</div>
