@@ -10,6 +10,12 @@ const routes: Routes = [
       import('../content/content.module').then((m) => m.ContentModule),
   },
   {
+    path: 'students',
+    component: HomeComponent,
+    loadChildren: () =>
+      import('../student/student.module').then((m) => m.StudentModule),
+  },
+  {
     path: '',
     redirectTo: 'contents',
     pathMatch: 'full',
