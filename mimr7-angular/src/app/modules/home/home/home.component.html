@@ -9,8 +9,8 @@
             <p class="card-p">
                 Class
             </p>
-            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : class}"
-                (click)="changeTab('class')"></ng-icon>
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : isClasses}"
+                (click)="changeTab('isClasses')"></ng-icon>
             <!-- <span class="material-icons icon-display">
                 class
                 </span> -->
@@ -23,8 +23,8 @@
             <p class="card-p">
                 Student
             </p>
-            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : student}"
-                (click)="changeTab('student')"></ng-icon>
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : isStudents}"
+                (click)="changeTab('isStudents')"></ng-icon>
 
         </div>
         <div class="col-md-3 shadow-lg p-3 mb-3 bg-white rounded card">
@@ -36,8 +36,8 @@
                 Content
             </p>
 
-            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : content}"
-                (click)="changeTab('content')"></ng-icon>
+            <ng-icon name="bootstrapCaretDownFill" class="icon-display" [ngClass]="{'active' : isContents}"
+                (click)="changeTab('isContents')"></ng-icon>
 
         </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,38 +8,61 @@ import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  student: boolean = false;
-  class: boolean = false;
-  content: boolean = true;
-  addContent:boolean=false;
+  isStudents: boolean = false;
+  isClasses: boolean = false;
+  isContents: boolean = true;
+  addContent: boolean = false;
 
-  constructor(private breadCrumbService: BreadCrumbService) {}
+  constructor(
+    private breadCrumbService: BreadCrumbService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.breadCrumbService.setrouteState('Home');
+    this.checkRoute();
   }
 
   changeTab(active: string) {
     switch (active) {
-      case 'student':
-        this.student = true;
-        this.class = false;
-        this.content = false;
+      case 'isStudents':
+        this.router.navigateByUrl('/dashboard/home/students');
         break;
-      case 'class':
-        this.student = false;
-        this.class = true;
-        this.content = false;
+      case 'isClasses':
         break;
-      case 'content':
-        this.student = false;
-        this.class = false;
-        this.content = true;
+      case 'isContents':
+        this.router.navigateByUrl('/dashboard/home/contents');
         break;
       default:
-        this.student = false;
-        this.class = true;
-        this.content = false;
+        break;
+      // code block
+    }
+  }
+
+  checkRoute() {
+    const url = this.router.url.split('/');
+    console.log('url', url[url.length - 1]);
+    let variable: keyof HomeComponent | any = url[url.length - 1];
+    switch (variable) {
+      case 'students':
+        this.isStudents = true;
+        this.isClasses = false;
+        this.isContents = false;
+        break;
+      case 'classes':
+        this.isStudents = false;
+        this.isClasses = true;
+        this.isContents = false;
+        break;
+      case 'contents':
+        this.isStudents = false;
+        this.isClasses = false;
+        this.isContents = true;
+        break;
+      default:
+        this.isStudents = false;
+        this.isClasses = true;
+        this.isContents = false;
       // code block
     }
   }
