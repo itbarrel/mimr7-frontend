@@ -6,14 +6,32 @@ import { StudentComponent } from './student/student.component';
 import { StudentActionComponent } from './student-action/student-action.component';
 
 
+import { MaterialModule } from 'src/app/material.module';
+import { NgIconsModule } from '@ng-icons/core';
+import { QuillModule } from 'ngx-quill'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare } from '@ng-icons/bootstrap-icons';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentAddComponent } from './student-add/student-add.component';
+
+
+
 @NgModule({
   declarations: [
     StudentComponent,
     StudentActionComponent,
+    StudentAddComponent,
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    MaterialModule,
+    NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare }),
+    QuillModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class StudentModule { }

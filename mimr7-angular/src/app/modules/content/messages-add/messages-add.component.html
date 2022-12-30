@@ -25,7 +25,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="validationServer02">Hint</label>
                     <input type="text" formControlName="hint" class="form-control" id="validationServer02"
-                        placeholder="User name" required
+                        placeholder="Hint" required
                         [ngClass]="[(!collectionForm.get('hint')?.valid && collectionForm.get('hint')?.touched) ? 'is-invalid':'', (collectionForm.get('hint')?.valid && collectionForm.get('hint')?.touched) ? 'is-valid':'' ]">
                     <div class="valid-feedback" *ngIf="collectionForm.get('hint')?.valid">
                         Looks good!
@@ -40,7 +40,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="validationServer02">Solution</label>
                     <input type="text" formControlName="solution" class="form-control" id="validationServer02"
-                        placeholder="First name" required
+                        placeholder="Solution" required
                         [ngClass]="[(!collectionForm.get('solution')?.valid && collectionForm.get('solution')?.touched) ? 'is-invalid':'', (collectionForm.get('solution')?.valid && collectionForm.get('solution')?.touched) ? 'is-valid':'' ]">
                     <div class="valid-feedback" *ngIf="collectionForm.get('solution')?.valid">
                         Looks good!

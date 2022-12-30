@@ -29,24 +29,22 @@ export class AuthenticationGuard implements CanActivate {
     const role = localStorage.getItem('role');
     const path = state.url.split('/');
     let url = '';
-    if(path.length>=4){
-      url = path[3]
+    if (path.length >= 4) {
+      url = path[3];
+    } else {
+      url = path[path.length - 1];
     }
-    else{
-      url = path[path.length - 1]
-
-    }
+    console.log('URL BUSSY', url);
     PERMISSION.forEach((permission) => {
       if (role == permission.role) {
         if (permission.sites.includes(url)) {
           return this.Authguardservice.gettoken();
         } else {
           this.router.navigateByUrl(`dashboard/${permission.default}`);
-          return true
+          return true;
         }
-      }
-      else{
-        return false
+      } else {
+        return false;
       }
     });
     return this.Authguardservice.gettoken();
