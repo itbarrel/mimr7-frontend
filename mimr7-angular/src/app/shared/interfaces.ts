@@ -159,15 +159,16 @@ export interface CollectionLibrary{
   tags?: string;
   deletedAt?: string;
 }
-// "highlight": {
-//   "id": "d1005ae2-07a4-4d28-8508-45ee6ed8e757",
-//   "order": 0,
-//   "content": "highlight",
-//   "AccountId": "a5c835f5-d8c3-4e2e-9452-16eb756257aa",
-//   "CollectionId": "421ff778-1818-42a2-b119-760bd2b5c1fd",
-//   "updatedAt": "2022-09-26T11:38:56.135Z",
-//   "createdAt": "2022-09-26T11:38:56.135Z",
-//   "description": null,
-//   "deletedAt": null
-// }
-// }
+
+export interface Student{
+  id?: string;
+  name: string;
+  email: string;
+  mobilePhone: string;
+  AccountId?: string;
+  OrganizationId?: string;
+  updatedAt?: Date;
+  createdAt?: Date;
+  deletedAt?: any;
+}
+
