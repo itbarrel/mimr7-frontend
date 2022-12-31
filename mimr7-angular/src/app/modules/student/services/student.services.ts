@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { Content } from 'src/app/shared/interfaces';
+import { Content, Student } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -28,9 +28,9 @@ export class StudentService {
 //     this.contentState.next(content);
 //   }
 
-  add(data: Content): Observable<any> {
+  add(data: Student): Observable<any> {
     data.AccountId = this.user.AccountId;
-    data.UserId = this.user.id;
+    data.OrganizationId = this.user.OrganizationId;
     return this.http.post(`${environment.apiUrl}students`, data);
   }
 
@@ -55,7 +55,7 @@ export class StudentService {
   getById(id: string) {
     return this.http.get(`${environment.apiUrl}students/${id}`);
   }
-  update(id: string, data: Content) {
+  update(id: string, data: Student) {
     return this.http.put(`${environment.apiUrl}students/${id}`, data);
   }
 }
