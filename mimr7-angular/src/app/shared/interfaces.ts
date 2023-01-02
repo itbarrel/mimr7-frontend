@@ -172,3 +172,16 @@ export interface Student{
   deletedAt?: any;
 }
 
+
+
+
+export interface ClassList{
+  id?: string;
+  name: string;
+  description: string;
+  AccountId?: string;
+  OrganizationId?: string;
+  updatedAt?: Date;
+  createdAt?: Date;
+  deletedAt?: any;
+}

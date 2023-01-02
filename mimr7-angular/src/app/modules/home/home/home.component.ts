@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
         this.router.navigateByUrl('/dashboard/home/students');
         break;
       case 'isClasses':
+        this.router.navigateByUrl('/dashboard/home/class-lists');
         break;
       case 'isContents':
         this.router.navigateByUrl('/dashboard/home/contents');

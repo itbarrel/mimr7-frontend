@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StudentRoutingModule } from './student-routing.module';
-import { StudentComponent } from './student/student.component';
-import { StudentActionComponent } from './student-action/student-action.component';
-import { ClassListAddComponent } from './class-list-add/class-list-add.component';
+import { ClassListRoutingModule } from './class-list-routing.module';
 import { ClassListComponent } from './class-list/class-list.component';
+import { ClassListAddComponent } from './class-list-add/class-list-add.component';
+import { ClassListActionComponent } from './class-list-action/class-list-action.component';
 
 
 import { MaterialModule } from 'src/app/material.module';
@@ -15,21 +14,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare } from '@ng-icons/bootstrap-icons';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StudentAddComponent } from './student-add/student-add.component';
-
 
 
 @NgModule({
   declarations: [
-    StudentComponent,
-    StudentActionComponent,
-    StudentAddComponent,
+    ClassListComponent,
     ClassListAddComponent,
-    ClassListComponent
+    ClassListActionComponent
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule,
+    ClassListRoutingModule,
     MaterialModule,
     NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare }),
     QuillModule.forRoot(),
@@ -38,4 +33,4 @@ import { StudentAddComponent } from './student-add/student-add.component';
     NgbModule
   ]
 })
-export class StudentModule { }
+export class ClassListModule { }

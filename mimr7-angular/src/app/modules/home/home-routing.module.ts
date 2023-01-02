@@ -10,16 +10,22 @@ const routes: Routes = [
       import('../content/content.module').then((m) => m.ContentModule),
   },
   {
-    path: 'students',
+    path: '',
     component: HomeComponent,
     loadChildren: () =>
       import('../student/student.module').then((m) => m.StudentModule),
   },
-  {
-    path: '',
-    redirectTo: 'contents',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: 'class-lists',
+  //   component: HomeComponent,
+  //   loadChildren: () =>
+  //     import('../class-list/class-list.module').then((m) => m.ClassListModule),
+  // },
+  // {
+  //   path: '',
+  //   redirectTo: 'contents',
+  //   pathMatch: 'full',
+  // },
 ];
 
 @NgModule({

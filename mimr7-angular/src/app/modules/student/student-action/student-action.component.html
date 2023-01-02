@@ -1,12 +1,10 @@
 <div name="action-container" class="action-container shadow-lg p-3 mb-3 bg-white rounded card">
     <div class="actions-div">
-        <button type="button" class="btn btn-primary btn-sm action-btn" routerLink="/dashboard/home/students">Students</button>
-        <!-- <button type="button"
-        *ngIf="showHighlightBtn" class="btn btn-primary btn-sm action-btn" [routerLink]="highlightLink">Highlights</button>
-        <button type="button"
-        *ngIf="showMessagesBtn"  class="btn btn-primary btn-sm action-btn" [routerLink]="messageLink">Messages</button> -->
-        <!-- <button type="button" class="btn btn-primary btn-sm action-btn" routerLink="add">add Highlight</button> -->
-        <button class="btn btn-primary btn-sm action-btn" routerLink="/dashboard/home/students/add">
+        <button type="button" class="btn btn-primary btn-sm action-btn"
+            routerLink="/dashboard/home/organization">Organization</button>
+            <button type="button" class="btn btn-primary btn-sm action-btn" routerLink="/dashboard/home/classes">Classes</button>
+            <button type="button" class="btn btn-primary btn-sm action-btn" routerLink="/dashboard/home/students">Students</button>
+        <button class="btn btn-primary btn-sm action-btn" [routerLink]="addLink">
             <ng-icon name="bootstrapPlusCircle"></ng-icon>
         </button>
     </div>

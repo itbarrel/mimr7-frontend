@@ -1,20 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ClassListAddComponent } from './class-list-add/class-list-add.component';
+import { ClassListComponent } from './class-list/class-list.component';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'classes',
+    component: ClassListComponent
+  },
+  {
+    path: 'classes/add',
+    component: ClassListAddComponent
+  },
+  {
+    path: 'classes/:id',
+    component: ClassListAddComponent
+  },
+  {
+    path: 'students',
     component: StudentComponent,
   },
   {
-    path: 'add',
+    path: 'students/add',
     component: StudentAddComponent,
     pathMatch:'full'
   },
   {
-    path: ':id',
+    path: 'students/:id',
     component: StudentAddComponent,
     pathMatch:'full'
   },
