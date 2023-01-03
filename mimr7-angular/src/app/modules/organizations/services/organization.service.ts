@@ -40,7 +40,9 @@ export class OrganizationService {
     name?: string
   ) {
     const sort: any = {};
-    sort[sortChange.active] = sortChange.direction;
+    if(sortChange){
+      sort[sortChange.active] = sortChange.direction;
+    }
     const query = {
       sort,
     };

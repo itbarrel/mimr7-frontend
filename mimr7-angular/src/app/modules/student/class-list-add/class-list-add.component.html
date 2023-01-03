@@ -1,2 +1,29 @@
 <app-student-action></app-student-action>
-<p>It works</p>
+
+
+<div name="result-container" class="result-container shadow-lg p-3 mb-3 bg-white rounded card">
+    <br />
+    <div style="display: flex;">
+        <div class="form-group col-md-6 mb-3">
+            <label for="exampleFormControlInput1">Name</label>
+            <input type="text" [(ngModel)]="name" class="form-control" id="exampleFormControlInput1"
+                placeholder="title">
+        </div>
+        <div class="form-group col-md-6 mb-3">
+            <label for="exampleFormControlInput1">Organization</label>
+            <select class="form-control form-select" [(ngModel)]="organizationId" id="exampleFormControlSelect1">
+                <option *ngFor="let org of organizations" [value]="org.id" [selected]="org.id===organizationId">
+                    {{org.name}}</option>
+            </select>
+        </div>
+    </div>
+        <br />
+    <quill-editor [(ngModel)]="htmlText" placeholder="Enter Text" [modules]="quillConfig"></quill-editor>
+
+    <div class="center">
+        <button type="button" (click)="submit()"
+            class="btn btn-primary btn-sm col-md-1 ml-2">{{update?'Update':'Add'}}</button>
+        <button *ngIf="update" type="button" routerLink="../" class="btn col-md-1 btn-sm ml-2">cancel</button>
+    </div>
+
+</div>
