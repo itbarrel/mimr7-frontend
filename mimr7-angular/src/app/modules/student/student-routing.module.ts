@@ -2,10 +2,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClassListAddComponent } from './class-list-add/class-list-add.component';
 import { ClassListComponent } from './class-list/class-list.component';
+import { OrganizationAddComponent } from './organization-add/organization-add.component';
+import { OrganizationComponent } from './organization/organization.component';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
+  {
+    path: 'organizations',
+    component: OrganizationComponent
+  },
+  {
+    path: 'organizations/add',
+    component: OrganizationAddComponent
+  },
+  {
+    path: 'organizations/:id',
+    component: OrganizationAddComponent
+  },
   {
     path: 'classes',
     component: ClassListComponent

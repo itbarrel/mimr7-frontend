@@ -16,6 +16,8 @@ import { bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare } from
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentAddComponent } from './student-add/student-add.component';
+import { OrganizationComponent } from './organization/organization.component';
+import { OrganizationAddComponent } from './organization-add/organization-add.component';
 
 
 
@@ -25,7 +27,9 @@ import { StudentAddComponent } from './student-add/student-add.component';
     StudentActionComponent,
     StudentAddComponent,
     ClassListAddComponent,
-    ClassListComponent
+    ClassListComponent,
+    OrganizationComponent,
+    OrganizationAddComponent
   ],
   imports: [
     CommonModule,
