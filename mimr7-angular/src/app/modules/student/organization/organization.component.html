@@ -1,0 +1,93 @@
+<app-student-action></app-student-action>
+
+<div>
+    <mat-card class="breadcrumb-container">
+        <mat-card-content style="width: 100%;">
+            <div name="filter-div" class="filter-container">
+                <div name="name-filter">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Search by name</mat-label>
+                        <input matInput type="text" [(ngModel)]="name" (keyup.enter)="searchByFilters()">
+                    </mat-form-field>
+                </div>
+                <div mat-dialog-actions align="end">
+                    <span>
+                        <button type="button" mat-flat-button color="primary" (click)="clearFilters()">
+                            Clear
+                        </button>
+                        <button type="button" mat-stroked-button color="primary" (click)="searchByFilters()">
+                            Search
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <div class="example-container mat-elevation-z8">
+            <div class="example-loading-shade" *ngIf="isLoadingResults">
+                <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            </div>
+            <div class="example-table-container" *ngIf="data | async as dataLoaded">
+                <table mat-table [dataSource]="dataLoaded" class="example-table" class="mat-elevation-z8" matSort
+                    matSortActive="created" matSortDisableClear matSortDirection="desc"
+                    (matSortChange)="applySort($event)">
+                    <!-- Number Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+                            Name
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+                    </ng-container>
+
+                    <!-- Title Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell mat-sort-header disableClear *matHeaderCellDef>
+                            Status
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+                    </ng-container>
+
+                    <!-- State Column -->
+                    <ng-container matColumnDef="city">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            City
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.city }}</td>
+                    </ng-container>
+
+                    <!-- Created Column -->
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Created
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{ row.createdAt | date }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let row">
+                            <div class="table-actions">
+                                <span class="click-icon">
+                                    <mat-icon>preview</mat-icon>
+                                </span>
+                                <span class="table-action-item"> | </span>
+                                <span class="click-icon">
+                                    <a [routerLink]="[row.id,{edit:true}]">
+                                        <mat-icon>edit</mat-icon>
+                                    </a>
+                                </span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+
+            <mat-paginator [length]="resultsLength" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                (page)="pageChanged($event)"></mat-paginator>
+        </div>
+    </mat-card>
+</div>
