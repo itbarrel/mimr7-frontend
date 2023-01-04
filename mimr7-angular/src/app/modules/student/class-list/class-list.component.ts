@@ -13,7 +13,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 import { ClassList } from 'src/app/shared/interfaces';
-import { ClassListService } from '../services/class-list.services';
+import { ClassListService } from '../services/class-list.service';
 
 @Component({
   selector: 'app-class-list',

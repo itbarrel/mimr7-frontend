@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Highlight } from 'src/app/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HighlightService } from '../services/highlight.services';
+import { HighlightService } from '../services/highlight.service';
 
 @Component({
   selector: 'app-highlight-add',

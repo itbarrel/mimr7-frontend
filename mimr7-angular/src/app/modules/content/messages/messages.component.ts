@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Message } from 'src/app/shared/interfaces';
-import { MessageService } from '../services/message.services';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-messages',

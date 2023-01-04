@@ -13,7 +13,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Content } from 'src/app/shared/interfaces';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HighlightService } from '../services/highlight.services';
+import { HighlightService } from '../services/highlight.service';
 
 @Component({
   selector: 'app-highlights',

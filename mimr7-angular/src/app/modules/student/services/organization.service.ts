@@ -59,4 +59,8 @@ export class OrganizationService {
   updateOrganization(id: string, data: Organization) {
     return this.http.put(`${environment.apiUrl}organizations/${id}`, data);
   }
+
+  getById(id: string) {
+    return this.http.get(`${environment.apiUrl}organizations/${id}`);
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/shared/interfaces';
-import { MessageService } from '../services/message.services';
+import { MessageService } from '../services/message.service';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 

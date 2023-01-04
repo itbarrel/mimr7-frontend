@@ -3,7 +3,7 @@ import 'quill-mention';
 import 'quill-emoji';
 import { ToastrService } from 'ngx-toastr';
 import { Content } from 'src/app/shared/interfaces';
-import { ContentService } from '../services/content.services';
+import { ContentService } from '../services/content.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

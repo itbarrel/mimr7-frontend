@@ -13,7 +13,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 
 import { Student } from 'src/app/shared/interfaces';
-import { StudentService } from '../services/student.services';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-student',

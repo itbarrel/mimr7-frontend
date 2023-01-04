@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassList, Organization } from 'src/app/shared/interfaces';
 import { Location } from '@angular/common';
-import { ClassListService } from '../services/class-list.services';
+import { ClassListService } from '../services/class-list.service';
 import { OrganizationService } from '../../organizations/services/organization.service';
 
 @Component({

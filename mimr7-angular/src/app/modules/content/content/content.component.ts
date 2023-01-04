@@ -13,7 +13,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Content } from 'src/app/shared/interfaces';
 import { BreadCrumbService } from 'src/app/shared/services/breadcrumb.service';
 import { Router } from '@angular/router';
-import { ContentService } from '../services/content.services';
+import { ContentService } from '../services/content.service';
 
 @Component({
   selector: 'app-content',
