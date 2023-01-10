@@ -36,6 +36,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -76,6 +77,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTreeModule,
     ScrollingModule,
     MatFormFieldModule,
+    DragDropModule,
   ],
 
   exports: [
@@ -116,7 +118,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTreeModule,
     ScrollingModule,
     MatFormFieldModule,
-
   ],
 })
 export class MaterialModule {}

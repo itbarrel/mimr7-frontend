@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentAddComponent } from './student-add/student-add.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { OrganizationAddComponent } from './organization-add/organization-add.component';
+import { ImportStudentsComponent } from './import-students/import-students.component';
+import { DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -29,7 +31,8 @@ import { OrganizationAddComponent } from './organization-add/organization-add.co
     ClassListAddComponent,
     ClassListComponent,
     OrganizationComponent,
-    OrganizationAddComponent
+    OrganizationAddComponent,
+    ImportStudentsComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ import { OrganizationAddComponent } from './organization-add/organization-add.co
     QuillModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    DragDropModule
   ]
 })
 export class StudentModule { }

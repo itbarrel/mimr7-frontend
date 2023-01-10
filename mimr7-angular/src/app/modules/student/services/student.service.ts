@@ -12,8 +12,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   providedIn: 'root',
 })
 export class StudentService {
-//   private contentState = new BehaviorSubject<Content[]>([]);
-//   contentState$ = this.contentState.asObservable();
+  //   private contentState = new BehaviorSubject<Content[]>([]);
+  //   contentState$ = this.contentState.asObservable();
   user: any;
   constructor(private http: HttpClient, private auth: AuthenticationService) {
     this.auth.getUserState().subscribe((res) => {
@@ -21,12 +21,12 @@ export class StudentService {
     });
   }
 
-//   get() {
-//     return this.contentState$;
-//   }
-//   set(content: Content[]) {
-//     this.contentState.next(content);
-//   }
+  //   get() {
+  //     return this.contentState$;
+  //   }
+  //   set(content: Content[]) {
+  //     this.contentState.next(content);
+  //   }
 
   add(data: Student): Observable<any> {
     data.AccountId = this.user.AccountId;
@@ -57,5 +57,9 @@ export class StudentService {
   }
   update(id: string, data: Student) {
     return this.http.put(`${environment.apiUrl}students/${id}`, data);
+  }
+
+  getByClass(classId: string) {
+    return this.http.get(`${environment.apiUrl}students/classList/${classId}`);
   }
 }
