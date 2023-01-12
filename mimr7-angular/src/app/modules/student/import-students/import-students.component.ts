@@ -8,6 +8,7 @@ import { StudentService } from '../services/student.service';
 import { Student } from 'src/app/shared/interfaces';
 import { ClassListService } from '../services/class-list.service';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-import-students',
@@ -44,7 +45,7 @@ export class ImportStudentsComponent implements OnInit {
     this.classListService.getById(this.classListId).subscribe((res: any) => {
       console.log('already added', res.classList[0].Students);
       this.addedStudents = res.classList[0].Students;
-      this.addedStudents.forEach((student: any) => {
+      res.classList[0].Students.forEach((student: any) => {
         console.log('callinf from loop ', student);
         this.oldstudents.push(student.id);
       });
@@ -74,7 +75,7 @@ export class ImportStudentsComponent implements OnInit {
         event.currentIndex
       );
     }
-    console.log(this.addedStudents);
+    console.log('OOOOOO', this.addedStudents);
   }
 
   submit() {
@@ -87,11 +88,25 @@ export class ImportStudentsComponent implements OnInit {
     this.students.forEach((stu, index) => {
       this.oldstudents.forEach((old, newInd) => {
         if (old === stu) {
-          console.log('found');
+          console.log(old, 'found', stu);
           this.students.splice(index, 1);
           this.oldstudents.splice(newInd, 1);
         }
       });
+    });
+    console.log(this.students, '---------', this.oldstudents);
+    let addReq = this.classListService.addStudentsToClass(this.classListId, {
+      students: this.students,
+    });
+    let delReq = this.classListService.deleteStudentFromClass(
+      this.classListId,
+      {
+        students: this.oldstudents,
+      }
+    );
+
+    forkJoin([addReq, delReq]).subscribe((responseList) => {
+      console.log('task completed', responseList);
     });
     this.classListService
       .addStudentsToClass(this.classListId, {
@@ -99,9 +114,11 @@ export class ImportStudentsComponent implements OnInit {
       })
       .subscribe((res) => {
         console.log('students adds', res);
+        window.location.reload();
       });
     console.log(this.students, '-----%%%%----', this.oldstudents);
   }
+
   getStudentByClassId() {
     this.studentService.getByClass(this.classListId).subscribe((res: any) => {
       this.availableStudents = res.student;

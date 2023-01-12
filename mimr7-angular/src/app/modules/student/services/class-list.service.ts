@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
@@ -63,6 +63,19 @@ export class ClassListService {
     return this.http.post(
       `${environment.apiUrl}classLists/${id}/students`,
       data
+    );
+  }
+
+  deleteStudentFromClass(id: string, data: any) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: data,
+    };
+    return this.http.delete(
+      `${environment.apiUrl}classLists/${id}/students`,
+      options
     );
   }
 }
