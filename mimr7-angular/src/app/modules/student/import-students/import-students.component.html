@@ -2,25 +2,81 @@
 
 <mat-card class="drag-drop-contianer">
 
-    <div class="drag-drop">
+    <!-- <div class="drag-drop">
 
         <div class="example-container col-sm-6">
             <h2>Added Students</h2>
+            <div class="input-group mb-3">
+                <span class="input-group-text icon-container" id="inputGroup-sizing-default">
+                    <ng-icon name="bootstrapSearch"></ng-icon>
+                </span>
+                <input type="text" [(ngModel)]="addedFilter" class="form-control" aria-label="Sizing example input"
+                    placeholder="Search by name" aria-describedby="inputGroup-sizing-sm">
+            </div>
 
             <div id="added" cdkDropList #todoList="cdkDropList" [cdkDropListData]="addedStudents"
                 [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of addedStudents" cdkDrag>{{item.name}}</div>
+                <div class="example-box" *ngFor="let item of addedStudents | filter:addedFilter" cdkDrag>{{item.name}}
+                </div>
             </div>
         </div>
 
         <div class="example-container col-sm-6">
             <h2>Available Students</h2>
+            <div class="input-group mb-3">
+                <span class="input-group-text icon-container" id="inputGroup-sizing-default">
+                    <ng-icon name="bootstrapSearch"></ng-icon>
+                </span>
+                <input type="text" [(ngModel)]="availableFilter" class="form-control" aria-label="Sizing example input"
+                    placeholder="Search by name" aria-describedby="inputGroup-sizing-sm">
+            </div>
 
             <div id="avaialable" cdkDropList #doneList="cdkDropList" [cdkDropListData]="availableStudents"
                 [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of availableStudents" cdkDrag>{{item.name}}</div>
+                <div class="example-box" *ngFor="let item of availableStudents | filter:availableFilter" cdkDrag>
+                    {{item.name}}</div>
             </div>
         </div>
+    </div> -->
+
+
+    <div class="" name="upper-div">
+        <div class="col-md-12 center">
+            <h1>
+                {{txt}}
+            </h1>
+        </div>
+        <div class="input-group mb-3 input-search col-md-12">
+            <span class="input-group-text icon-container" id="inputGroup-sizing-default">
+                <ng-icon name="bootstrapSearch"></ng-icon>
+            </span>
+            <input type="text" [(ngModel)]="addedFilter" class="form-control" aria-label="Sizing example input"
+                placeholder="Search by name" aria-describedby="inputGroup-sizing-sm">
+        </div>
+    </div>
+    <!-- </mat-card> -->
+    <div class="row row-container">
+        <section class="cards-custom col-md-3" (click)="importDeleteStudent(student)"
+            *ngFor="let student of availableStudents | filter:addedFilter">
+            <div class="card" style="    min-width: 220px;
+        min-height: 130px;
+        padding: 15px; background-color:#51cfdc80; margin: 10px;">
+                <span class="badge badge-success" *ngIf="student.checked" style="    position: absolute;
+                right: 10px;
+                top: 10px;">Selected</span>
+                <div style="display: flex; align-items: center;">
+                    <div class="circle-custom">
+                        <div class="circle-text-custom">{{student.name.charAt(0) | uppercase}} </div>
+                    </div>
+                    <div class="name-div">{{student.name}}</div>
+                </div>
+
+                <div style="margin-left: 20%;">{{student.mobilePhone}}</div>
+                <div style="margin-left: 20%;">{{student.email}}</div>
+            </div>
+
+
+        </section>
     </div>
 
 

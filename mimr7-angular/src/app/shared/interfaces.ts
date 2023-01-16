@@ -170,6 +170,7 @@ export interface Student{
   updatedAt?: Date;
   createdAt?: Date;
   deletedAt?: any;
+  checked?:boolean
 }
 
 

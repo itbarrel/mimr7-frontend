@@ -100,7 +100,13 @@
                         <td mat-cell *matCellDef="let row">
                             <div class="table-actions">
                                 <span class="click-icon">
-                                    <button type="button" routerLink="{{row.id}}/import-students" class="btn btn-primary btn-sm">Import Students</button>
+                                    <button type="button" [routerLink]="[row.id+'/import-students',{import:true}]"
+                                        class="btn btn-primary btn-sm">Import Students</button>
+                                </span>
+                                <span class="table-action-item"> | </span>
+                                <span class="click-icon">
+                                    <button type="button" [routerLink]="[row.id+'/import-students',{import:false}]"
+                                        class="btn btn-primary btn-sm">Remove Students</button>
                                 </span>
                                 <span class="table-action-item"> | </span>
                                 <span class="click-icon">

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import 'quill-mention';
 import 'quill-emoji';
 import { ToastrService } from 'ngx-toastr';

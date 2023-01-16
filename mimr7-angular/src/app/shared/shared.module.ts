@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FixedPluginComponent } from './components/fixedplugin/fixedplugin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material.module';
+import { FilterPipe } from './pipes/FilterPipe.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material.module';
     BreadcrumbComponent,
     FooterComponent,
     NavbarComponent,
-    FixedPluginComponent
+    FixedPluginComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { MaterialModule } from '../material.module';
     BreadcrumbComponent,
     NavbarComponent,
     FooterComponent,
-    FixedPluginComponent
+    FixedPluginComponent,
+    FilterPipe
   ]
 })
 export class SharedModule { }

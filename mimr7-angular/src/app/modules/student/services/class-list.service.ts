@@ -60,10 +60,9 @@ export class ClassListService {
   }
 
   addStudentsToClass(id: string, data: any) {
-    return this.http.post(
-      `${environment.apiUrl}classLists/${id}/students`,
-      data
-    );
+    return this.http.post(`${environment.apiUrl}classLists/${id}/students`, {
+      students: data,
+    });
   }
 
   deleteStudentFromClass(id: string, data: any) {
@@ -71,7 +70,7 @@ export class ClassListService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: data,
+      body: { students: data },
     };
     return this.http.delete(
       `${environment.apiUrl}classLists/${id}/students`,
