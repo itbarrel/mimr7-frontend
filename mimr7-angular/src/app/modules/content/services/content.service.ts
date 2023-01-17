@@ -58,4 +58,8 @@ export class ContentService {
   update(id: string, data: Content) {
     return this.http.put(`${environment.apiUrl}contents/${id}`, data);
   }
+
+  getContentByClassId(id: string) {
+    return this.http.get(`${environment.apiUrl}contents/classList/${id}`);
+  }
 }

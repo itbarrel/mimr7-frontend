@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClassListAddComponent } from './class-list-add/class-list-add.component';
 import { ClassListComponent } from './class-list/class-list.component';
+import { ImportContentComponent } from './import-content/import-content.component';
 import { ImportStudentsComponent } from './import-students/import-students.component';
 import { OrganizationAddComponent } from './organization-add/organization-add.component';
 import { OrganizationComponent } from './organization/organization.component';
@@ -11,31 +12,35 @@ import { StudentComponent } from './student/student.component';
 const routes: Routes = [
   {
     path: 'organizations',
-    component: OrganizationComponent
+    component: OrganizationComponent,
   },
   {
     path: 'organizations/add',
-    component: OrganizationAddComponent
+    component: OrganizationAddComponent,
   },
   {
     path: 'organizations/:id',
-    component: OrganizationAddComponent
+    component: OrganizationAddComponent,
   },
   {
     path: 'classes',
-    component: ClassListComponent
+    component: ClassListComponent,
   },
   {
     path: 'classes/add',
-    component: ClassListAddComponent
+    component: ClassListAddComponent,
   },
   {
     path: 'classes/:id',
-    component: ClassListAddComponent
+    component: ClassListAddComponent,
   },
   {
     path: 'classes/:id/import-students',
-    component: ImportStudentsComponent
+    component: ImportStudentsComponent,
+  },
+  {
+    path: 'classes/:id/import-contents',
+    component: ImportContentComponent,
   },
   {
     path: 'students',
@@ -44,46 +49,17 @@ const routes: Routes = [
   {
     path: 'students/add',
     component: StudentAddComponent,
-    pathMatch:'full'
+    pathMatch: 'full',
   },
   {
     path: 'students/:id',
     component: StudentAddComponent,
-    pathMatch:'full'
+    pathMatch: 'full',
   },
-  // {
-  //   path: ':id/highlights',
-  //   component: HighlightsComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: ':id/highlights/add',
-  //   component: HighlightAddComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: ':id/highlights/:hid',
-  //   component: HighlightAddComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: ':id/highlights/:hid/messages',
-  //   component: MessagesComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: ':id/highlights/:hid/messages/:mid',
-  //   component: MessagesAddComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: ':id/highlights/:hid/messages/add',
-  //   component: MessagesAddComponent,
-  //   pathMatch:'full'
-  // },
+  
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class StudentRoutingModule { }
+export class StudentRoutingModule {}

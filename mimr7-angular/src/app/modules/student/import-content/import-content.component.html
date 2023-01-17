@@ -1,0 +1,57 @@
+<app-student-action></app-student-action>
+
+<mat-card class="drag-drop-contianer">
+
+    <div class="" name="upper-div">
+        <div class="col-md-12 center">
+            <h1>
+                {{txt}}
+            </h1>
+        </div>
+        <div class="input-group mb-3 input-search col-md-12">
+            <span class="input-group-text icon-container" id="inputGroup-sizing-default">
+                <ng-icon name="bootstrapSearch"></ng-icon>
+            </span>
+            <input type="text" [(ngModel)]="addedFilter" class="form-control" aria-label="Sizing example input"
+                placeholder="Search by name" aria-describedby="inputGroup-sizing-sm">
+        </div>
+    </div>
+    <!-- </mat-card> -->
+    <div class="row row-container">
+        <section class="cards-custom col-md-3" (click)="importDeleteStudent(student)"
+            *ngFor="let student of availableContent | filter:addedFilter">
+            <div class="card" style="    min-width: 220px;
+        min-height: 130px;
+        padding: 15px; background-color:#51cfdc80; margin: 10px;">
+                <span class="badge badge-success" *ngIf="student.checked" style="    position: absolute;
+                right: 10px;
+                top: 10px;">Selected</span>
+                <div style="display: flex; align-items: center;">
+                    <div class="circle-custom">
+                        <div class="circle-text-custom">{{student.name.charAt(0) | uppercase}} </div>
+                    </div>
+                    <div class="name-div">{{student.name}}</div>
+                </div>
+
+                <div style="margin-left: 20%;">{{student.mobilePhone}}</div>
+                <div style="margin-left: 20%;">{{student.email}}</div>
+            </div>
+
+
+        </section>
+    </div>
+
+
+    <div class="center col-sm-12">
+        <button type="button" (click)="submit()" class="btn btn-primary btn-sm col-md-1 ml-2">Submit</button>
+        <button type="button" routerLink="../../" class="btn col-md-1 btn-sm ml-2">cancel</button>
+    </div>
+
+</mat-card>
+
+
+
+
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at https://angular.io/license -->

@@ -16,6 +16,10 @@ import {
   bootstrapPlusCircle,
   bootstrapPencilSquare,
   bootstrapSearch,
+  bootstrapPersonPlus,
+  bootstrapPersonX,
+  bootstrapClipboard2Plus,
+  bootstrapClipboard2Minus,
 } from '@ng-icons/bootstrap-icons';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +29,7 @@ import { OrganizationAddComponent } from './organization-add/organization-add.co
 import { ImportStudentsComponent } from './import-students/import-students.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ImportContentComponent } from './import-content/import-content.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     OrganizationComponent,
     OrganizationAddComponent,
     ImportStudentsComponent,
+    ImportContentComponent,
   ],
   imports: [
     CommonModule,
@@ -46,13 +52,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
       bootstrapPlusCircle,
       bootstrapPencilSquare,
       bootstrapSearch,
+      bootstrapPersonPlus,
+      bootstrapPersonX,
+      bootstrapClipboard2Plus,
+      bootstrapClipboard2Minus,
     }),
     QuillModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
     DragDropModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class StudentModule {}
