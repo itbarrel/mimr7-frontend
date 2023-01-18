@@ -77,4 +77,23 @@ export class ClassListService {
       options
     );
   }
+
+  addContentToClass(id: string, data: any) {
+    return this.http.post(`${environment.apiUrl}classLists/${id}/contents`, {
+      contents: data,
+    });
+  }
+
+  deleteContentFromClass(id: string, data: any) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: { contents: data },
+    };
+    return this.http.delete(
+      `${environment.apiUrl}classLists/${id}/contents`,
+      options
+    );
+  }
 }

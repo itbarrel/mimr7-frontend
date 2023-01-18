@@ -41,8 +41,9 @@ export class ImportContentComponent implements OnInit {
   getContentByClassId() {
     this.contentService
       .getContentByClassId(this.classListId)
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         console.log('content by class id', res);
+        this.availableContent = res.Contents;
       });
   }
 
@@ -52,19 +53,38 @@ export class ImportContentComponent implements OnInit {
       this.availableContent = res.classList[0].Contents;
     });
   }
-  submit() {}
+  submit() {
+    if (this.importContent) {
+      this.classListService
+        .addContentToClass(this.classListId, this.contents)
+        .subscribe((res) => {
+          this.toaster.success('content added successfuly');
+          this.router.navigateByUrl(`/dashboard/home/classes`);
+          console.log(res);
+        });
+    } else {
+      this.classListService
+        .deleteContentFromClass(this.classListId, this.contents)
+        .subscribe((res) => {
+          this.toaster.success('content deleted successfuly');
+          this.router.navigateByUrl(`/dashboard/home/classes`);
 
-  importDeleteStudent(student: Content) {
-    this.availableContent.forEach((stu) => {
-      // if (student.id === stu.id) {
-      //   if (student.checked) {
-      //     stu.checked = false;
-      //     this.students = this.students.filter((e) => e !== stu.id);
-      //   } else {
-      //     stu.checked = true;
-      //     this.students.push(stu.id || '');
-      //   }
-      // }
+          console.log(res);
+        });
+    }
+  }
+
+  importDeleteStudent(content: Content) {
+    this.availableContent.forEach((cntnt) => {
+      if (content.id === cntnt.id) {
+        if (content.checked) {
+          cntnt.checked = false;
+          this.contents = this.contents.filter((e) => e !== cntnt.id);
+        } else {
+          cntnt.checked = true;
+          this.contents.push(cntnt.id || '');
+        }
+      }
     });
     // console.log('asdasd', this.students);
   }
