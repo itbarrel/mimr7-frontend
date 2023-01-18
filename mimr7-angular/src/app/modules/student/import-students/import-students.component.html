@@ -57,7 +57,7 @@
     <!-- </mat-card> -->
     <div class="row row-container">
         <section class="cards-custom col-md-3" (click)="importDeleteStudent(student)"
-            *ngFor="let student of availableStudents | filter:addedFilter">
+            *ngFor="let student of availableStudents | filter:addedFilter:'students'">
             <div class="card" style="    min-width: 220px;
         min-height: 130px;
         padding: 15px; background-color:#51cfdc80; margin: 10px;">
