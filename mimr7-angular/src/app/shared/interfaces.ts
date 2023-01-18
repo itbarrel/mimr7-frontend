@@ -76,13 +76,14 @@ export interface Content {
   updatedAt?: string;
   deletedAt?: string;
   description?: string;
+  checked?: boolean;
 }
 export interface Highlight {
   id?: string;
   order?: number;
   content: string;
   AccountId?: string;
-  ContentId?:string;
+  ContentId?: string;
   CollectionId?: string;
   description?: string;
   createdAt?: string;
@@ -91,7 +92,7 @@ export interface Highlight {
 }
 
 export interface Location {
-  id?:string;
+  id?: string;
   address1: string;
   address2: string;
   address3: string;
@@ -108,7 +109,7 @@ export interface Location {
   deletedAt?: string;
 }
 export interface Message {
-  id?:string;
+  id?: string;
   name: string;
   hint: string;
   solution: string;
@@ -122,18 +123,18 @@ export interface Message {
   deletedAt?: string;
 }
 
-export interface HighlightLibrary{
+export interface HighlightLibrary {
   id?: string;
   parentType?: string;
   active?: boolean;
   title: string;
-  AccountId?:string;
-  parentId:string;
-  updatedAt?:string;
-  createdAt?:string;
-  description:string;
-  link?:string;
-  filename?:string;
+  AccountId?: string;
+  parentId: string;
+  updatedAt?: string;
+  createdAt?: string;
+  description: string;
+  link?: string;
+  filename?: string;
   url?: string;
   type?: string;
   mimetype?: string;
@@ -141,18 +142,18 @@ export interface HighlightLibrary{
   deletedAt?: string;
 }
 
-export interface CollectionLibrary{
+export interface CollectionLibrary {
   id?: string;
   parentType?: string;
   active?: boolean;
   title: string;
-  AccountId?:string;
-  parentId:string;
-  updatedAt?:string;
-  createdAt?:string;
-  description:string;
-  link?:string;
-  filename?:string;
+  AccountId?: string;
+  parentId: string;
+  updatedAt?: string;
+  createdAt?: string;
+  description: string;
+  link?: string;
+  filename?: string;
   url?: string;
   type?: string;
   mimetype?: string;
@@ -160,7 +161,7 @@ export interface CollectionLibrary{
   deletedAt?: string;
 }
 
-export interface Student{
+export interface Student {
   id?: string;
   name: string;
   email: string;
@@ -170,13 +171,10 @@ export interface Student{
   updatedAt?: Date;
   createdAt?: Date;
   deletedAt?: any;
-  checked?:boolean
+  checked?: boolean;
 }
 
-
-
-
-export interface ClassList{
+export interface ClassList {
   id?: string;
   name: string;
   description: string;
