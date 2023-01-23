@@ -12,15 +12,17 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
-  declarations: [HighlightsComponent, HighlightsAddComponent],
+  declarations: [
+    // HighlightsComponent, HighlightsAddComponent
+  ],
   imports: [
-    CommonModule,
-    HighlightsRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    SharedModule,
-    NgSelectModule
+    // CommonModule,
+    // HighlightsRoutingModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // MaterialModule,
+    // SharedModule,
+    // NgSelectModule
   ],
 })
 export class HighlightsModule {}

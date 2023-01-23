@@ -13,17 +13,17 @@ import { CollectionAddComponent } from './collection-add/collection-add.componen
 
 @NgModule({
   declarations: [
-    CollectionsComponent,
-    CollectionModalComponent,
-    CollectionAddComponent
+    // CollectionsComponent,
+    // CollectionModalComponent,
+    // CollectionAddComponent
   ],
   imports: [
-    CommonModule,
-    CollectionsRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
+    // CommonModule,
+    // CollectionsRoutingModule,
+    // MaterialModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // SharedModule,
   ]
 })
 export class CollectionsModule { }

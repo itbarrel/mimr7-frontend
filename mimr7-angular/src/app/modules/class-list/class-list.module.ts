@@ -18,19 +18,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    ClassListComponent,
-    ClassListAddComponent,
-    ClassListActionComponent
+    // ClassListComponent,
+    // ClassListAddComponent,
+    // ClassListActionComponent
   ],
   imports: [
-    CommonModule,
-    ClassListRoutingModule,
-    MaterialModule,
-    NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare }),
-    QuillModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
-    NgbModule
+    // CommonModule,
+    // ClassListRoutingModule,
+    // MaterialModule,
+    // NgIconsModule.withIcons({ bootstrapCaretDownFill,bootstrapPlusCircle,bootstrapPencilSquare }),
+    // QuillModule.forRoot(),
+    // FormsModule,
+    // ReactiveFormsModule,
+    // NgbModule
   ]
 })
 export class ClassListModule { }

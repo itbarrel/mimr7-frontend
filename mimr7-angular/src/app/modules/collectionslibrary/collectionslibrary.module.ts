@@ -14,17 +14,17 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    CollectionslibraryComponent,
-    CollectionslibraryAddComponent
+    // CollectionslibraryComponent,
+    // CollectionslibraryAddComponent
   ],
   imports: [
-    CommonModule,
-    CollectionslibraryRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-    NgSelectModule
+    // CommonModule,
+    // CollectionslibraryRoutingModule,
+    // MaterialModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // SharedModule,
+    // NgSelectModule
   ]
 })
 export class CollectionslibraryModule { }

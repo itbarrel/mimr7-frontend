@@ -12,26 +12,26 @@ const routes: Routes = [
     loadChildren: () =>
       import('../organizations/organizations.module').then((m) => m.OrganizationsModule),
   },
-  {
-    path: 'collections',
-    loadChildren: () =>
-      import('../collections/collections.module').then((m) => m.CollectionsModule),
-  },
-  {
-    path: 'collectionslibrary',
-    loadChildren: () =>
-      import('../collectionslibrary/collectionslibrary.module').then((m) => m.CollectionslibraryModule),
-  },
-  {
-    path: 'highlights',
-    loadChildren: () =>
-      import('../highlights/highlights.module').then((m) => m.HighlightsModule),
-  },
-  {
-    path: 'highlightslibrary',
-    loadChildren: () =>
-      import('../highlightslibrary/highlightslibrary.module').then((m) => m.HighlightslibraryModule),
-  },
+  // {
+  //   path: 'collections',
+  //   loadChildren: () =>
+  //     import('../collections/collections.module').then((m) => m.CollectionsModule),
+  // },
+  // {
+  //   path: 'collectionslibrary',
+  //   loadChildren: () =>
+  //     import('../collectionslibrary/collectionslibrary.module').then((m) => m.CollectionslibraryModule),
+  // },
+  // {
+  //   path: 'highlights',
+  //   loadChildren: () =>
+  //     import('../highlights/highlights.module').then((m) => m.HighlightsModule),
+  // },
+  // {
+  //   path: 'highlightslibrary',
+  //   loadChildren: () =>
+  //     import('../highlightslibrary/highlightslibrary.module').then((m) => m.HighlightslibraryModule),
+  // },
   {
     path: 'locations',
     loadChildren: () =>
