@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EnvService } from './env.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mimr7-angular';
+
+  constructor(private env: EnvService) {}
+  ngOnInit() {
+    console.log('sadfasjkdhfsdjfsad', this.env.privateKey);
+  }
 }

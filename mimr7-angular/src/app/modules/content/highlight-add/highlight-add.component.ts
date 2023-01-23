@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 import 'quill-mention';
 import 'quill-emoji';
 import { ToastrService } from 'ngx-toastr';
-
 
 import { Highlight } from 'src/app/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,17 +12,15 @@ import { HighlightService } from '../services/highlight.service';
 @Component({
   selector: 'app-highlight-add',
   templateUrl: './highlight-add.component.html',
-  styleUrls: ['./highlight-add.component.scss']
+  styleUrls: ['./highlight-add.component.scss'],
 })
 export class HighlightAddComponent implements OnInit {
-
   htmlText = '';
   hasFocus = false;
   subject: string = '';
   update: boolean = false;
   highlightId: string = '';
   contentId: string = '';
-
 
   atValues = [
     { id: 1, value: 'Fredrik Sundqvist', link: 'https://google.com' },
@@ -79,8 +76,8 @@ export class HighlightAddComponent implements OnInit {
             if (
               ~values[i].value.toLowerCase().indexOf(searchTerm.toLowerCase())
             )
-              matches.push(values[i]);
-          renderList(matches, searchTerm);
+              // matches.push(values[i]);
+              renderList(matches, searchTerm);
         }
       },
     },
@@ -117,7 +114,7 @@ export class HighlightAddComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.contentId = this.route.snapshot.paramMap.get('id') || '';
-    this.checkParams()
+    this.checkParams();
   }
   checkParams() {
     if (this.route.snapshot.paramMap.get('edit')) {
@@ -126,7 +123,7 @@ export class HighlightAddComponent implements OnInit {
       this.highlightService
         .getById(String(this.highlightId))
         .subscribe((res: any) => {
-          console.log('daatat',res.highlight)
+          console.log('daatat', res.highlight);
           this.subject = res.highlight.content;
           this.htmlText = res.highlight.description;
         });
@@ -185,5 +182,4 @@ export class HighlightAddComponent implements OnInit {
   onBlur = () => {
     console.log('Blurred');
   };
-
 }

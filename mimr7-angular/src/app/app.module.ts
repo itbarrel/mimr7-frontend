@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderService } from './core/services/loader.service';
 import { AuthguardService } from './core/services/authguard.service';
 import { TokenInterceptor } from './core/interceptor/token.interceptor';
+import { EnvServiceProvider } from './env.service.provider';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { TokenInterceptor } from './core/interceptor/token.interceptor';
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
+    EnvServiceProvider,
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

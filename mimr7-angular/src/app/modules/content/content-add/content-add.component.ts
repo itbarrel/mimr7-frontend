@@ -77,7 +77,7 @@ export class ContentAddComponent implements OnInit {
             if (
               ~values[i].value.toLowerCase().indexOf(searchTerm.toLowerCase())
             )
-              matches.push(values[i]);
+              // matches.push(values[i]);
           renderList(matches, searchTerm);
         }
       },
