@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/v1/',
-  privateKey: 'mimr7',
+  apiUrl: '',
+  privateKey: '',
 };
 
 /*

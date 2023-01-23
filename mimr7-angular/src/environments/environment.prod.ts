@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080/v1/',
-  privateKey: 'mimr7',
+  apiUrl: '',
+  privateKey: '',
 };

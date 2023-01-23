@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
+// import { this.env } from 'src/this.envs/this.env';
 import { ClassList } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { EnvService } from 'src/app/env.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class ClassListService {
   //   private contentState = new BehaviorSubject<Content[]>([]);
   //   contentState$ = this.contentState.asObservable();
   user: any;
-  constructor(private http: HttpClient, private auth: AuthenticationService) {
+  constructor(private http: HttpClient, private auth: AuthenticationService,private env: EnvService) {
     this.auth.getUserState().subscribe((res) => {
       this.user = res;
     });
@@ -31,7 +32,7 @@ export class ClassListService {
   add(data: ClassList): Observable<any> {
     data.AccountId = this.user.AccountId;
     // data.OrganizationId = this.user.OrganizationId;
-    return this.http.post(`${environment.apiUrl}classLists`, data);
+    return this.http.post(`${this.env.apiUrl}classLists`, data);
   }
 
   getAll(
@@ -47,20 +48,20 @@ export class ClassListService {
     };
 
     const url = withQuery(
-      `${environment.apiUrl}classLists?offset=${pageNumber}&limit=${pageSize}`,
+      `${this.env.apiUrl}classLists?offset=${pageNumber}&limit=${pageSize}`,
       query
     );
     return this.http.get(url);
   }
   getById(id: string) {
-    return this.http.get(`${environment.apiUrl}classLists/${id}`);
+    return this.http.get(`${this.env.apiUrl}classLists/${id}`);
   }
   update(id: string, data: ClassList) {
-    return this.http.put(`${environment.apiUrl}classLists/${id}`, data);
+    return this.http.put(`${this.env.apiUrl}classLists/${id}`, data);
   }
 
   addStudentsToClass(id: string, data: any) {
-    return this.http.post(`${environment.apiUrl}classLists/${id}/students`, {
+    return this.http.post(`${this.env.apiUrl}classLists/${id}/students`, {
       students: data,
     });
   }
@@ -73,13 +74,13 @@ export class ClassListService {
       body: { students: data },
     };
     return this.http.delete(
-      `${environment.apiUrl}classLists/${id}/students`,
+      `${this.env.apiUrl}classLists/${id}/students`,
       options
     );
   }
 
   addContentToClass(id: string, data: any) {
-    return this.http.post(`${environment.apiUrl}classLists/${id}/contents`, {
+    return this.http.post(`${this.env.apiUrl}classLists/${id}/contents`, {
       contents: data,
     });
   }
@@ -92,7 +93,7 @@ export class ClassListService {
       body: { contents: data },
     };
     return this.http.delete(
-      `${environment.apiUrl}classLists/${id}/contents`,
+      `${this.env.apiUrl}classLists/${id}/contents`,
       options
     );
   }
