@@ -1,0 +1,62 @@
+<app-class-actions></app-class-actions>
+
+<div class="row clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="header">
+                <h2><strong>{{txt}}</strong></h2>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ngxTableHeader">
+                            <ul class="header-buttons-left ms-0 mb-0">
+                                <li class="dropdown">
+                                    <!-- <h2>Classes</h2> -->
+                                </li>
+                                <li class="dropdown m-l-20">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input placeholder="Search" type="text" [(ngModel)]="addedFilter"
+                                        class="browser-default search-field"
+                                        aria-label="Search box">
+                                </li>
+                            </ul>
+                            <ul class="header-buttons">
+                                <!-- <li>
+                                    <button mat-mini-fab color="primary" routerLink="add">
+                                        <mat-icon class="col-white">add</mat-icon>
+                                    </button>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row row-container">
+                        <section class="cards-custom col-md-3" (click)="importDeleteStudent(content)"
+                            *ngFor="let content of availableContent | filter:addedFilter:'contents'">
+                            <div class="card" style="    min-width: 220px;
+                        min-height: 130px;
+                        padding: 15px; background-color:#c9d0d180; margin: 10px;" [matBadge]="content.checked?'S':null"
+                                matBadgeSize="medium" matBadgeOverlap="false" matBadgeColor="primary">
+
+                                <div style="display: flex; align-items: center;">
+                                    <div class="circle-custom">
+                                        <div class="circle-text-custom">{{content.title.charAt(0) | uppercase}} </div>
+                                    </div>
+                                    <div class="name-div">{{content.title}}</div>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row m-t-35">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <button class="btn-space" mat-raised-button color="primary"
+                                (click)="submit()">Submit</button>
+                            <button routerLink="../../" type="button" mat-button>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

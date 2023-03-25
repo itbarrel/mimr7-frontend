@@ -1,0 +1,45 @@
+<div>
+
+    <app-content-action></app-content-action>
+</div>
+
+<div class="row" style="min-height: 500px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header message-heading">
+                <h2>Messages</h2>
+                <button mat-mini-fab color="primary" routerLink="add">
+                    <mat-icon class="col-white" >add</mat-icon>
+                </button>
+            </div>
+            
+            <div class="body">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let message of messages">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="font-bold">
+                                {{message.name}}
+                            </mat-panel-title>
+                            <mat-panel-description class="description">
+                                <button mat-icon-button aria-label="Example icon-button with a heart icon"  [routerLink]="[message.id,{edit:true}]">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="m-l-20">
+                            <div class="m-b-15">
+                                <span class="font-bold col-teal m-r-5">Answer:</span>
+                                <span [innerHTML]="message.solution"></span>
+                            </div>
+                            <div>
+                                <span class="font-bold col-cyan m-r-5">Hint:</span> {{message.hint}}
+
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>

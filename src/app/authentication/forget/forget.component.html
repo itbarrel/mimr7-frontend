@@ -1,0 +1,63 @@
+
+<div class="auth-container">
+    <div class="row auth-main">
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <div class="left-img" style="background-image: url(assets/images/pages/bg-06.jpg);">
+        </div>
+      </div>
+      <div class="col-sm-6 auth-form-section">
+        <div class="form-section">
+          <div class="auth-wrapper">
+            <h2 class="welcome-msg"> Reset Password </h2>
+            <p class="auth-signup-text text-muted">Let Us Help You</p>
+            <form *ngIf="!reset" class="validate-form" [formGroup]="loginFrom" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <span class="error-subheader2 p-t-20 p-b-15">
+                    Enter your registered email address.
+                  </span>
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-icon class="material-icons-two-tone color-icon p-3" matSuffix>mail</mat-icon>
+                    <mat-error *ngIf="loginFrom.get('email')?.hasError('required') || loginFrom.get('email')?.touched">
+                      Please enter a valid email address
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="container-auth-form-btn mt-5">
+                <button mat-flat-button color="primary" class="auth-form-btn" [disabled]="!loginFrom.valid " type="submit">
+                  Reset My Password
+                </button>
+              </div>
+              <div class="w-full p-t-25 text-center">
+                <div>
+                  <a routerLink="/authentication/signin" class="txt1">
+                    Login?
+                  </a>
+                </div>
+              </div>
+            </form>
+            <div name="message-div" *ngIf="reset">
+                <h4 class="reset-msg">Your reset password email is heading your way.</h4>
+
+                <h4 class="reset-msg">The email you will receive will include these instructions:</h4>
+
+                <p class="auth-signup-text text-muted">Click the link provided in the email. It will take you to reset password password page</p>
+                <p class="auth-signup-text text-muted">
+                    Fill in your new password twice in your user account edit form, then click the "Save" button to the
+                    right or at the bottom of the page.</p>
+                <p class="auth-signup-text text-muted">
+                    When you see same form with the message "The changes have been saved." at the top, you're done. Go
+                    ahead and click on "Home" in the top left of the page to get to the rest of the site.
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+

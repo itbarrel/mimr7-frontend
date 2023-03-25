@@ -1,0 +1,10 @@
+<div name="actions-div" class="content-actions">
+
+    <button mat-raised-button class="btn btn-sm action-btn" routerLink="/dashboard/contents"
+        color="primary">Contents</button>
+    <button mat-raised-button *ngIf="showHighlightBtn" color="primary" [routerLink]="highlightLink"
+        class="btn btn-sm action-btn">Highlights</button>
+    <button mat-raised-button *ngIf="showMessagesBtn" color="primary" [routerLink]="messageLink"
+        class="btn btn-sm action-btn">Messages</button>
+
+</div>
