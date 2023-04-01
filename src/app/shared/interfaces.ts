@@ -184,3 +184,18 @@ export interface ClassList {
   createdAt?: Date;
   deletedAt?: any;
 }
+
+
+export interface Schedule {
+  id?: string;
+  startDate: string;
+  endDate: string;
+  AccountId?: string;
+  OrganizationId?: string;
+  ClassListId?:string
+  ContentId?:string
+  updatedAt?: Date;
+  createdAt?: Date;
+  deletedAt?: any;
+  active?:boolean;
+}

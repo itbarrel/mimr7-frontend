@@ -24,6 +24,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '../shared/shared.module';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ImportContentsComponent } from './import-contents/import-contents.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ImportContentsComponent } from './import-contents/import-contents.compo
     ImportStudentsComponent,
     ClassActionsComponent,
     ImportContentsComponent,
+    ScheduleComponent,
+    ScheduleAddComponent,
   ],
   imports: [
     CommonModule,

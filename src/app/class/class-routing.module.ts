@@ -4,32 +4,54 @@ import { ClassAddComponent } from './class-add/class-add.component';
 import { ClassComponent } from './class/class.component';
 import { ImportContentsComponent } from './import-contents/import-contents.component';
 import { ImportStudentsComponent } from './import-students/import-students.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ClassComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'schedule',
+    component: ScheduleComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'schedule/add',
+    component: ScheduleAddComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'schedule/:id',
+    component: ScheduleAddComponent,
+    pathMatch: 'full',
   },
   {
     path: 'add',
     component: ClassAddComponent,
+    pathMatch: 'full',
   },
   {
     path: ':id',
     component: ClassAddComponent,
+    pathMatch: 'full',
   },
   {
     path: ':id/import-students',
     component: ImportStudentsComponent,
+    pathMatch: 'full',
   },
   {
     path: ':id/import-contents',
     component: ImportContentsComponent,
+    pathMatch: 'full',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ClassRoutingModule { }
+export class ClassRoutingModule {}
