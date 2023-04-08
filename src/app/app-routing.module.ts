@@ -40,6 +40,14 @@ const routes: Routes = [
         (m) => m.AuthenticationModule
       ),
   },
+  {
+    path: 'student-message',
+    component: AuthLayoutComponent,
+    loadChildren: () =>
+      import('./student-message/student-message.module').then(
+        (m) => m.StudentMessageModule
+      ),
+  },
   { path: '**', component: Page404Component },
 ];
 @NgModule({
