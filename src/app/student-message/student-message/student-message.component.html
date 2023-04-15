@@ -29,7 +29,7 @@
                             <div style="text-align:center">
                                 <!-- <button mat-raised-button color="primary" [class.auth-spinner]="loading" [disabled]="loading"
                     class="auth-form-btn" [disabled]="!authForm.valid " type="submit">Login</button> -->
-                                <button mat-raised-button color="primary" class="auth-form-btn"
+                                <button mat-raised-button color="primary" class="auth-form-btn" [disabled]="authForm.invalid"
                                     type="submit">Submit</button>
                             </div>
                         </div>

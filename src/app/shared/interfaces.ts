@@ -199,3 +199,11 @@ export interface Schedule {
   deletedAt?: any;
   active?:boolean;
 }
+
+
+export interface MessageAnswer {
+  response: string;
+  AccountId: string;
+  StudentId: string;
+  MessageScheduleId: string;
+}

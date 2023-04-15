@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { EnvService } from 'src/app/env.service';
+import { MessageAnswer } from 'src/app/shared/interfaces';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,4 +16,14 @@ export class MessageScheduleService {
       `${this.env.apiUrl}messageSchedules/details?hash=${id}`
     );
   }
+
+
+  submitAnswer(messageAnswer: MessageAnswer) {
+    return this.http.post(
+      `${this.env.apiUrl}messageScheduleAnswers`,
+      messageAnswer
+    );
+  }
 }
+
+
