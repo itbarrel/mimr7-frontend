@@ -23,6 +23,12 @@
             "polyfills": [
               "zone.js"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "src/assets/styles"
+              ]
+            },
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": [
               "svg-gauge",
