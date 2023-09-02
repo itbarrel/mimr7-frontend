@@ -42,8 +42,8 @@ export class ImportStudentsComponent {
 
   getClassData() {
     this.classListService.getById(this.classListId).subscribe((res: any) => {
-      console.log('already added', res.classList[0].Students);
-      this.availableStudents = res.classList[0].Students;
+      console.log('already added', res.klass[0].Students);
+      this.availableStudents = res.klass[0].Students;
     
     });
   }

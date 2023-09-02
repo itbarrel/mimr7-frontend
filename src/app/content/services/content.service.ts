@@ -63,6 +63,6 @@ export class ContentService {
   }
 
   getContentByClassId(id: string) {
-    return this.http.get(`${this.env.apiUrl}contents/classList/${id}`);
+    return this.http.get(`${this.env.apiUrl}contents/klass/${id}`);
   }
 }

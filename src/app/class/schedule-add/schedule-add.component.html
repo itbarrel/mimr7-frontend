@@ -52,7 +52,7 @@
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
                                             <mat-form-field class="example-full-width" appearance="outline">
                                                 <mat-label>Class</mat-label>
-                                                <mat-select formControlName="ClassListId">
+                                                <mat-select formControlName="KlassId">
                                                     <mat-option *ngFor="let class of classes" [value]="class.id">
                                                         {{class.name}}
                                                     </mat-option>
@@ -61,16 +61,16 @@
                                                     school
                                                 </mat-icon>
                                                 <mat-error
-                                                    *ngIf="collectionForm.get('ClassListId')?.hasError('required')">
+                                                    *ngIf="collectionForm.get('KlassId')?.hasError('required')">
                                                     Class is required
                                                 </mat-error>
                                                 <mat-error
-                                                    *ngIf="!collectionForm.get('ClassListId')?.valid && !collectionForm.get('ClassListId')?.hasError('required')">
+                                                    *ngIf="!collectionForm.get('KlassId')?.valid && !collectionForm.get('KlassId')?.hasError('required')">
                                                     Enter a valid Class
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
                                             <mat-form-field class="example-full-width" appearance="outline">
                                                 <mat-label>Content</mat-label>
                                                 <mat-select formControlName="ContentId">
@@ -90,7 +90,7 @@
                                                     Enter a valid Content
                                                 </mat-error>
                                             </mat-form-field>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div class="row">

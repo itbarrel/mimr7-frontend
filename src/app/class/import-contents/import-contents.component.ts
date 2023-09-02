@@ -50,8 +50,8 @@ export class ImportContentsComponent {
 
   getClassData() {
     this.classListService.getById(this.classListId).subscribe((res: any) => {
-      console.log('already added', res.classList[0].Contents);
-      this.availableContent = res.classList[0].Contents;
+      console.log('already added', res.klass[0].Contents);
+      this.availableContent = res.klass[0].Contents;
     });
   }
   submit() {

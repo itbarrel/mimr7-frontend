@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 // import { this.env } from 'src/this.envs/this.env';
-import { ClassList } from 'src/app/shared/interfaces';
+import { Klass } from 'src/app/shared/interfaces';
 // import { WithQueryOptions } from 'with-query/dist';
 import { withQuery } from 'with-query';
 import { EnvService } from 'src/app/env.service';
@@ -19,10 +19,10 @@ export class ClassService {
   }
 
 
-  add(data: ClassList): Observable<any> {
+  add(data: Klass): Observable<any> {
     data.AccountId = this.user.AccountId;
     // data.OrganizationId = this.user.OrganizationId;
-    return this.http.post(`${this.env.apiUrl}classLists`, data);
+    return this.http.post(`${this.env.apiUrl}klasses`, data);
   }
 
   getAll(
@@ -38,20 +38,20 @@ export class ClassService {
     };
 
     const url = withQuery(
-      `${this.env.apiUrl}classLists?offset=${page.offset+1}&limit=${page.limit}`,
+      `${this.env.apiUrl}klasses?offset=${page.offset+1}&limit=${page.limit}`,
       query
     );
     return this.http.get(url);
   }
   getById(id: string) {
-    return this.http.get(`${this.env.apiUrl}classLists/${id}`);
+    return this.http.get(`${this.env.apiUrl}klasses/${id}`);
   }
-  update(id: string, data: ClassList) {
-    return this.http.put(`${this.env.apiUrl}classLists/${id}`, data);
+  update(id: string, data: Klass) {
+    return this.http.put(`${this.env.apiUrl}klasses/${id}`, data);
   }
 
   addStudentsToClass(id: string, data: any) {
-    return this.http.post(`${this.env.apiUrl}classLists/${id}/students`, {
+    return this.http.post(`${this.env.apiUrl}klasses/${id}/students`, {
       students: data,
     });
   }
@@ -64,13 +64,13 @@ export class ClassService {
       body: { students: data },
     };
     return this.http.delete(
-      `${this.env.apiUrl}classLists/${id}/students`,
+      `${this.env.apiUrl}klasses/${id}/students`,
       options
     );
   }
 
   addContentToClass(id: string, data: any) {
-    return this.http.post(`${this.env.apiUrl}classLists/${id}/contents`, {
+    return this.http.post(`${this.env.apiUrl}klasses/${id}/contents`, {
       contents: data,
     });
   }
@@ -83,7 +83,7 @@ export class ClassService {
       body: { contents: data },
     };
     return this.http.delete(
-      `${this.env.apiUrl}classLists/${id}/contents`,
+      `${this.env.apiUrl}klasses/${id}/contents`,
       options
     );
   }

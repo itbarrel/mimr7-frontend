@@ -7,7 +7,7 @@ import {
   Schedule,
   Content,
   Organization,
-  ClassList,
+  Klass,
 } from 'src/app/shared/interfaces';
 // import { classService } from '../services/content.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class ScheduleAddComponent {
   scheduleId: string = '';
   organizations: Organization[] = [];
   contents: Content[] = [];
-  classes: ClassList[] = [];
+  classes: Klass[] = [];
   startDate: Date;
   endDate: Date;
 
@@ -39,9 +39,9 @@ export class ScheduleAddComponent {
   minEndDate: Date;
 
   collectionForm: FormGroup = new FormGroup({
-    ClassListId: new FormControl('', [Validators.required]),
+    KlassId: new FormControl('', [Validators.required]),
     OrganizationId: new FormControl('', [Validators.required]),
-    ContentId: new FormControl('', [Validators.required]),
+    // ContentId: new FormControl('', [Validators.required]),
   });
 
   btnText: string = 'Add';
@@ -92,9 +92,9 @@ export class ScheduleAddComponent {
           this.startDate = res.ClassListSchedule.startDate;
           this.endDate = res.ClassListSchedule.endDate;
           this.collectionForm.patchValue({
-            ClassListId: res.ClassListSchedule.ClassListId,
+            KlassId: res.ClassListSchedule.KlassId,
             OrganizationId: res.ClassListSchedule.OrganizationId,
-            ContentId: res.ClassListSchedule.ContentId,
+            // ContentId: res.ClassListSchedule.ContentId,
           });
           this.minEndDate = new Date(this.startDate)
         });
@@ -112,12 +112,11 @@ export class ScheduleAddComponent {
     ) {
       this.toastr.error(`End date should be greater than start date`);
     } else if (this.collectionForm.valid) {
-      const { ClassListId, OrganizationId, ContentId } =
+      const { KlassId, OrganizationId, ContentId } =
         this.collectionForm.value;
       const locationData: Schedule = {
-        ClassListId,
+        KlassId,
         OrganizationId,
-        ContentId,
         endDate: moment(this.endDate).toISOString(),
         startDate: moment(this.startDate).toISOString(),
         //add dates

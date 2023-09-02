@@ -58,6 +58,6 @@ export class StudentService {
   }
 
   getByClass(classId: string) {
-    return this.http.get(`${this.env.apiUrl}students/classList/${classId}`);
+    return this.http.get(`${this.env.apiUrl}students/klass/${classId}`);
   }
 }

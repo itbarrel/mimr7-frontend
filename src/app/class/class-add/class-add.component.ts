@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
-import { ClassList, Content, Organization } from 'src/app/shared/interfaces';
+import { Klass, Content, Organization } from 'src/app/shared/interfaces';
 // import { classService } from '../services/content.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -57,9 +57,9 @@ export class ClassAddComponent {
         .subscribe((res: any) => {
           console.log("🚀 ~ file: class-add.component.ts:58 ~ ClassAddComponent ~ .subscribe ~ res:", res)
           // patch values in the form
-          this.subject = res.classList[0].name;
-          this.model.editorData = res.classList[0].description;
-          this.organizationId = res.classList[0].OrganizationId
+          this.subject = res.klass[0].name;
+          this.model.editorData = res.klass[0].description;
+          this.organizationId = res.klass[0].OrganizationId
         });
     }
   }
@@ -71,7 +71,7 @@ export class ClassAddComponent {
     } else if (!this.organizationId || this.organizationId.length < 6) {
       this.toastr.error('Select Valid Organization');
     } else {
-      const contentData: ClassList = {
+      const contentData: Klass = {
         name: this.subject,
         description: this.model.editorData,
         OrganizationId: this.organizationId,

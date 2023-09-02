@@ -174,7 +174,7 @@ export interface Student {
   checked?: boolean;
 }
 
-export interface ClassList {
+export interface Klass {
   id?: string;
   name: string;
   description: string;
@@ -192,8 +192,7 @@ export interface Schedule {
   endDate: string;
   AccountId?: string;
   OrganizationId?: string;
-  ClassListId?:string
-  ContentId?:string
+  KlassId?:string
   updatedAt?: Date;
   createdAt?: Date;
   deletedAt?: any;

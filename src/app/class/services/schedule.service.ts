@@ -20,7 +20,7 @@ export class ScheduleService {
   add(data: Schedule): Observable<any> {
     data.AccountId = this.user.AccountId;
     // data.OrganizationId = this.user.OrganizationId;
-    return this.http.post(`${this.env.apiUrl}classListSchedules`, data);
+    return this.http.post(`${this.env.apiUrl}klassSchedules`, data);
   }
 
   getAll(
@@ -36,16 +36,16 @@ export class ScheduleService {
     };
 
     const url = withQuery(
-      `${this.env.apiUrl}classListSchedules?offset=${page.offset+1}&limit=${page.limit}`,
+      `${this.env.apiUrl}klassSchedules?offset=${page.offset+1}&limit=${page.limit}`,
       query
     );
     return this.http.get(url);
   }
   getById(id: string) {
-    return this.http.get(`${this.env.apiUrl}classListSchedules/${id}`);
+    return this.http.get(`${this.env.apiUrl}klassSchedules/${id}`);
   }
   update(id: string, data: Schedule) {
-    return this.http.put(`${this.env.apiUrl}classListSchedules/${id}`, data);
+    return this.http.put(`${this.env.apiUrl}klassSchedules/${id}`, data);
   }
 
    
