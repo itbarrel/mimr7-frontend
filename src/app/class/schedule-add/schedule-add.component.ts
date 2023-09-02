@@ -41,6 +41,12 @@ export class ScheduleAddComponent {
   collectionForm: FormGroup = new FormGroup({
     KlassId: new FormControl('', [Validators.required]),
     OrganizationId: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    messageRepetition: new FormControl('', [
+      Validators.required,
+      Validators.min(1),
+    ]),
+    sendMessageRandom: new FormControl(false),
     // ContentId: new FormControl('', [Validators.required]),
   });
 
@@ -89,14 +95,17 @@ export class ScheduleAddComponent {
         .subscribe((res: any) => {
           console.log('aaaaaaaaaaaaaaaaaaaaaaa', res);
           //add dates
-          this.startDate = res.ClassListSchedule.startDate;
-          this.endDate = res.ClassListSchedule.endDate;
+          this.startDate = res.KlassSchedule.startDate;
+          this.endDate = res.KlassSchedule.endDate;
           this.collectionForm.patchValue({
-            KlassId: res.ClassListSchedule.KlassId,
-            OrganizationId: res.ClassListSchedule.OrganizationId,
-            // ContentId: res.ClassListSchedule.ContentId,
+            KlassId: res.KlassSchedule.KlassId,
+            OrganizationId: res.KlassSchedule.OrganizationId,
+            name: res.KlassSchedule.name,
+            messageRepetition: res.KlassSchedule.messageRepetition,
+            sendMessageRandom: res.KlassSchedule.sendMessageRandom,
+            // ContentId: res.KlassSchedule.ContentId,
           });
-          this.minEndDate = new Date(this.startDate)
+          this.minEndDate = new Date(this.startDate);
         });
     }
   }
@@ -112,11 +121,19 @@ export class ScheduleAddComponent {
     ) {
       this.toastr.error(`End date should be greater than start date`);
     } else if (this.collectionForm.valid) {
-      const { KlassId, OrganizationId, ContentId } =
-        this.collectionForm.value;
+      const {
+        KlassId,
+        OrganizationId,
+        name,
+        messageRepetition,
+        sendMessageRandom,
+      } = this.collectionForm.value;
       const locationData: Schedule = {
         KlassId,
         OrganizationId,
+        name,
+        messageRepetition,
+        sendMessageRandom,
         endDate: moment(this.endDate).toISOString(),
         startDate: moment(this.startDate).toISOString(),
         //add dates
@@ -148,10 +165,6 @@ export class ScheduleAddComponent {
 
   startDateChange(event: MatDatepickerInputEvent<Date>) {
     this.minEndDate = moment(event.target.value).add(1, 'days').toDate();
-    console.log(
-      '🚀 ~ file: schedule-add.component.ts:143 ~ ScheduleAddComponent ~ startDateChange ~ this.minEndDate:',
-      this.minEndDate
-    );
     // this.events.push(`${type}: ${event.value}`);
   }
 }

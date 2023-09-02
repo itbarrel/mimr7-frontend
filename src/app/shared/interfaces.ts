@@ -197,6 +197,9 @@ export interface Schedule {
   createdAt?: Date;
   deletedAt?: any;
   active?:boolean;
+  name:string,
+  sendMessageRandom: boolean,
+  messageRepetition: number
 }
 
 

@@ -32,7 +32,7 @@
                             [externalSorting]="true" [count]="page.count" [offset]="page.offset" [limit]="page.limit"
                             (page)="pageCallback($event)" (sort)="sortCallback($event)">
 
-                            <!-- <ngx-datatable-column name="Name" [width]="130"></ngx-datatable-column> -->
+                            <ngx-datatable-column name="Name" [width]="130"></ngx-datatable-column>
 
                             <ngx-datatable-column name="startDate" [width]="120">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"

@@ -26,7 +26,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ImportContentsComponent } from './import-contents/import-contents.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     ClassComponent,
@@ -56,7 +56,8 @@ import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
     MatTooltipModule,
     MatSelectModule,
     SharedModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule,
   ],
 })
 export class ClassModule {}

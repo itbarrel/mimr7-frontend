@@ -21,6 +21,7 @@ export class ScheduleComponent {
 
   data: any[] = [];
   columns = [
+    { name: 'name' },
     { name: 'startDate' },
     { name: 'endDate' },
     { name: 'contents' },

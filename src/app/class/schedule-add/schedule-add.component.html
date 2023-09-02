@@ -3,9 +3,6 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2>
-                    <strong>Account</strong> Add
-                </h2>
             </div>
             <div class="body">
                 <div class="row clearfix">
@@ -18,6 +15,41 @@
                             </div>
                             <div class="body">
                                 <form class="register-form m-4" [formGroup]="collectionForm" (ngSubmit)="submit()">
+
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Schedule Name</mat-label>
+                                                <input formControlName="name" matInput type="text"
+                                                    required>
+                                                <mat-icon matSuffix>
+                                                    person
+                                                </mat-icon>
+                                                <mat-error *ngIf="collectionForm.get('name')?.hasError('required')">
+                                                    Name is required
+                                                  </mat-error>
+                                                  <mat-error *ngIf="!collectionForm.get('name')?.valid && !collectionForm.get('name')?.hasError('required')">
+                                                    Enter a valid name
+                                                  </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Repeat</mat-label>
+                                                <input formControlName="messageRepetition" matInput type="number" placeholder="Number"
+                                                    required>
+                                                <mat-icon matSuffix>
+                                                    person
+                                                </mat-icon>
+                                                <mat-error *ngIf="collectionForm.get('messageRepetition')?.hasError('required')">
+                                                    Repeat is required
+                                                  </mat-error>
+                                                  <mat-error *ngIf="!collectionForm.get('messageRepetition')?.valid && !collectionForm.get('messageRepetition')?.hasError('required')">
+                                                    Enter a valid Repeat number
+                                                  </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
@@ -70,30 +102,6 @@
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
-                                            <mat-form-field class="example-full-width" appearance="outline">
-                                                <mat-label>Content</mat-label>
-                                                <mat-select formControlName="ContentId">
-                                                    <mat-option *ngFor="let content of contents" [value]="content.id">
-                                                        {{content.title}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <mat-icon matSuffix>
-                                                    content_copy
-                                                </mat-icon>
-                                                <mat-error
-                                                    *ngIf="collectionForm.get('ContentId')?.hasError('required')">
-                                                    Content is required
-                                                </mat-error>
-                                                <mat-error
-                                                    *ngIf="!collectionForm.get('ContentId')?.valid && !collectionForm.get('ContentId')?.hasError('required')">
-                                                    Enter a valid Content
-                                                </mat-error>
-                                            </mat-form-field>
-                                        </div> -->
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
                                             <mat-form-field class="example-full-width" appearance="outline">
                                                 <mat-label>Organization</mat-label>
@@ -115,6 +123,16 @@
                                                     Enter a valid Organization
                                                 </mat-error>
                                             </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-4">
+                                                <mat-label class="radio-label">Send Random Messages:</mat-label>
+                                                <mat-checkbox formControlName="sendMessageRandom">Check me</mat-checkbox>
+                                                <!-- <mat-radio-group class="radio-margin" formControlName="sendMessageRandom">
+                                                    <mat-radio-button class="radio-margin" value="true">True</mat-radio-button>
+                                                    <mat-radio-button class="radio-margin" value="false">False</mat-radio-button>
+                                                  </mat-radio-group> -->
                                         </div>
                                     </div>
                                     <div class="row">
