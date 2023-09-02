@@ -1,0 +1,215 @@
+<app-class-actions></app-class-actions>
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+            </div>
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    <strong>Schedule</strong> {{update?'Update':'Add'}}
+                                </h2>
+                            </div>
+                            <div class="body">
+                                <form class="register-form m-4" [formGroup]="collectionForm" (ngSubmit)="submit()">
+
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Schedule Name</mat-label>
+                                                <input formControlName="name" matInput type="text"
+                                                    required>
+                                                <mat-icon matSuffix>
+                                                    person
+                                                </mat-icon>
+                                                <mat-error *ngIf="collectionForm.get('name')?.hasError('required')">
+                                                    Name is required
+                                                  </mat-error>
+                                                  <mat-error *ngIf="!collectionForm.get('name')?.valid && !collectionForm.get('name')?.hasError('required')">
+                                                    Enter a valid name
+                                                  </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Repeat</mat-label>
+                                                <input formControlName="messageRepetition" matInput type="number" placeholder="Number"
+                                                    required>
+                                                <mat-icon matSuffix>
+                                                    person
+                                                </mat-icon>
+                                                <mat-error *ngIf="collectionForm.get('messageRepetition')?.hasError('required')">
+                                                    Repeat is required
+                                                  </mat-error>
+                                                  <mat-error *ngIf="!collectionForm.get('messageRepetition')?.valid && !collectionForm.get('messageRepetition')?.hasError('required')">
+                                                    Enter a valid Repeat number
+                                                  </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Choose a start date</mat-label>
+                                                <input matInput [matDatepicker]="picker" [(ngModel)]="startDate"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    (dateChange)="startDateChange($event)" [min]="minStartDate">
+                                                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                                                <mat-datepicker-toggle name="startDate" ngDefaultControl matIconSuffix
+                                                    [for]="picker">
+                                                    <mat-icon matDatepickerToggleIcon>calendar_month</mat-icon>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Choose an end date</mat-label>
+                                                <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate"
+                                                    [ngModelOptions]="{standalone: true}" [min]="minEndDate">
+                                                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                                                <mat-datepicker-toggle name="endDate" ngDefaultControl matIconSuffix
+                                                    [for]="picker2">
+                                                    <mat-icon matDatepickerToggleIcon>calendar_month</mat-icon>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker2></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Class</mat-label>
+                                                <mat-select formControlName="KlassId">
+                                                    <mat-option *ngFor="let class of classes" [value]="class.id">
+                                                        {{class.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-icon matSuffix>
+                                                    school
+                                                </mat-icon>
+                                                <mat-error
+                                                    *ngIf="collectionForm.get('KlassId')?.hasError('required')">
+                                                    Class is required
+                                                </mat-error>
+                                                <mat-error
+                                                    *ngIf="!collectionForm.get('KlassId')?.valid && !collectionForm.get('KlassId')?.hasError('required')">
+                                                    Enter a valid Class
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>Organization</mat-label>
+                                                <mat-select formControlName="OrganizationId">
+                                                    <mat-option *ngFor="let organization of organizations"
+                                                        [value]="organization.id">
+                                                        {{organization.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-icon matSuffix>
+                                                    corporate_fare
+                                                </mat-icon>
+                                                <mat-error
+                                                    *ngIf="collectionForm.get('OrganizationId')?.hasError('required')">
+                                                    Organization is required
+                                                </mat-error>
+                                                <mat-error
+                                                    *ngIf="!collectionForm.get('OrganizationId')?.valid && !collectionForm.get('OrganizationId')?.hasError('required')">
+                                                    Enter a valid Organization
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 mb-4">
+                                                <mat-label class="radio-label">Send Random Messages:</mat-label>
+                                                <mat-checkbox formControlName="sendMessageRandom">Check me</mat-checkbox>
+                                                <!-- <mat-radio-group class="radio-margin" formControlName="sendMessageRandom">
+                                                    <mat-radio-button class="radio-margin" value="true">True</mat-radio-button>
+                                                    <mat-radio-button class="radio-margin" value="false">False</mat-radio-button>
+                                                  </mat-radio-group> -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <button class="btn-space" mat-raised-button
+                                                color="primary">{{update?'Update':'Submit'}}</button>
+                                            <button *ngIf="update" routerLink="../" type="button"
+                                                mat-button>Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>Class</strong> {{update?'Update':'Add'}}
+                </h2>
+            </div>
+            <div class="body">
+                <form class="register-form m-4">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Name</mat-label>
+                                <input [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" matInput type="text"
+                                    required>
+                                <mat-icon matSuffix>
+                                    content_copy
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Organization</mat-label>
+                                <mat-select [(ngModel)]="organizationId" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let org of organizations" [value]="org.id">
+                                        {{org.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <strong>Class description</strong>
+                                    </h2>
+                                </div>
+                                <div class="body">
+                                    <ckeditor [editor]="Editor" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="model.editorData"></ckeditor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <button class="btn-space" mat-raised-button color="primary"
+                                (click)="submit()">{{update?'Update':'Submit'}}</button>
+                            <button *ngIf="update" routerLink="../" type="button" mat-button>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- #END# Basic Validation -->

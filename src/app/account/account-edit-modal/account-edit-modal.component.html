@@ -1,0 +1,226 @@
+<mat-tab-group>
+    <mat-tab label="Organization">
+        <div mat-dialog-content>
+            <form [formGroup]="organizationForm" (ngSubmit)="onSubmitOrganization()">
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="name" required>
+                        <mat-error *ngIf="organizationForm.controls?.['name']?.hasError('required')">
+                            Please enter Organization Name
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['name']?.hasError('pattern')">
+                            Please enter valid Organization name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="description" required>
+                        <mat-error *ngIf="organizationForm.controls?.['description']?.hasError('required')">
+                            Please enter description
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['description']?.hasError('pattern')">
+                            Please enter valid description
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="btn-sec">
+                    <button class="btn-space" type="submit" [disabled]="organizationForm.invalid" mat-raised-button
+                        color="primary">Save</button>
+                    <button type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </mat-tab>
+    <mat-tab label="User">
+        <div mat-dialog-content>
+            <form [formGroup]="UserForm" (ngSubmit)="onSubmitUserForm()">
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="userName" required>
+                        <mat-error *ngIf="organizationForm.controls?.['userName']?.hasError('required')">
+                            Please enter User Name
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['userName']?.hasError('pattern')">
+                            Please enter valid User name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="firstName" required>
+                        <mat-error *ngIf="organizationForm.controls?.['firstName']?.hasError('required')">
+                            Please enter First Name
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['firstName']?.hasError('pattern')">
+                            Please enter valid First name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="lastName" required>
+                        <mat-error *ngIf="organizationForm.controls?.['lastName']?.hasError('required')">
+                            Please enter Last Name
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['lastName']?.hasError('pattern')">
+                            Please enter valid Last name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="email" required>
+                        <mat-error *ngIf="organizationForm.controls?.['email']?.hasError('required')">
+                            Please enter Email
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['email']?.hasError('pattern')">
+                            Please enter valid Email
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="text-inside">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="mobilePhone" required>
+                        <mat-error *ngIf="organizationForm.controls?.['mobilePhone']?.hasError('required')">
+                            Please enter Mobile Phone
+                        </mat-error>
+                        <mat-error *ngIf="organizationForm.controls?.['mobilePhone']?.hasError('pattern')">
+                            Please enter valid Mobile Phone
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="btn-sec">
+                    <button class="btn-space" type="submit" [disabled]="organizationForm.invalid" mat-raised-button
+                        color="primary">Save</button>
+                    <button type="button" mat-button [mat-dialog-close]="true">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <!-- <div>
+            <mat-card class="organization-container-card">
+                <div name="fields-container" class="fields-container">
+                    <mat-card-content>
+                        <form [formGroup]="UserForm" (ngSubmit)="onSubmitUserForm()">
+                            <p class="form-field-item">
+                                <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                                    <mat-label>User Name</mat-label>
+                                    <input type="text" matInput placeholder="User Name" formControlName="userName" />
+                                    <mat-error *ngIf="
+                            !UserForm.get('userName')?.valid &&
+                            UserForm.get('userName')?.touched
+                          ">Invalid User Name
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-field-item">
+                                <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                                    <mat-label>First Name</mat-label>
+                                    <input type="text" matInput placeholder="First Name" formControlName="firstName" />
+                                    <mat-error *ngIf="
+                            !UserForm.get('firstName')?.valid &&
+                            UserForm.get('firstName')?.touched
+                          ">Invalid First Name</mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-field-item">
+                                <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                                    <mat-label>Last Name</mat-label>
+                                    <input type="text" matInput placeholder="Last Name" formControlName="lastName" />
+                                    <mat-error *ngIf="
+                            !UserForm.get('lastName')?.valid &&
+                            UserForm.get('lastName')?.touched
+                          ">Invalid Last Name</mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-field-item">
+                                <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput placeholder="Email" formControlName="email" />
+                                    <mat-error *ngIf="
+                            !UserForm.get('email')?.valid &&
+                            UserForm.get('email')?.touched
+                          ">Invalid Email</mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-field-item">
+                                <mat-form-field class="field" appearance="fill" floatLabel="auto">
+                                    <mat-label>Phone</mat-label>
+                                    <input type="text" matInput placeholder="Phone Number"
+                                        formControlName="mobilePhone" />
+                                    <mat-error *ngIf="
+                            !UserForm.get('mobilePhone')?.valid &&
+                            UserForm.get('mobilePhone')?.touched
+                          ">Invalid Phone Number</mat-error>
+                                </mat-form-field>
+                            </p>
+                            <div mat-dialog-actions align="end">
+                                <span>
+                                    <button type="button" mat-flat-button color="primary" [mat-dialog-close]="true">
+                                        Close
+                                    </button>
+                                    <button type="submit" [disabled]="UserForm.invalid" mat-stroked-button
+                                        color="primary">
+                                        update
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </div>
+            </mat-card>
+        </div> -->
+
+    </mat-tab>
+</mat-tab-group>
+
+
+<!-- <div>
+    <h2 mat-dialog-title>Add User</h2>
+    <div mat-dialog-content>
+      <form [formGroup]="organizationForm!" (ngSubmit)="onSubmitClick()">
+        <div class="text-inside">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="First Name" value={{fname}} formControlName="firstname" required>
+            <mat-error *ngIf="organizationForm.controls?.['firstname']?.hasError('required')">
+              Please enter first name
+            </mat-error>
+            <mat-error *ngIf="organizationForm.controls?.['firstname']?.hasError('pattern')">
+              Please enter valid first name
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="text-inside">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name" value={{lname}} formControlName="lastname" required>
+            <mat-error *ngIf="organizationForm.controls?.['lastname']?.hasError('required')">
+              Please enter last name
+            </mat-error>
+            <mat-error *ngIf="organizationForm.controls?.['lastname']?.hasError('pattern')">
+              Please enter valid last name
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="text-inside">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email address" formControlName="email" required>
+            <mat-error *ngIf="organizationForm.controls?.['email']?.hasError('required')">
+              Please enter email id
+            </mat-error>
+            <mat-error *ngIf="organizationForm.controls?.['email']?.hasError('email')">
+              Please enter valid email id
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="text-inside">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Address"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="btn-sec">
+          <button class="btn-space" mat-raised-button color="primary">Save</button>
+          <button type="button" mat-button (click)="closeDialog()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div> -->

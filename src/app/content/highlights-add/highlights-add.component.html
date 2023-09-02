@@ -1,0 +1,57 @@
+<div>
+
+    <app-content-action></app-content-action>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>Highlights</strong> {{update?'Update':'Add'}}
+                </h2>
+            </div>
+            <div class="body">
+                <form class="register-form m-4">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Content</mat-label>
+                                <input [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" matInput type="text"
+                                    required>
+                                <mat-icon matSuffix>
+                                    content_copy
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <strong>Content description</strong>
+                                    </h2>
+                                </div>
+                                <div class="body">
+                                    <ckeditor [editor]="Editor" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="model.editorData"></ckeditor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <button class="btn-space" mat-raised-button color="primary"
+                                (click)="submit()">{{update?'Update':'Submit'}}</button>
+                            <button *ngIf="update" routerLink="../" type="button" mat-button>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Validation -->

@@ -1,0 +1,78 @@
+<app-class-actions></app-class-actions>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ngxTableHeader">
+                            <ul class="header-buttons-left ms-0 mb-0">
+                                <li class="dropdown">
+                                    <h2>Class Schedules</h2>
+                                </li>
+                                <li class="dropdown m-l-20">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input placeholder="Search" type="text" [(ngModel)]="title"
+                                        class="browser-default search-field" (keyup.enter)='getAllContents()'
+                                        aria-label="Search box">
+
+                                </li>
+                            </ul>
+                            <ul class="header-buttons">
+                                <li>
+                                    <button mat-mini-fab color="primary" routerLink="add">
+                                        <mat-icon class="col-white">add</mat-icon>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <ngx-datatable #table class="material" [rows]="data" [columns]="columns" [columnMode]="'force'"
+                            [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true"
+                            [externalSorting]="true" [count]="page.count" [offset]="page.offset" [limit]="page.limit"
+                            (page)="pageCallback($event)" (sort)="sortCallback($event)">
+
+                            <ngx-datatable-column name="Name" [width]="130"></ngx-datatable-column>
+
+                            <ngx-datatable-column name="startDate" [width]="120">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        {{ row.startDate | date }}
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="endDate" [width]="120">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        {{ row.endDate | date }}
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="CreatedAt" [width]="120">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        {{ row.createdAt | date }}
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="Actions" [sortable]="false" [width]="220">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        <button matTooltip="Edit Class" class="btn tblActnBtn h-auto"
+                                            [routerLink]="[row.id,{edit:true}]">
+                                            <div class="icon-preview"><i class="fas fa-edit"></i></div>
+                                        </button>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

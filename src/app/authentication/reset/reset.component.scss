@@ -1,0 +1,47 @@
+:host {
+    // display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .login-btn{
+    margin-right: 15px;
+    margin-top: 10px;
+  }
+
+  .login-container{
+    width: 100%; display: flex;justify-content: center;
+  }
+  .login-card{
+    width: 500px; margin-top: 50px
+  }
+  :host .mat-toolbar{
+    color: chartreuse;
+  }
+  .mismatch{
+    color: red;
+    font-size: smaller;
+  }

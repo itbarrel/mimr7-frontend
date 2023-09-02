@@ -1,0 +1,52 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-xl-3">
+        <div class="card info-card">
+          <div class="info-box8 card-min-height" [ngClass]="{'card-active' : isClasses}"  (click)="changeTab('isClasses')">
+            <i class="material-icons bg-purple card1-icon">school</i>
+            <h5 class="col-deep-purple">Class</h5>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card info-card">
+          <div class="info-box8 card-min-height"  [ngClass]="{'card-active' : isOrganizations}" (click)="changeTab('isOrganizations')">
+            <i class="material-icons bg-orange card1-icon">corporate_fare</i>
+            <h5 class="col-orange">Organization</h5>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card info-card">
+          <div class="info-box8 card-min-height"  [ngClass]="{'card-active' : isStudents}" (click)="changeTab('isStudents')">
+            <i class="material-icons bg-green card1-icon">supervisor_account</i>
+            <h5 class="col-green">Student</h5>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <div class="card info-card">
+          <div class="info-box8 card-min-height"  [ngClass]="{'card-active' : isContents}" (click)="changeTab('isContents')">
+            <i class="material-icons bg-blue card1-icon">collections_bookmark</i>
+            <h5 class="col-blue">Content</h5>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</section>
