@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ToastrModule } from 'ngx-toastr';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { GptHighlightsComponent } from './gpt-highlights/gpt-highlights.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HighlightsAddComponent,
     MessagesComponent,
     MessagesAddComponent,
+    GptHighlightsComponent,
   ],
   imports: [
     CommonModule,

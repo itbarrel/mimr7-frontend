@@ -6,6 +6,7 @@ import { HighlightsAddComponent } from './highlights-add/highlights-add.componen
 import { HighlightsComponent } from './highlights/highlights.component';
 import { MessagesAddComponent } from './messages-add/messages-add.component';
 import { MessagesComponent } from './messages/messages.component';
+import { GptHighlightsComponent } from './gpt-highlights/gpt-highlights.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: ':id',
     component: ContentAddComponent,
+    pathMatch:'full'
+  },
+  {
+    path: ':id/suggested-highlights',
+    component: GptHighlightsComponent,
     pathMatch:'full'
   },
   {

@@ -1,0 +1,46 @@
+<div>
+
+    <app-content-action></app-content-action>
+</div>
+
+<div class="row" style="min-height: 500px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header message-heading">
+                <h2>Suggested Highlgihts</h2>
+                <button mat-mini-fab color="primary" (click)="createGPTHighlights()">
+                    <mat-icon class="col-white" >create_new_folder</mat-icon>
+                </button>
+            </div>
+            
+            <div class="body">
+                <mat-accordion>
+                    <mat-expansion-panel  *ngFor="let highlight of GPThighlights">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title class="font-bold">
+                                {{highlight.content}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="m-l-20">
+                            <div class="m-b-15">
+                                <div>
+                                    <span class="font-bold col-teal m-r-5">Description:</span>
+                                    <span [innerHTML]="highlight.description??'no description'"></span>
+                                </div>
+                                <div name="button">
+                                    <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="addGptHighlight(highlight)">Add
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                </div>
+                            </div>
+                            
+                            <div>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>

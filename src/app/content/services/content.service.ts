@@ -65,4 +65,8 @@ export class ContentService {
   getContentByClassId(id: string) {
     return this.http.get(`${this.env.apiUrl}contents/klass/${id}`);
   }
+
+  createGPTHighlights(id:string){
+    return this.http.post(`${this.env.apiUrl}contents/${id}/gptHighlights`,{});    
+  }
 }
