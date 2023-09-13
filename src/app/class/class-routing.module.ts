@@ -6,6 +6,7 @@ import { ImportContentsComponent } from './import-contents/import-contents.compo
 import { ImportStudentsComponent } from './import-students/import-students.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
+import { CompletedScheduleComponent } from './completed-schedule/completed-schedule.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'schedule',
     component: ScheduleComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'completed-schedule',
+    component: CompletedScheduleComponent,
     pathMatch: 'full',
   },
   {

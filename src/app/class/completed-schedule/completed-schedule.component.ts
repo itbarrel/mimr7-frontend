@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ScheduleService } from '../services/schedule.service';
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss']
+  selector: 'app-completed-schedule',
+  templateUrl: './completed-schedule.component.html',
+  styleUrls: ['./completed-schedule.component.scss']
 })
-export class ScheduleComponent {
+export class CompletedScheduleComponent {
 
   page = {
     limit: 10,
@@ -60,14 +60,12 @@ export class ScheduleComponent {
   getAllContents() {
     console.log('page', this.page);
     this.scheduleService
-      .getAll(this.page, this.title)
+      .getCompletedSchedules(this.page, this.title)
       .subscribe((res: any) => {
         console.log(res);
-        this.data = res.data;
+        this.data = res.docs;
         this.page.count = res.total;
         this.rows = res.rows;
       });
   }
 }
-
-

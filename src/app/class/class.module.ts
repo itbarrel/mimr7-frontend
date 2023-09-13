@@ -27,6 +27,7 @@ import { ImportContentsComponent } from './import-contents/import-contents.compo
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CompletedScheduleComponent } from './completed-schedule/completed-schedule.component';
 @NgModule({
   declarations: [
     ClassComponent,
@@ -36,6 +37,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ImportContentsComponent,
     ScheduleComponent,
     ScheduleAddComponent,
+    CompletedScheduleComponent,
   ],
   imports: [
     CommonModule,

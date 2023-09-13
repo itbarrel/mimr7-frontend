@@ -48,5 +48,29 @@ export class ScheduleService {
     return this.http.put(`${this.env.apiUrl}klassSchedules/${id}`, data);
   }
 
+  getCompletedSchedules( page:any,
+    name?: string){
+
+    const user = JSON.parse(localStorage.getItem('user')||'')
+
+    const sort: any = {};
+    if(page.orderBy){
+      sort[page?.orderBy] = page?.orderDir;
+    }
+    const query = {
+      sort,
+    };
+
+    const url = withQuery(
+      `${this.env.apiUrl}klassSchedules/complete?AccountId=${user.AccountId}&OrganizationId=${user.OrganizationId}&offset=${page.offset+1}&limit=${page.limit}`,
+      query
+    );
+    return this.http.get(url);
+
+    // return this.http.get(`${this.env.apiUrl}klassSchedules/complete?AccountId=${user.AccountId}&OrganizationId=${user.OrganizationId}`);
+
+    // {{host}}v1/klassSchedules/complete?AccountId={{AccountId}}&OrganizationId={{OrganizationId}}
+  }
+
    
 }
