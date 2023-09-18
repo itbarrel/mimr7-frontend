@@ -72,5 +72,31 @@ export class ScheduleService {
     // {{host}}v1/klassSchedules/complete?AccountId={{AccountId}}&OrganizationId={{OrganizationId}}
   }
 
-   
+  getStudentsByScheduleID( id:string,page:any,
+    name?: string){
+
+    // const user = JSON.parse(localStorage.getItem('user')||'')
+
+    const sort: any = {};
+    if(page.orderBy){
+      sort[page?.orderBy] = page?.orderDir;
+    }
+    const query = {
+      sort,
+    };
+
+    const url = withQuery(
+      `${this.env.apiUrl}klassSchedules/${id}/students`,
+      query
+    );
+
+    // const url = withQuery(
+    //   `${this.env.apiUrl}klassSchedules/${id}/students&offset=${page.offset+1}&limit=${page.limit}`,
+    //   query
+    // );
+    return this.http.get(url);
+
+    }
+ 
+
 }

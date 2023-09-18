@@ -14,7 +14,7 @@
                                 <li class="dropdown m-l-20">
                                     <label for="search-input"><i class="material-icons search-icon">search</i></label>
                                     <input placeholder="Search" type="text" [(ngModel)]="title"
-                                        class="browser-default search-field" (keyup.enter)='getAllContents()'
+                                        class="browser-default search-field" (keyup.enter)='getAllData()'
                                         aria-label="Search box">
 
                                 </li>
@@ -33,46 +33,23 @@
                             (page)="pageCallback($event)" (sort)="sortCallback($event)">
 
                             <ngx-datatable-column name="Name" [width]="130"></ngx-datatable-column>
-
-                            <ngx-datatable-column name="startDate" [width]="120">
+                            <ngx-datatable-column name="Email" [width]="130"></ngx-datatable-column>
+                            <ngx-datatable-column name="Contact" [width]="130">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
-                                        {{ row.startDate | date }}
+                                        {{ row.mobilePhone }}
                                     </span>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="endDate" [width]="120">
+                            <ngx-datatable-column name="Actions" [sortable]="false" [width]="130">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
-                                        {{ row.endDate | date }}
-                                    </span>
-                                </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column name="CreatedAt" [width]="120">
-                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
-                                    ngx-datatable-cell-template>
-                                    <span>
-                                        {{ row.createdAt | date }}
-                                    </span>
-                                </ng-template>
-                            </ngx-datatable-column>
-                            <ngx-datatable-column name="Actions" [sortable]="false" [width]="220">
-                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
-                                    ngx-datatable-cell-template>
-                                    <span>
-                                        <button matTooltip="Edit Class" class="btn tblActnBtn h-auto"
-                                            [routerLink]="[row.id,{edit:true}]">
+                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
+                                            [routerLink]="row.id+'/messages'">
 
-                                            <div class="icon-preview"><i class="fas fa-edit"></i></div>
-                                        </button>
-                                    </span>
-                                    <span>
-                                        <button matTooltip="Students" class="btn tblActnBtn h-auto"
-                                            [routerLink]="row.id+'/students'">
-
-                                            <div class="icon-preview"><i class="fas fa-user"></i></div>
+                                            <div class="icon-preview"><i class="fas fa-id-card"></i></div>
                                         </button>
                                     </span>
                                 </ng-template>
