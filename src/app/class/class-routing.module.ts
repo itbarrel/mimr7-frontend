@@ -8,6 +8,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleAddComponent } from './schedule-add/schedule-add.component';
 import { CompletedScheduleComponent } from './completed-schedule/completed-schedule.component';
 import { ScheduleStudentsComponent } from './schedule-students/schedule-students.component';
+import { StudentsAnswerComponent } from './students-answer/students-answer.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
   {
     path: 'schedule/:id/students',
     component: ScheduleStudentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'schedule/:id/students/:sid/messages',
+    component: StudentsAnswerComponent,
     pathMatch: 'full',
   },
   {

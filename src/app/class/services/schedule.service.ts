@@ -91,11 +91,18 @@ export class ScheduleService {
     );
 
     // const url = withQuery(
-    //   `${this.env.apiUrl}klassSchedules/${id}/students&offset=${page.offset+1}&limit=${page.limit}`,
+    //   `${this.env.apiUrl}klassSchedules/${id}/students?offset=${page.offset+1}&limit=${page.limit}`,
     //   query
     // );
     return this.http.get(url);
 
+    }
+
+
+    getStudentMessagesInSchedule(studentID:string,scheduleID:string){
+      
+      const url =  `${this.env.apiUrl}students/messageSchedules?StudentId=${studentID}&KlassScheduleId=${scheduleID}`;
+      return this.http.get(url);
     }
  
 
