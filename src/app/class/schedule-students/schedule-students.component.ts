@@ -72,8 +72,8 @@ export class ScheduleStudentsComponent {
       .subscribe((res: any) => {
         console.log(res);
         this.data = res.data;
-        this.page.count = res.pages;
-        this.rows = res.total;
+        this.page.count = res.total;
+        this.rows = res.data;
       });
   }
 
