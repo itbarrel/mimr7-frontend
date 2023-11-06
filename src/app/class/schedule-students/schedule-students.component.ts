@@ -71,9 +71,9 @@ export class ScheduleStudentsComponent {
       .getStudentsByScheduleID(this.scheduleId,this.page, this.title)
       .subscribe((res: any) => {
         console.log(res);
-        this.data = res;
-        this.page.count = 100;
-        this.rows = res;
+        this.data = res.data;
+        this.page.count = res.pages;
+        this.rows = res.total;
       });
   }
 

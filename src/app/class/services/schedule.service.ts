@@ -85,15 +85,15 @@ export class ScheduleService {
       sort,
     };
 
-    const url = withQuery(
-      `${this.env.apiUrl}klassSchedules/${id}/students`,
-      query
-    );
-
     // const url = withQuery(
-    //   `${this.env.apiUrl}klassSchedules/${id}/students?offset=${page.offset+1}&limit=${page.limit}`,
+    //   `${this.env.apiUrl}klassSchedules/${id}/students`,
     //   query
     // );
+
+    const url = withQuery(
+      `${this.env.apiUrl}klassSchedules/${id}/students?offset=${page.offset+1}&limit=${page.limit}`,
+      query
+    );
     return this.http.get(url);
 
     }
