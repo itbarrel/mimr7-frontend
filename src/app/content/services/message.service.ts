@@ -83,4 +83,9 @@ export class MessageService {
   update(id: string, data: Message) {
     return this.http.put(`${this.env.apiUrl}messages/${id}`, data);
   }
+
+  createBulk(data: Message[]): Observable<any> {
+
+    return this.http.post(`${this.env.apiUrl}messages/bulkCreate`, {messages:data});
+  }
 }

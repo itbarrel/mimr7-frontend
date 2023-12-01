@@ -84,4 +84,7 @@ export class HighlightService {
   update(id: string, data: Highlight) {
     return this.http.put(`${this.env.apiUrl}highlights/${id}`, data);
   }
+  createGPTMessages(id:string){
+    return this.http.post(`${this.env.apiUrl}highlights/${id}/gptMessages`,{});    
+  }
 }

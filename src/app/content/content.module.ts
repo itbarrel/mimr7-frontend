@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ToastrModule } from 'ngx-toastr';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { GptHighlightsComponent } from './gpt-highlights/gpt-highlights.component';
+import { GptMessagesComponent } from './gpt-messages/gpt-messages.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GptHighlightsComponent } from './gpt-highlights/gpt-highlights.componen
     MessagesComponent,
     MessagesAddComponent,
     GptHighlightsComponent,
+    GptMessagesComponent,
   ],
   imports: [
     CommonModule,
