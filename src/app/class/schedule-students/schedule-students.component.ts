@@ -27,6 +27,9 @@ export class ScheduleStudentsComponent {
     { name: 'email' },
     { name: 'contact' },
     { name: 'actions' },
+    { name: 'correct answers' },
+    { name: 'wrong answeres' },
+    { name: 'not answered' },
   ];
 
 

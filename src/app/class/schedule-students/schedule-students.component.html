@@ -1,5 +1,4 @@
 <app-class-actions></app-class-actions>
-
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -33,7 +32,7 @@
                             (page)="pageCallback($event)" (sort)="sortCallback($event)">
 
                             <ngx-datatable-column name="Name" [width]="130"></ngx-datatable-column>
-                            <ngx-datatable-column name="Email" [width]="130"></ngx-datatable-column>
+                            <ngx-datatable-column name="Email" [width]="200"></ngx-datatable-column>
                             <ngx-datatable-column name="Contact" [width]="130">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
@@ -42,7 +41,48 @@
                                     </span>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="Actions" [sortable]="false" [width]="130">
+                            <!-- <ngx-datatable-column name="Contact" [width]="130">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        {{ row.mobilePhone }}
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column> -->
+                            <ngx-datatable-column [sortable]="false" name="Correct Answers" [width]="130">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
+                                            [routerLink]="row.id+'/messages'">
+                                            {{ row.trueAnswers.length }}
+                                        </button>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column [sortable]="false" name="Not Answered" [width]="130">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
+                                            [routerLink]="row.id+'/messages'">
+                                            {{ row.notAnswered.length }}
+                                        </button>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column [sortable]="false" name="Wrong Answers" [width]="130">
+                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <span>
+                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
+                                            [routerLink]="row.id+'/messages'">
+                                            {{ row.falseAnswers.length }}
+                                        </button>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <!-- <ngx-datatable-column name="Actions" [sortable]="false" [width]="130">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
@@ -53,7 +93,7 @@
                                         </button>
                                     </span>
                                 </ng-template>
-                            </ngx-datatable-column>
+                            </ngx-datatable-column> -->
                         </ngx-datatable>
                     </div>
                 </div>
