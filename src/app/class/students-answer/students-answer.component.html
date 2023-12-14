@@ -3,10 +3,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header message-heading">
-                <h2>Messages</h2>
+                <!-- <h2>Messages</h2>
                 <button mat-mini-fab color="primary" routerLink="add">
                     <mat-icon class="col-white">add</mat-icon>
-                </button>
+                </button> -->
             </div>
 
             <div class="body">
@@ -26,7 +26,8 @@
                             </div>
                             <div class="m-b-15">
                                 <span class="font-bold col-orange m-r-5">Response:</span>
-                                {{message.response.length>0?message.response:'N/A'}}
+                                <!-- {{message.response.length>0?message.response:'N/A'}} -->
+                                {{ message.response ?? 'N/A' }}
                             </div>
                             <div>
                                 <span class="font-bold col-cyan m-r-5">Hint:</span> {{message.hint}}

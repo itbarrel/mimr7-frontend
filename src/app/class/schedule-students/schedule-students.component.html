@@ -41,20 +41,12 @@
                                     </span>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <!-- <ngx-datatable-column name="Contact" [width]="130">
-                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
-                                    ngx-datatable-cell-template>
-                                    <span>
-                                        {{ row.mobilePhone }}
-                                    </span>
-                                </ng-template>
-                            </ngx-datatable-column> -->
                             <ngx-datatable-column [sortable]="false" name="Correct Answers" [width]="130">
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
-                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
-                                            [routerLink]="row.id+'/messages'">
+                                        <button matTooltip="Correct Messages" class="btn tblActnBtn h-auto"
+                                            (click)="routeToMessagesComponent({id:row.id,messages:row.trueAnswers})">
                                             {{ row.trueAnswers.length }}
                                         </button>
                                     </span>
@@ -64,8 +56,8 @@
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
-                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
-                                            [routerLink]="row.id+'/messages'">
+                                        <button matTooltip="Unanswered Messages" class="btn tblActnBtn h-auto"
+                                            (click)="routeToMessagesComponent({id:row.id,messages:row.notAnswered})">
                                             {{ row.notAnswered.length }}
                                         </button>
                                     </span>
@@ -75,25 +67,14 @@
                                 <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <span>
-                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
-                                            [routerLink]="row.id+'/messages'">
+                                        <button matTooltip="Wrong Messages" class="btn tblActnBtn h-auto"
+                                            (click)="routeToMessagesComponent({id:row.id,messages:row.falseAnswers})">
                                             {{ row.falseAnswers.length }}
                                         </button>
                                     </span>
                                 </ng-template>
                             </ngx-datatable-column>
-                            <!-- <ngx-datatable-column name="Actions" [sortable]="false" [width]="130">
-                                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex"
-                                    ngx-datatable-cell-template>
-                                    <span>
-                                        <button matTooltip="Messages" class="btn tblActnBtn h-auto"
-                                            [routerLink]="row.id+'/messages'">
 
-                                            <div class="icon-preview"><i class="fas fa-id-card"></i></div>
-                                        </button>
-                                    </span>
-                                </ng-template>
-                            </ngx-datatable-column> -->
                         </ngx-datatable>
                     </div>
                 </div>

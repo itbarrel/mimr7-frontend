@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { ScheduleService } from '../services/schedule.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-schedule-students',
   templateUrl: './schedule-students.component.html',
-  styleUrls: ['./schedule-students.component.scss']
+  styleUrls: ['./schedule-students.component.scss'],
 })
 export class ScheduleStudentsComponent {
-
-  scheduleId:string=''
+  scheduleId: string = '';
   page = {
     limit: 10,
     count: 0,
@@ -32,20 +33,17 @@ export class ScheduleStudentsComponent {
     { name: 'not answered' },
   ];
 
-
-  constructor(private scheduleService: ScheduleService,private route: ActivatedRoute){
-
-  }
-
+  constructor(
+    private scheduleService: ScheduleService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
     this.scheduleId = this.route.snapshot.paramMap.get('id') || '';
-    console.log("🚀 ~ file: schedule-students.component.ts:22 ~ ScheduleStudentsComponent ~ ngOnInit ~ this.scheduleId:", this.scheduleId)
-    this.getAllData()
-
+    this.getAllData();
   }
-
 
   pageCallback(pageInfo: {
     count?: number;
@@ -71,7 +69,7 @@ export class ScheduleStudentsComponent {
   getAllData() {
     console.log('page', this.page);
     this.scheduleService
-      .getStudentsByScheduleID(this.scheduleId,this.page, this.title)
+      .getStudentsByScheduleID(this.scheduleId, this.page, this.title)
       .subscribe((res: any) => {
         console.log(res);
         this.data = res.data;
@@ -80,4 +78,15 @@ export class ScheduleStudentsComponent {
       });
   }
 
+  routeToMessagesComponent(data: any) {
+    if (data.messages.length > 0) {
+      const stringifyData = JSON.stringify(data.messages);
+      localStorage.removeItem('messages');
+      localStorage.setItem('messages', stringifyData);
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl(`${currentUrl}/${data.id}/messages`);
+    } else {
+      this.toastr.error('No Messages to show');
+    }
+  }
 }
